@@ -1,0 +1,1151 @@
+object M_DmCompose: TM_DmCompose
+  OldCreateOrder = False
+  left = 162
+  top = 68
+  Height = 679
+  HorizontalOffset = 0
+  VerticalOffset = 24
+  Width = 814
+  object zq_Structure: TIBQuery
+    AfterInsert = zq_StructureAfterInsert
+    AfterPost = zq_StructureAfterPost
+    AfterScroll = zq_StructureAfterScroll
+    BeforePost = zq_StructureBeforePost
+    OnDeleteError = zq_StructureDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * FROM STRUCTURE'
+    )
+    Params = <>
+    left = 112
+    top = 16
+  end
+  object ds_Structure: TDataSource
+    DataSet = zq_Structure
+    left = 24
+    top = 16
+  end
+  object zq_BranInBran: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE,STRUCTURE_LIEE'
+      'where STRU_Clep = STLI__Enfant '
+      'and STLI__Parent = :groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 112
+    top = 64
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranInBran: TDataSource
+    DataSet = zq_BranInBran
+    left = 24
+    top = 64
+  end
+  object zq_BranOutBr: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'DECLARE @Stru_groupe AS varchar ( 30 )'
+      ''
+      'SET @Stru_groupe = :groupe'
+      ''
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE'
+      'where STRU_Clep <> @Stru_groupe'
+      'AND STRU_Clep NOT IN ( SELECT * FROM fn_mc_retrouve_branches_enfants  ( @Stru_groupe ))'
+      'AND STRU_Clep NOT IN ( SELECT * FROM fn_mc_retrouve_branches_parentes ( @Stru_groupe ))'
+      'AND STRU_Type > 1'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_BranOutBrFilterRecord
+    left = 112
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranOutBr: TDataSource
+    DataSet = zq_BranOutBr
+    left = 24
+    top = 112
+  end
+  object zq_ComInBran: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  COMP_Clep, COMP_Lib FROM COMPOSANT,STRUCTURE_COMPOSANT'
+      'where COMP_Clep = SCOM__COMP'
+      'and SCOM__STRU = :groupe'
+      'ORDER BY COMP_Lib'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+    left = 112
+    top = 160
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+  end
+  object ds_ComInBran: TDataSource
+    DataSet = zq_ComInBran
+    left = 24
+    top = 160
+  end
+  object zq_ComOutBran: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  COMP_Clep, COMP_Lib FROM COMPOSANT'
+      'where COMP_Clep not in (select SCOM__COMP from STRUCTURE_COMPOSANT'
+      'where SCOM__STRU = :groupe)'
+      'ORDER BY COMP_Lib'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+    OnFilterRecord = zq_ComOutBranFilterRecord
+    left = 112
+    top = 208
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+  end
+  object ds_ComOutBra: TDataSource
+    DataSet = zq_ComOutBran
+    left = 24
+    top = 208
+  end
+  object zq_CompInBra: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  CPTM_Clep FROM COMPORTEMENT,STRUCTURE_CPTM_ACT'
+      'where CPTM_Clep = SCPA__CPTM'
+      'and SCPA__STRU = :groupe'
+      'ORDER BY CPTM_Clep'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+    left = 112
+    top = 256
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+  end
+  object ds_CompInBra: TDataSource
+    DataSet = zq_CompInBra
+    left = 24
+    top = 256
+  end
+  object zq_CompOutBra: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @groupe as varchar ( 30 )'
+      ''
+      'SET @groupe = :groupe'
+      'select  CPTM_Clep FROM COMPORTEMENT'
+      'where CPTM_Clep not in (select SCPA__CPTM from STRUCTURE_CPTM_ACT'
+      'where SCPA__STRU = @groupe)'
+      'ORDER BY CPTM_Clep'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+    OnFilterRecord = zq_CompOutBraFilterRecord
+    left = 112
+    top = 304
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+  end
+  object ds_CompOutBra: TDataSource
+    DataSet = zq_CompOutBra
+    left = 24
+    top = 304
+  end
+  object zq_ComsInBra: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  CPTM_Clep FROM COMPORTEMENT,STRUCTURE_CPTM_SEL'
+      'where CPTM_Clep=SCPS__CPTM'
+      'and SCPS__STRU = :groupe'
+      'ORDER BY CPTM_Clep'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+    left = 112
+    top = 352
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+  end
+  object ds_ComsInBra: TDataSource
+    DataSet = zq_ComsInBra
+    left = 24
+    top = 352
+  end
+  object zq_ComsOutBra: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @groupe as varchar ( 30 )'
+      ''
+      'SET @groupe = :groupe'
+      'select  CPTM_Clep FROM COMPORTEMENT'
+      'where CPTM_Clep not in (select SCPS__CPTM from STRUCTURE_CPTM_SEL'
+      'where SCPS__STRU = @groupe)'
+      'ORDER BY CPTM_Clep'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_ComsOutBraFilterRecord
+    left = 112
+    top = 400
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_ComsOutBra: TDataSource
+    DataSet = zq_ComsOutBra
+    left = 24
+    top = 400
+  end
+  object ds_Comportem: TDataSource
+    DataSet = zq_Comportem
+    left = 208
+    top = 16
+  end
+  object zq_Comportem: TIBQuery
+    OnDeleteError = zq_ComportemDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * FROM COMPORTEMENT'
+    )
+    Params = <>
+    left = 296
+    top = 16
+  end
+  object zq_ArtInBran: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  ARTI_Clep, ARTI_Libcom FROM ARTICLE, ARTICLE_STRUCTURE'
+      'where ARTI_Clep = ARST__ARTI'
+      'and ARST__STRU = :groupe'
+      'ORDER BY ARTI_Libcom'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+    left = 112
+    top = 448
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+  end
+  object ds_ArtInBran: TDataSource
+    DataSet = zq_ArtInBran
+    left = 24
+    top = 448
+  end
+  object zq_ArtOutBran: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  ARTI_Clep, ARTI_Libcom FROM ARTICLE'
+      'where ARTI_Clep not in (select ARST__ARTI from ARTICLE_STRUCTURE'
+      'where ARST__STRU = :groupe)'
+      'AND  ARTI_Compose = 1'
+      'ORDER BY ARTI_Libcom'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_ArtOutBranFilterRecord
+    left = 112
+    top = 496
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_ArtOutBran: TDataSource
+    DataSet = zq_ArtOutBran
+    left = 24
+    top = 496
+  end
+  object zq_RetrouvArt: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM fn_mc_retrouve_article_compose (:STRU_Clep)'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'STRU_Clep'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    left = 296
+    top = 64
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'STRU_Clep'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_RetrouvArt: TDataSource
+    DataSet = zq_RetrouvArt
+    left = 208
+    top = 64
+  end
+  object zq_BranInComp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE,STRUCTURE_CPTM_ACT'
+      'where STRU_Clep = SCPA__STRU'
+      'and SCPA__CPTM = :groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 50
+      end>
+    left = 296
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 50
+      end>
+  end
+  object ds_BranInComp: TDataSource
+    DataSet = zq_BranInComp
+    left = 208
+    top = 112
+  end
+  object zq_BranOutComp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @groupe as varchar ( 50 )'
+      ''
+      'SET @groupe = :groupe'
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE'
+      'where STRU_Clep not in (select SCPA__STRU from STRUCTURE_CPTM_ACT'
+      'where SCPA__CPTM = @groupe)'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_BranOutCompFilterRecord
+    left = 296
+    top = 160
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranOutCom: TDataSource
+    DataSet = zq_BranOutComp
+    left = 208
+    top = 160
+  end
+  object zq_BranInSel: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE,STRUCTURE_CPTM_SEL'
+      'where STRU_Clep=SCPS__STRU'
+      'and SCPS__CPTM = :groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 50
+      end>
+    left = 296
+    top = 208
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 50
+      end>
+  end
+  object ds_BranInSel: TDataSource
+    DataSet = zq_BranInSel
+    left = 208
+    top = 208
+  end
+  object zq_BranOutSel: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @groupe as varchar ( 50 )'
+      ''
+      'SET @groupe = :groupe'
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE'
+      'where STRU_Clep not in (select SCPS__STRU from STRUCTURE_CPTM_SEL'
+      'where SCPS__CPTM = @groupe)'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_BranOutSelFilterRecord
+    left = 296
+    top = 256
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranOutSel: TDataSource
+    DataSet = zq_BranOutSel
+    left = 208
+    top = 256
+  end
+  object zq_ArbreArtC: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from fn_mc_arbre_article_compose ( :ArticleC, 1)'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    left = 296
+    top = 304
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_ArbreArtC: TDataSource
+    DataSet = zq_ArbreArtC
+    left = 208
+    top = 304
+  end
+  object zq_BrLieBrIn: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE,STRUCTURE_LIEE'
+      'where STRU_Clep = STLI__Parent'
+      'and STLI__Enfant = :groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+    left = 296
+    top = 352
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 20
+      end>
+  end
+  object ds_BrLieBrIn: TDataSource
+    DataSet = zq_BrLieBrIn
+    left = 208
+    top = 352
+  end
+  object zq_BrLieBrOut: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @Stru_groupe as varchar ( 30 )'
+      ''
+      'SET @Stru_groupe = :groupe'
+      ''
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE'
+      'where STRU_Clep NOT IN ( SELECT * FROM fn_mc_retrouve_branches_enfants  ( @Stru_groupe ))'
+      'AND STRU_Clep NOT IN ( SELECT * FROM fn_mc_retrouve_branches_parentes ( @Stru_groupe ))'
+      'AND STRU_Clep <> @Stru_groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    OnFilterRecord = zq_BrLieBrOutFilterRecord
+    left = 296
+    top = 400
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_BrLieBrOut: TDataSource
+    DataSet = zq_BrLieBrOut
+    left = 208
+    top = 400
+  end
+  object zq_BranInArt: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE,ARTICLE_STRUCTURE'
+      'where STRU_Clep= ARST__STRU'
+      'AND ARST__ARTI = :groupe'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 288
+    top = 456
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranInArt: TDataSource
+    DataSet = zq_BranInArt
+    left = 208
+    top = 456
+  end
+  object zq_BranOutArt: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  STRU_Clep, STRU_Libelle FROM STRUCTURE'
+      'where STRU_Clep not in (select ARST__STRU from ARTICLE_STRUCTURE'
+      'where ARST__ARTI = :groupe)'
+      'AND STRU_Type=1'
+      'ORDER BY STRU_Libelle'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    OnFilterRecord = zq_BranOutArtFilterRecord
+    left = 288
+    top = 504
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_BranOutArt: TDataSource
+    DataSet = zq_BranOutArt
+    left = 208
+    top = 504
+  end
+  object zq_ArticleC: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM ARTICLE'
+    )
+    Params = <>
+    Filtered = True
+    left = 456
+    top = 16
+  end
+  object ds_ArticleC: TDataSource
+    DataSet = zq_ArticleC
+    left = 384
+    top = 16
+  end
+  object zq_ArbreArt: TIBQuery
+    AfterOpen = zq_ArbreArtAfterOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from fn_mc_arbre_article_compose ( :ArticleC, 2 )'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    left = 456
+    top = 64
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_ArbreArt: TDataSource
+    DataSet = zq_ArbreArt
+    left = 384
+    top = 64
+  end
+  object zq_Temp: TIBQuery
+    AfterOpen = zq_TempAfterOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select SUM (ARDE_Prix) AS ARDE_Prix, SUM (ARDE_Prixfutur) AS ARDE_Prixfutur'
+      'from fn_mc_arbre_article_compose ( :ArticleC, 1 )'
+      'WHERE ARDE_Table = ''STRU_COMP'''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    left = 456
+    top = 112
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_Temp: TDataSource
+    DataSet = zq_Temp
+    left = 384
+    top = 112
+  end
+  object ds_Compose: TDataSource
+    DataSet = zq_Compose
+    left = 384
+    top = 160
+  end
+  object zq_Compose: TIBQuery
+    AfterOpen = zq_ComposeAfterOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      ''
+    )
+    Params = <>
+    left = 456
+    top = 160
+  end
+  object zq_Comporte: TIBQuery
+    BeforeOpen = zq_ComporteBeforeOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  * FROM COMPORTEMENT'
+      'where CPTM_Clep in (select SCPA__CPTM from STRUCTURE_CPTM_ACT'
+      'where SCPA__STRU = :groupe)'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+    left = 456
+    top = 208
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+  end
+  object ds_Comporte: TDataSource
+    DataSet = zq_Comporte
+    left = 384
+    top = 208
+  end
+  object zq_SelectStru: TIBQuery
+    BeforeOpen = zq_SelectStruBeforeOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  * FROM COMPORTEMENT'
+      'where CPTM_Clep in (select SCPS__CPTM from STRUCTURE_CPTM_SEL'
+      'where SCPS__STRU = :groupe)'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+    left = 460
+    top = 256
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 30
+      end>
+  end
+  object ds_SelectStru: TDataSource
+    DataSet = zq_SelectStru
+    left = 388
+    top = 256
+  end
+  object zq_ArbrDevi: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select *'
+      'from fn_mc_arbre_article_compose ( :ArticleC, 1 )'
+      'WHERE ARDE_Table = ''STRUCTURE_COMPOSANT'''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+    left = 464
+    top = 304
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'ArticleC'
+        ParamType = ptUnknown
+        Size = 20
+      end>
+  end
+  object ds_BrType: TDataSource
+    DataSet = zq_BrType
+    left = 376
+    top = 352
+  end
+  object zq_BrType: TIBQuery
+    OnDeleteError = zq_ComportemDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * FROM TYPE_STRUCTURE'
+      'ORDER BY TYST_Libelle'
+    )
+    Params = <>
+    left = 456
+    top = 352
+  end
+  object ds_BrSelect: TDataSource
+    DataSet = zq_BrSelect
+    left = 376
+    top = 400
+  end
+  object zq_BrSelect: TIBQuery
+    AfterOpen = zq_BrSelectAfterOpen
+    OnDeleteError = zq_ComportemDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * FROM CHECKER_ARBRE'
+      'ORDER BY CHAR_Libelle'
+    )
+    Params = <>
+    left = 456
+    top = 400
+  end
+  object zq_Comclasse: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  COMP_Clep, COMP_Lib, COMP_Declasse FROM COMPOSANT'
+      'where COMP_Declasse=0'
+      'ORDER BY COMP_Lib'
+    )
+    Params = <>
+    OnFilterRecord = zq_ComclasseFilterRecord
+    left = 456
+    top = 448
+  end
+  object ds_Comclasse: TDataSource
+    DataSet = zq_Comclasse
+    left = 376
+    top = 448
+  end
+  object zq_ComDeclas: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  COMP_Clep, COMP_Lib, COMP_Declasse FROM COMPOSANT'
+      'where COMP_Declasse=1'
+      'ORDER BY COMP_Lib'
+    )
+    Params = <>
+    OnFilterRecord = zq_ComDeclasFilterRecord
+    left = 456
+    top = 496
+  end
+  object ds_ComDeclas: TDataSource
+    DataSet = zq_ComDeclas
+    left = 376
+    top = 496
+  end
+  object zq_CompCoul: TIBQuery
+    AfterCancel = zq_CompCoulAfterCancel
+    BeforePost = zq_CompCoulBeforePost
+    OnNewRecord = zq_CompCoulNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from COMPOSANT_FINITION'
+    )
+    Params = <>
+    left = 624
+    top = 452
+  end
+  object ds_CompCoul: TDataSource
+    DataSet = zq_CompCoul
+    left = 544
+    top = 452
+  end
+  object zq_composant: TIBQuery
+    AfterOpen = zq_composantAfterOpen
+    AfterPost = zq_composantAfterPost
+    AfterScroll = zq_composantAfterScroll
+    OnNewRecord = zq_composantNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from COMPOSANT'
+      'where COMP_Lib <> ''Integrite'''
+      'and COMP_Lib <> ''Intégrité'''
+      'and COMP_Declasse = 0'
+    )
+    Params = <>
+    left = 627
+    top = 499
+  end
+  object ds_Composant: TDataSource
+    DataSet = zq_composant
+    left = 540
+    top = 499
+  end
+  object ds_CoFini: TDataSource
+    DataSet = zq_CoFini
+    left = 544
+    top = 403
+  end
+  object zq_code_copiecomp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'declare @clep1 varchar (12)'
+      ''
+      'SET @clep1 = :clep1'
+      ''
+      'select cast(substring(COMP_Clep,len(''Z''+ RTRIM(@clep1)) +1,len(COMP_Clep)) as int) '
+      'from COMPOSANT'
+      'where COMP_Clep like (''Z'' + RTRIM(@clep1) +''%'')'
+      'and len(RTRIM(@clep1)) + 2 <= 12 '
+      'order by 1 desc'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'clep1'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 544
+    top = 544
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'clep1'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_copiecomp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'exec ps_copie_composant :cle1, :cle2'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle1'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'cle2'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 648
+    top = 544
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle1'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'cle2'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_CoFini: TIBQuery
+    BeforePost = zq_CompCoulBeforePost
+    OnNewRecord = zq_CompCoulNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from FINITION'
+      'WHERE FINI_Clep = :finition'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'finition'
+        ParamType = ptUnknown
+        Size = 200
+      end>
+    left = 624
+    top = 408
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'finition'
+        ParamType = ptUnknown
+        Size = 200
+      end>
+  end
+end

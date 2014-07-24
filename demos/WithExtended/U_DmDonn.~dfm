@@ -1,0 +1,1497 @@
+object M_Donn: TM_Donn
+  OldCreateOrder = False
+  Left = 64
+  Top = 18
+  Height = 823
+  Width = 1032
+  object ds_Finition: TDataSource
+    DataSet = adoq_Finition
+    Left = 8
+    Top = 492
+  end
+  object ds_client: TDataSource
+    DataSet = adoq_client
+    OnStateChange = ds_clientStateChange
+    Left = 170
+    Top = 208
+  end
+  object ds_cp: TDataSource
+    DataSet = adot_cp
+    Left = 340
+    Top = 492
+  end
+  object adot_cp: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    BeforePost = adot_cpBeforePost
+    TableName = 'CODE_POSTAL'
+    Left = 435
+    Top = 492
+  end
+  object adot_four: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'FOUR_Nom <> '#39'Int'#233'grit'#233#39
+    AfterOpen = adot_fourAfterOpen
+    BeforeDelete = adot_fourBeforeDelete
+    OnNewRecord = adot_fourNewRecord
+    TableName = 'FOURNISSEUR'
+    Left = 248
+    Top = 253
+  end
+  object ds_four: TDataSource
+    DataSet = adot_four
+    Left = 170
+    Top = 253
+  end
+  object adoq_RechcliDevis: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'client1'
+        DataType = ftString
+        Size = 2
+        Value = #39#39
+      end
+      item
+        Name = 'client2'
+        DataType = ftString
+        Size = 2
+        Value = #39#39
+      end
+      item
+        Name = 'client3'
+        DataType = ftString
+        Size = 2
+        Value = #39#39
+      end>
+    SQL.Strings = (
+      'select count(*) from DEVIS '
+      'where DEVI__CLIE1 = :client1'
+      'or DEVI__CLIE2 = :client2'
+      'or DEVI__CLIE3 = :client3'
+      '')
+    Left = 340
+    Top = 253
+  end
+  object adoq_Rechfourcomp: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'four'
+        DataType = ftInteger
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select count(*) from COMPOSANT'
+      'where COMP__FOUR = :four')
+    Left = 340
+    Top = 301
+  end
+  object adoq_Rechfourarti: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'four'
+        DataType = ftInteger
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select count(*) from ARTICLE'
+      'where ARTI__FOUR = :four')
+    Left = 435
+    Top = 253
+  end
+  object ds_jalon: TDataSource
+    DataSet = adot_jalon
+    Left = 170
+    Top = 13
+  end
+  object adot_jalon: TADOTable
+    Connection = M_Donnees.ADOConnection
+    TableName = 'JALONNEMENT'
+    Left = 248
+    Top = 13
+  end
+  object ds_famille: TDataSource
+    DataSet = adot_famille
+    Left = 170
+    Top = 113
+  end
+  object adot_famille: TADOTable
+    Connection = M_Donnees.ADOConnection
+    Filtered = True
+    OnNewRecord = adot_familleNewRecord
+    TableName = 'FAMILLE'
+    Left = 248
+    Top = 113
+  end
+  object adoq_Finition: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = adoq_FinitionAfterOpen
+    AfterInsert = adoq_FinitionAfterInsert
+    Parameters = <
+      item
+        Name = 'user'
+        DataType = ftString
+        Size = 1
+        Value = '0'
+      end
+      item
+        Name = 'TyFi'
+        DataType = ftString
+        Size = 50
+        Value = ''
+      end>
+    SQL.Strings = (
+      'DECLARE @TyFi AS VARCHAR ( 50 )'
+      'DECLARE @user int'
+      'SET @user= :user'
+      'SET @TyFi = :TyFi'
+      ''
+      ''
+      '--FINITION DECLASSEES + FINITION NON DECLASSES'
+      'IF @user = 0  '
+      'BEGIN'
+      ''
+      'IF @TyFi <> '#39#39
+      'SELECT * FROM FINITION, GROUPE_FINITION '
+      'WHERE FINI_Lib <> '#39'Integrite'#39' and FINI_Lib <> '#39'Int'#233'grit'#233#39' '
+      'AND FINI_Clep = GRFI__FINI '
+      'AND GRFI__TYFI = @TyFi'
+      'ELSE'
+      'select * '
+      'from FINITION'
+      'where FINI_Lib <> '#39'Integrite'#39
+      'and FINI_Lib <> '#39'Int'#233'grit'#233#39
+      ''
+      ''
+      'END'
+      'ELSE'
+      'BEGIN'
+      '-- FINITION NON DECLASSES SEULEMENT'
+      ''
+      ''
+      'IF @TyFi <> '#39#39
+      'SELECT * FROM FINITION, GROUPE_FINITION '
+      'WHERE FINI_Lib <> '#39'Integrite'#39' and FINI_Lib <> '#39'Int'#233'grit'#233#39' '
+      'AND FINI_Clep = GRFI__FINI '
+      'AND GRFI__TYFI = @TyFi'
+      'AND FINI_Declasse<>1'
+      'ELSE'
+      'select * '
+      'from FINITION'
+      'where FINI_Lib <> '#39'Integrite'#39
+      'and FINI_Lib <> '#39'Int'#233'grit'#233#39
+      'AND FINI_Declasse<>1'
+      ''
+      ''
+      'END')
+    Left = 88
+    Top = 492
+  end
+  object ds_categ: TDataSource
+    DataSet = adot_categ
+    Left = 170
+    Top = 161
+  end
+  object adot_categ: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnNewRecord = adot_categNewRecord
+    TableName = 'CATEGORIE'
+    Left = 248
+    Top = 161
+  end
+  object adot_modalite: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'MODA_Designation <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    TableName = 'MODALITE'
+    Left = 435
+    Top = 61
+  end
+  object ds_modalite: TDataSource
+    DataSet = adot_modalite
+    Left = 340
+    Top = 61
+  end
+  object adoq_maj_groupe: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    Left = 435
+    Top = 301
+  end
+  object adoq_client: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = adoq_clientAfterOpen
+    BeforePost = adoq_clientBeforePost
+    AfterPost = adoq_clientAfterPost
+    AfterScroll = adoq_clientAfterScroll
+    OnNewRecord = adoq_clientNewRecord
+    Parameters = <
+      item
+        Name = 'Repr'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = 100
+        Value = ''
+      end>
+    SQL.Strings = (
+      'DECLARE @Repr AS VARCHAR ( 50 )'
+      'SET @Repr = :Repr'
+      'IF @Repr <> '#39#39
+      'AND @Repr IS NOT NULL'
+      'BEGIN'
+      'SELECT * FROM CLIENT WHERE'
+      
+        ' CLIE_Clep IN ( SELECT DEVI__CLIE1 FROM DEVIS WHERE DEVI__REPR =' +
+        ' @Repr )'
+      
+        ' OR CLIE_Clep IN ( SELECT DEVI__CLIE2 FROM DEVIS WHERE DEVI__REP' +
+        'R = @Repr )'
+      
+        ' OR CLIE_Clep IN ( SELECT DEVI__CLIE3 FROM DEVIS WHERE DEVI__REP' +
+        'R = @Repr )'
+      
+        ' OR CLIE_Clep IN ( SELECT Client_fac FROM COMMANDE WHERE COMM__R' +
+        'EPR = @Repr )'
+      
+        ' OR CLIE_Clep IN ( SELECT Client_liv FROM COMMANDE WHERE COMM__R' +
+        'EPR = @Repr )'
+      ' OR CLIE__REPR = @Repr'
+      'AND CLIE_Nom <> '#39'Int'#233'grit'#233#39
+      'and CLIE_Nom <> '#39'Integrite'#39
+      'END'
+      'ELSE'
+      'select * FROM CLIENT'
+      'where CLIE_Nom <> '#39'Int'#233'grit'#233#39
+      'and CLIE_Nom <> '#39'Integrite'#39)
+    Left = 248
+    Top = 208
+  end
+  object ds_Composant: TDataSource
+    DataSet = adoq_composant
+    Left = 340
+    Top = 208
+  end
+  object adoq_composant: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = adoq_composantAfterOpen
+    AfterScroll = adoq_composantAfterScroll
+    OnNewRecord = adoq_composantNewRecord
+    Parameters = <>
+    SQL.Strings = (
+      'select * from COMPOSANT'
+      'where COMP_Lib <> '#39'Integrite'#39
+      'and COMP_Lib <> '#39'Int'#233'grit'#233#39)
+    Left = 435
+    Top = 208
+  end
+  object ds_assist: TDataSource
+    DataSet = adot_assist
+    Left = 170
+    Top = 396
+  end
+  object adot_assist: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    TableName = 'ASSISTANTE'
+    Left = 248
+    Top = 396
+  end
+  object ds_maxnumcod: TDataSource
+    DataSet = adoq_maxnumcod
+    Left = 340
+    Top = 541
+  end
+  object adoq_maxnumcod: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'cle'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select max(COPO_Numcod)'
+      'from CODE_POSTAL'
+      'where COPO_Clep = :cle')
+    Left = 435
+    Top = 541
+  end
+  object ds_repr: TDataSource
+    DataSet = adoq_repr
+    Left = 170
+    Top = 348
+  end
+  object adoq_repr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    AfterScroll = adoq_reprAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT *'
+      'FROM REPRESENTANT')
+    Left = 248
+    Top = 348
+  end
+  object ds_tva: TDataSource
+    DataSet = adoq_tva
+    Left = 523
+    Top = 13
+  end
+  object adoq_tva: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    AfterOpen = adoq_tvaAfterOpen
+    Parameters = <>
+    SQL.Strings = (
+      'select * from TTVA'
+      '')
+    Left = 600
+    Top = 13
+  end
+  object ds_typedevis: TDataSource
+    DataSet = adoq_typedevis
+    Left = 523
+    Top = 61
+  end
+  object adoq_typedevis: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select * from TYPE_DEVIS'
+      '')
+    Left = 600
+    Top = 61
+  end
+  object ds_motifclot: TDataSource
+    DataSet = adoq_motifclot
+    Left = 523
+    Top = 113
+  end
+  object adoq_motifclot: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select * from MOTIF_CLOTURE')
+    Left = 600
+    Top = 113
+  end
+  object ds_fave: TDataSource
+    DataSet = adoq_fave
+    Left = 698
+    Top = 20
+  end
+  object adoq_fave: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_faveDeleteError
+    Parameters = <>
+    SQL.Strings = (
+      'select * '
+      'from FAMILLE_VENTE')
+    Left = 770
+    Top = 20
+  end
+  object ds_sofv: TDataSource
+    DataSet = adoq_sofv
+    Left = 698
+    Top = 68
+  end
+  object adoq_sofv: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_sofvDeleteError
+    Parameters = <>
+    SQL.Strings = (
+      'select * '
+      'from SOUS_FAMILLEV')
+    Left = 770
+    Top = 68
+  end
+  object ds_ssfv: TDataSource
+    DataSet = adoq_ssfv
+    Left = 698
+    Top = 116
+  end
+  object adoq_ssfv: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_ssfvDeleteError
+    Parameters = <>
+    SQL.Strings = (
+      'select * '
+      'from SOUS_SOUSFAMILLEV')
+    Left = 770
+    Top = 116
+  end
+  object ds_sofv_ssfv: TDataSource
+    DataSet = adoq_sofv_ssfv
+    Left = 170
+    Top = 492
+  end
+  object adoq_sofv_ssfv: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_sofv_ssfvDeleteError
+    DataSource = ds_sofv
+    Parameters = <
+      item
+        Name = 'ssfam'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select SSFV_Clep, SSFV_Libelle'
+      'from SOUS_SOUSFAMILLEV'
+      'where SSFV__SOFV = :ssfam')
+    Left = 248
+    Top = 492
+  end
+  object ds_ssfv_pvr: TDataSource
+    DataSet = adoq_ssfv_pvr
+    Left = 170
+    Top = 541
+  end
+  object adoq_ssfv_pvr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_sofv_ssfvDeleteError
+    DataSource = ds_sofv
+    Parameters = <
+      item
+        Name = 'ssfv'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select ARTI_Clep, ARTI_Libcom'
+      'from ARTICLE'
+      'where ARTI__SSFA = :ssfv')
+    Left = 248
+    Top = 541
+  end
+  object ds_fave_sofv: TDataSource
+    DataSet = adoq_fave_sofv
+    Left = 170
+    Top = 444
+  end
+  object adoq_fave_sofv: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnDeleteError = adoq_sofv_ssfvDeleteError
+    Parameters = <
+      item
+        Name = 'fam'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select SOFV_Clep, SOFV_Libelle'
+      'from SOUS_FAMILLEV'
+      'where SOFV__FAVE = :fam')
+    Left = 248
+    Top = 444
+  end
+  object ds_ClieAffecte: TDataSource
+    DataSet = adot_ClieAffecte
+    Left = 170
+    Top = 301
+  end
+  object ds_ClieInter: TDataSource
+    DataSet = adoq_ClieInter
+    Left = 340
+    Top = 13
+  end
+  object ADOQ_Civilite: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * '
+      'from CIVILITE')
+    Left = 608
+    Top = 165
+  end
+  object ds_Civilite: TDataSource
+    DataSet = ADOQ_Civilite
+    Left = 528
+    Top = 165
+  end
+  object ds_pays: TDataSource
+    DataSet = adoq_Pays
+    Left = 880
+    Top = 220
+  end
+  object ds_PaysClient: TDataSource
+    DataSet = adoq_PaysClient
+    Left = 864
+    Top = 268
+  end
+  object ADOQ_CliInRepr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'repr'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select  CLIE_Clep, CLIE_Nom,CLIE_Codepostal,CLIE_Ville,CLIE_Code' +
+        'insee FROM CLIENT'
+      'where CLIE__REPR = :repr'
+      'ORDER BY  CLIE_Nom')
+    Left = 608
+    Top = 213
+  end
+  object ds_CliInRepr: TDataSource
+    DataSet = ADOQ_CliInRepr
+    Left = 528
+    Top = 213
+  end
+  object ADOQ_CliOutRepr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'select  CLIE_Clep, CLIE_Nom,CLIE_Codepostal,CLIE_Ville,CLIE_Code' +
+        'insee FROM CLIENT'
+      'Where CLIE__REPR is null'
+      'ORDER BY  CLIE_Nom')
+    Left = 608
+    Top = 260
+  end
+  object ds_CliOutRepr: TDataSource
+    DataSet = ADOQ_CliOutRepr
+    Left = 528
+    Top = 260
+  end
+  object ds_clidiffin: TDataSource
+    DataSet = adoq_clidiffin
+    Left = 340
+    Top = 113
+  end
+  object adoq_clidiffin: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 10
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  REPR_Clep, REPR_Nom FROM REPRESENTANT, CLIENT_DIFFUSION'
+      'where REPR_Clep = CLDI__REPR'
+      'AND CLDI__CLIE = :groupe'
+      'ORDER BY  REPR_Nom')
+    Left = 435
+    Top = 113
+  end
+  object adoq_clidiffout: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        Size = 50
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  REPR_Clep, REPR_Nom FROM REPRESENTANT'
+      'where REPR_Clep not in (select CLDI__REPR from CLIENT_DIFFUSION'
+      'where CLDI__CLIE = :groupe)'
+      'ORDER BY REPR_Nom')
+    Left = 435
+    Top = 161
+  end
+  object ds_clidiffout: TDataSource
+    DataSet = adoq_clidiffout
+    Left = 340
+    Top = 161
+  end
+  object adot_ClieAffecte: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    BeforePost = adot_ClieAffecteBeforePost
+    AfterPost = Modifieadoq_Clie
+    AfterDelete = Modifieadoq_Clie
+    TableName = 'AFFECTATION'
+    Left = 248
+    Top = 301
+  end
+  object ds_CliDevis: TDataSource
+    DataSet = adoq_CliDevis
+    Left = 856
+    Top = 13
+  end
+  object ds_CliCmde: TDataSource
+    DataSet = adoq_CliCmde
+    Left = 856
+    Top = 61
+  end
+  object adoq_CliDevis: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = 10
+        Value = ''
+      end>
+    SQL.Strings = (
+      'SELECT DEVI_Clep1, DEVI_Clep2, DEVI__TYDE, '
+      
+        'DEVI_Dateenreg, DEVI_Datearrivee, DEVI_Aval, DEVI_Rectif, JALO_L' +
+        'ib '
+      'FROM DEVIS,JALONNEMENT '
+      'WHERE'
+      'DEVI__CLIE3= :client'
+      'AND DEVI__JALO = JALO_Clep')
+    Left = 930
+    Top = 13
+  end
+  object adoq_InteFonct: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'SELECT DISTINCT INTE_Fonction FROM INTERLOCUTEUR')
+    Left = 930
+    Top = 113
+  end
+  object adoq_AffeZone: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT DISTINCT AFFE_Libelle FROM AFFECTATION')
+    Left = 856
+    Top = 113
+  end
+  object adoq_CliCmde: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = 10
+        Value = ''
+      end>
+    SQL.Strings = (
+      'SELECT Num_cde, Dat_crea, Dat_modif,'
+      'Num_rectif, Num_devis, Dat_devis'
+      'FROM COMMANDE'
+      'WHERE'
+      'Client_fac= :client')
+    Left = 930
+    Top = 61
+  end
+  object ds_ville: TDataSource
+    DataSet = adoq_ville
+    Left = 8
+    Top = 541
+  end
+  object adoq_ville: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL')
+    Left = 88
+    Top = 541
+  end
+  object adoq_prod_travail: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CommandTimeout = 0
+    Parameters = <
+      item
+        Name = 'serveur_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'serveur'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'location'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 512
+        Value = Null
+      end
+      item
+        Name = 'representant'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 15
+        Value = Null
+      end
+      item
+        Name = 'prod'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'result'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'PRODUCTION_MMO_REPR'
+      ':serveur_ref, :bdd_ref, :serveur, :bdd ,'
+      ':location, :representant, :prod, :result')
+    Left = 104
+    Top = 21
+  end
+  object adoq_prod_acces: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CommandTimeout = 0
+    Parameters = <
+      item
+        Name = 'serveur_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'serveur'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'location'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 512
+        Value = Null
+      end
+      item
+        Name = 'representant'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 15
+        Value = Null
+      end
+      item
+        Name = 'bdd_acces'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd_travail'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end>
+    SQL.Strings = (
+      'PRODUCTION_MC_ACCES_REPR'
+      ':serveur_ref, :bdd_ref, :serveur, :bdd ,'
+      ':location, :representant, :bdd_acces, :bdd_travail')
+    Left = 99
+    Top = 77
+  end
+  object adoq_location: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT LOTS_Lieuproducts'
+      'FROM LOTS')
+    Left = 768
+    Top = 165
+  end
+  object adoq_prod_fichiers: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CommandTimeout = 0
+    Parameters = <
+      item
+        Name = 'repr'
+        DataType = ftString
+        Size = 15
+        Value = Null
+      end>
+    SQL.Strings = (
+      'ps_export_representant :repr')
+    Left = 696
+    Top = 165
+  end
+  object ds_prod_travail: TDataSource
+    DataSet = adoq_prod_travail
+    Left = 24
+    Top = 21
+  end
+  object ds_prod_acces: TDataSource
+    DataSet = adoq_prod_acces
+    Left = 18
+    Top = 77
+  end
+  object ds_RepSecteur: TDataSource
+    DataSet = adoq_RepSecteur
+    Left = 8
+    Top = 597
+  end
+  object adoq_RepSecteur: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    BeforePost = adoq_RepSecteurBeforePost
+    AfterPost = adoq_RepSecteurAfterPost
+    AfterCancel = adoq_RepSecteurAfterCancel
+    AfterDelete = adoq_RepSecteurAfterDelete
+    AfterScroll = adoq_RepSecteurAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'select SECT__REPR,'
+      
+        #9'--case LEN(SECT_Codeinsee) WHEN 2 then SECT_Codeinsee else NULL' +
+        ' end as dep,'
+      
+        #9'--case LEN(SECT_Codeinsee) WHEN 5 then SECT_Codeinsee else NULL' +
+        ' end as ville,'
+      '                SECT_Codeinsee'
+      'from SECTEUR')
+    Left = 88
+    Top = 597
+  end
+  object adoq_dep: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select distinct(LEFT(COPO_Codinsee,2)) as '#39'dep'#39
+      'from CODE_POSTAL'
+      'where COPO_Codinsee<>'#39#39
+      'order by dep')
+    Left = 248
+    Top = 600
+  end
+  object ds_dep: TDataSource
+    DataSet = adoq_dep
+    Left = 171
+    Top = 595
+  end
+  object ds_villeInDep: TDataSource
+    DataSet = adoq_villeInDep
+    Left = 344
+    Top = 597
+  end
+  object adoq_villeInDep: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'dep'
+        DataType = ftString
+        Size = 2
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select COPO_Codinsee as '#39'ville'#39', '#39'('#39' + COPO_Codinsee + '#39') '#39' + CO' +
+        'PO_Ville as Villes'
+      'from CODE_POSTAL '
+      'where COPO_Codinsee like :dep + '#39'%'#39
+      'and COPO_Codinsee<>'#39#39
+      
+        'and COPO_Codinsee  not in (select  SECT_Codeinsee  from SECTEUR ' +
+        'where LEN(COPO_Codinsee)=5)'
+      'order by COPO_Codinsee')
+    Left = 440
+    Top = 597
+  end
+  object ds_villeSearched: TDataSource
+    DataSet = adoq_villeSearched
+    Left = 8
+    Top = 701
+  end
+  object adoq_villeSearched: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'ville'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select '#39'('#39' + COPO_Codinsee + '#39') '#39' + COPO_Ville as Ville'
+      'from CODE_POSTAL '
+      'where COPO_Codinsee= :ville'
+      'order by COPO_Codinsee')
+    Left = 88
+    Top = 693
+  end
+  object adoq_depSearched: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'dep'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from SECTEUR'
+      'where SECT_Codeinsee= :dep'
+      '')
+    Left = 612
+    Top = 311
+  end
+  object ds_secteur: TDataSource
+    DataSet = adoq_secteur
+    Left = 688
+    Top = 221
+  end
+  object adoq_secteur: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'rep'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select LEFT(SECT_Codeinsee,2) as dep,'
+      
+        '          case LEN(SECT_Codeinsee) WHEN 5 then SECT_Codeinsee el' +
+        'se NULL end as SECT_Codeinsee,'
+      
+        '          case LEN(SECT_Codeinsee) WHEN 5 then (select COPO_Vill' +
+        'e from CODE_POSTAL where COPO_Codinsee = SECT_Codeinsee) else NU' +
+        'LL end as ville'
+      'from SECTEUR'
+      'where SECT__REPR = :rep'
+      '')
+    Left = 768
+    Top = 221
+  end
+  object ds_villeAlone: TDataSource
+    DataSet = adoq_villeAlone
+    Left = 175
+    Top = 701
+  end
+  object adoq_villeAlone: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select LEFT(COPO_Codinsee,2) as dep,COPO_Codinsee, COPO_Ville'
+      'from CODE_POSTAL'
+      'where (LEFT(COPO_Codinsee,2) '
+      '           not in (select SECT_Codeinsee '
+      '                      from SECTEUR'
+      '                      where LEN(SECT_Codeinsee) =2))'
+      'and (COPO_Codinsee '
+      '       not in (select SECT_Codeinsee '
+      '                      from SECTEUR'
+      '                      where LEN(SECT_Codeinsee) =5))'
+      'and COPO_Codinsee<>'#39' '#39
+      'order by dep,COPO_Codinsee')
+    Left = 248
+    Top = 701
+  end
+  object ds_filtreville: TDataSource
+    DataSet = adoq_filtreville
+    Left = 8
+    Top = 645
+  end
+  object adoq_filtreville: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'laville'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL'
+      'WHERE COPO_Ville = :laville')
+    Left = 88
+    Top = 645
+  end
+  object ds_filtrecp: TDataSource
+    DataSet = adoq_filtrecp
+    Left = 168
+    Top = 653
+  end
+  object adoq_filtrecp: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'lecp'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL'
+      'WHERE COPO_Clep = :lecp')
+    Left = 248
+    Top = 653
+  end
+  object adoq_deleteVille: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'rep'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'dep'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'delete from SECTEUR'
+      'where SECT__REPR = :rep'
+      'and SECT_Codeinsee like :dep + '#39'%'#39
+      'and LEN(SECT_Codeinsee)=5')
+    Left = 440
+    Top = 653
+  end
+  object adoq_deleteDep: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'ville'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'rep'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'delete from SECTEUR'
+      'where SECT__REPR = :rep'
+      'and SECT_Codeinsee = LEFT(:ville,2)'
+      '')
+    Left = 344
+    Top = 653
+  end
+  object ds_typModalite: TDataSource
+    DataSet = adoq_typModalite
+    Left = 528
+    Top = 421
+  end
+  object adoq_typModalite: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select * from TYPE_MODALITE')
+    Left = 616
+    Top = 421
+  end
+  object ds_modalit: TDataSource
+    DataSet = adoq_modalit
+    Left = 528
+    Top = 477
+  end
+  object adoq_modalit: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    AfterPost = adoq_modalitAfterPost
+    Parameters = <>
+    SQL.Strings = (
+      'select * from MODALITE'
+      'where MODA_Clep<>'#39#39)
+    Left = 944
+    Top = 173
+  end
+  object adoq_updModaliteDft: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'typ'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'cle'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'update MODALITE'
+      'set MODA_Defaut = 0'
+      'where MODA__TYMO = :typ'
+      'and MODA_Clep <> :cle')
+    Left = 856
+    Top = 171
+  end
+  object adoq_devis_repr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'repr'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'Update DEVIS'
+      'Set DEVI__REPR = :repr'
+      'Where DEVI__CLIE1 = :client')
+    Left = 432
+    Top = 352
+  end
+  object adoq_commande_repr: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'repr'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'Update COMMANDE'
+      'Set COMM__REPR = :repr'
+      'Where Client_liv = :client')
+    Left = 424
+    Top = 410
+  end
+  object ds_cheminbase: TDataSource
+    DataSet = adoq_cheminbase
+    Left = 8
+    Top = 565
+  end
+  object adoq_cheminbase: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <>
+    SQL.Strings = (
+      'Select filename from sysfiles'
+      'where fileid = 1'
+      '')
+    Left = 88
+    Top = 565
+  end
+  object adoq_client_diffgen: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'client'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'Update CLIENT'
+      'Set CLIE_Diffgen = 1'
+      'Where CLIE_Clep = :client')
+    Left = 624
+    Top = 365
+  end
+  object adoq_attache_base: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'baseaccess'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'baserepr'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'baseficaccess'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'baseficrepr'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select * from fn_attache_base(:baseaccess,:baserepr, :baseficacc' +
+        'ess, :baseficrepr)')
+    Left = 928
+    Top = 397
+  end
+  object adoq_attache_cmd: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'serveur'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from fn_attache_cmd(:serveur)')
+    Left = 872
+    Top = 397
+  end
+  object adoq_ini_access: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'serveur'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'baseaccess'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from fn_fichier_ini_access(:serveur, :baseaccess)')
+    Left = 944
+    Top = 333
+  end
+  object ds_FinitionDeclasse: TDataSource
+    DataSet = adoq_FinitionDeclasse
+    Left = 16
+    Top = 376
+  end
+  object adoq_FinitionDeclasse: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select FINI_Clep, FINI_Lib, FINI_Declasse from FINITION'
+      'where FINI_Declasse = 1'
+      'ORDER BY FINI_Lib')
+    Left = 88
+    Top = 379
+  end
+  object adoq_FinitionNonDeclasse: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <>
+    SQL.Strings = (
+      'select FINI_Clep,FINI_Lib, FINI_Declasse from FINITION'
+      'where FINI_Declasse = 0'
+      'ORDER BY FINI_Lib')
+    Left = 96
+    Top = 432
+  end
+  object ds_FinitionNonDeclasse: TDataSource
+    DataSet = adoq_FinitionNonDeclasse
+    Left = 8
+    Top = 430
+  end
+  object adoq_dts: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <>
+    SQL.Strings = (
+      'select * from fn_integration_dts()')
+    Left = 856
+    Top = 461
+  end
+  object adoq_detache_cmd: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'serveur'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from fn_detache_cmd(:serveur)')
+    Left = 800
+    Top = 469
+  end
+  object adoq_detache_base: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'baseaccess'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'baserepr'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from fn_detache_base(:baseaccess,:baserepr)')
+    Left = 912
+    Top = 461
+  end
+  object adoq_Pays: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorLocation = clUseServer
+    Parameters = <
+      item
+        Name = 'orderby'
+        Attributes = [paLong]
+        DataType = ftVariant
+        Size = 150
+        Value = 'PAYS_Clep ASC'
+      end>
+    SQL.Strings = (
+      'SELECT * FROM PAYS'
+      'ORDER BY PAYS_Clep')
+    Left = 944
+    Top = 224
+  end
+  object adoq_ClieInter: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterInsert = adoq_ClieInterAfterInsert
+    BeforePost = adoq_ClieInterBeforePost
+    AfterPost = adoq_ClieInterAfterPost
+    Parameters = <
+      item
+        Name = 'client'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = 100
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select * from INTERLOCUTEUR'
+      'where INTE__CLIE = :client')
+    Left = 436
+    Top = 13
+  end
+  object adoq_PaysClient: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorLocation = clUseServer
+    Parameters = <
+      item
+        Name = 'pays'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = 100
+        Value = ''
+      end>
+    SQL.Strings = (
+      'SELECT * FROM CLIENT'
+      'WHERE CLIE__PAYS = :pays')
+    Left = 936
+    Top = 272
+  end
+  object adot_TypeFini: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    TableName = 'TYPE_FINITION'
+    Left = 88
+    Top = 324
+  end
+  object ds_TypeFini: TDataSource
+    DataSet = adot_TypeFini
+    Left = 8
+    Top = 324
+  end
+end

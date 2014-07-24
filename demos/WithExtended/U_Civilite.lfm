@@ -1,0 +1,342 @@
+inherited F_Civilite: TF_Civilite
+  Left = 43
+  Height = 500
+  Top = 185
+  Width = 871
+  Caption = 'Civilité'
+  ClientHeight = 500
+  ClientWidth = 871
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 500
+    Top = 0
+    Width = 871
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 500
+    ClientWidth = 871
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 279
+      Height = 473
+      Top = 24
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 284
+      Height = 473
+      Top = 24
+      Width = 584
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 473
+      ClientWidth = 584
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      OnClick = pa_3Click
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 584
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 584
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 584
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          Orientation = noHorizontal
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 74
+        Top = 30
+        Width = 584
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 74
+        ClientWidth = 584
+        TabOrder = 0
+        object lb_libelle: TFWLabel
+          Tag = 1002
+          Left = 29
+          Height = 16
+          Top = 42
+          Width = 54
+          AutoSize = False
+          Caption = 'lb_libelle'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 34
+          Height = 16
+          Top = 14
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_libelle: TFWDBEdit
+          Tag = 2
+          Left = 102
+          Height = 27
+          Top = 35
+          Width = 460
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 10
+          Width = 73
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 5
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 0
+      Height = 473
+      Top = 24
+      Width = 280
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 473
+      ClientWidth = 280
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 280
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 280
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 280
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_famillevente: TExtDBGrid
+        Left = 0
+        Height = 441
+        Top = 30
+        Width = 280
+        TitleButtons = True
+        AutoSort = False
+        Columns = <>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 869
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 25
+      ClientWidth = 869
+      TabOrder = 2
+      object bt_fermer: TFWClose
+        Left = 787
+        Height = 25
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 0
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+  object im_images: TImageList[2]
+    BkColor = clForeground
+    left = 96
+    top = 178
+    Bitmap = {
+      4C69020000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FF000000FFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FF000000FF000000FF000000FFFF00
+      00FF000000FF000000FF000000000000000000000000FF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      FFFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF000000000000FFFF000000000000FFFF000000000000
+      FFFF000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00FFBDFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF000000000000000000000000000000FF000000FFFF0000FF0000
+      00FF000000FF000000FF000000FF000000000000000000000000848400FF0000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000848400FF0000
+      0000848400FF00000000848400FF00000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000
+    }
+  end
+end

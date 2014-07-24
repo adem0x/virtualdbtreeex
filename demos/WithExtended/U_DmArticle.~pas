@@ -1,0 +1,433 @@
+unit U_DmArticle;
+
+interface
+
+uses
+	SysUtils,StrUtils, Classes, DB, ADODB, Forms,Dialogs,controls,U_Donnees, mc_fonction_string, U_Mcformdico, U_ConstMessage ;
+type
+	TM_Article = class(TDataModule)
+    ds_article: TDataSource;
+    adoq_artcoul: TADOQuery;
+    ds_ARCO: TDataSource;
+    ds_GamTProIn: TDataSource;
+    adoq_GamTProIn: TADOQuery;
+    ds_GamTProOut: TDataSource;
+    adoq_GamTProOut: TADOQuery;
+    adoq_Gamme: TADOQuery;
+    ds_Gamme: TDataSource;
+    ds_TyPGamIn: TDataSource;
+		ADOQ_TyPGamIn: TADOQuery;
+    adoq_TypProduit: TADOQuery;
+    ds_TypProduit: TDataSource;
+    ds_TyPGamOut: TDataSource;
+    ADOQ_TyPGamOut: TADOQuery;
+    ds_TyPCaraIn: TDataSource;
+    ADOQ_TyPCaraIn: TADOQuery;
+    ds_TyPCaraOut: TDataSource;
+    ADOQ_TyPCaraOut: TADOQuery;
+    ds_CaraTPIn: TDataSource;
+    ADOQ_CaraTPIn: TADOQuery;
+    ADOQ_Carac: TADOQuery;
+    ds_Carac: TDataSource;
+    ds_CaraTPOut: TDataSource;
+    ADOQ_CaraTPOut: TADOQuery;
+    ds_SelCarac: TDataSource;
+		ADOQ_SelCarac: TADOQuery;
+    ADOQ_SelTypPro: TADOQuery;
+    ds_SelTypPro: TDataSource;
+    ADOQ_SelGamme: TADOQuery;
+    ds_SelGamme: TDataSource;
+    ds_Sel1Carac: TDataSource;
+    ADOQ_Sel1Carac: TADOQuery;
+    ADOQ_Sel1TypPro: TADOQuery;
+    ds_Sel1TypPro: TDataSource;
+    ds_SelCarac2: TDataSource;
+    ADOQ_SelCarac2: TADOQuery;
+    ADOQ_SelTypPro2: TADOQuery;
+    ds_SelTypPro2: TDataSource;
+    adoq_GammeE: TADOQuery;
+    ds_GammeE: TDataSource;
+    ds_Sel1Carac2: TDataSource;
+    ADOQ_Sel1Carac2: TADOQuery;
+    ADOQ_Sel1TypPro2: TADOQuery;
+    ds_Sel1TypPro2: TDataSource;
+    ds_ArFini: TDataSource;
+		adot_CocoCoul: TADOTable;
+    ds_CocoCoul: TDataSource;
+    adoq_TyfiInFini: TADOQuery;
+    ds_TyfiInFini: TDataSource;
+    adoq_TyfiOutFini: TADOQuery;
+    ds_TyfiOutFini: TDataSource;
+    adoq_FiniInTyFi: TADOQuery;
+    ds_FiniInTyFi: TDataSource;
+    adoq_FiniOutTyFi: TADOQuery;
+    ds_FiniOutTyFi: TDataSource;
+    ds_FiltreProduit: TDataSource;
+    adot_FiltreProduit: TADOTable;
+    adoq_Article1: TADOQuery;
+    adoq_prod_acces: TADOQuery;
+    ds_prod_acces: TDataSource;
+    ds_prodNonDeclasse: TDataSource;
+    adoq_prodDeclasse: TADOQuery;
+    adoq_prodNonDeclasse: TADOQuery;
+    ds_ArbreArt: TDataSource;
+    adoq_ArbreArt: TADOQuery;
+    adoq_code_copieart: TADOQuery;
+    adoq_copieart: TADOQuery;
+    adoq_ArFini: TADOQuery;
+    adoq_Article2: TADOQuery;
+    adoq_Article3: TADOQuery;
+    adoq_Article4: TADOQuery;
+    adoq_Article5: TADOQuery;
+    adoq_Article6: TADOQuery;
+    ds_ProdDeclasse: TDataSource;
+    procedure adot_articleAfterScroll(DataSet: TDataSet);
+    procedure adot_articleNewRecord(DataSet: TDataSet);
+    procedure ADOQ_SelGammeAfterScroll(DataSet: TDataSet);
+    procedure ADOQ_SelTypProAfterScroll(DataSet: TDataSet);
+    procedure ADOQ_SelTypProAfterOpen(DataSet: TDataSet);
+    procedure ADOQ_SelGammeAfterOpen(DataSet: TDataSet);
+    procedure adot_articleAfterOpen(DataSet: TDataSet);
+    procedure adot_AffectePostError(DataSet: TDataSet; E: EDatabaseError;
+      var Action: TDataAction);
+		procedure adoq_artcoulBeforePost(DataSet: TDataSet);
+    procedure adot_cpBeforePost(DataSet: TDataSet);
+    procedure adoq_ClieInterBeforePost(DataSet: TDataSet);
+    procedure adot_ClieAffecteBeforePost(DataSet: TDataSet);
+    procedure adoq_FinitionAfterOpen(DataSet: TDataSet);
+    procedure adot_articleAfterEdit(DataSet: TDataSet);
+    procedure adoq_GammeEAfterOpen(DataSet: TDataSet);
+    procedure adoq_GammeEAfterScroll(DataSet: TDataSet);
+    procedure ADOQ_SelTypPro2AfterOpen(DataSet: TDataSet);
+		procedure ADOQ_SelTypPro2AfterScroll(DataSet: TDataSet);
+    procedure ADOQ_Sel1TypPro2AfterOpen(DataSet: TDataSet);
+    procedure ADOQ_Sel1TypPro2AfterScroll(DataSet: TDataSet);
+    procedure adoq_artcoulNewRecord(DataSet: TDataSet);
+    procedure adoq_Article1NewRecord(DataSet: TDataSet);
+		procedure adoq_Article1AfterInsert(DataSet: TDataSet);
+		procedure adoq_prodDeclasseFilterRecord(DataSet: TDataSet;
+			var Accept: Boolean);
+    procedure adoq_Article1AfterPost(DataSet: TDataSet);
+    procedure adoq_ArbreArtAfterOpen(DataSet: TDataSet);
+    procedure adoq_Article1BeforeEdit(DataSet: TDataSet);
+    procedure adoq_artcoulAfterCancel(DataSet: TDataSet);
+    procedure adoq_ArFiniNewRecord(DataSet: TDataSet);
+
+	private
+		{ Déclarations privées }
+	public
+    gi_AccesProduits : Integer ;
+		{ Déclarations publiques }
+    procedure p_AccesArticles ( const avar_Tyde : Variant );
+		procedure p_TousLesProduits;
+	end;
+
+var
+	M_Article: TM_Article;
+
+implementation
+
+uses U_Client, U_FenetrePrincipale, U_Composant,
+		 U_SeleArticle, U_ComposeArticle, Variants , mc_fonctions_db,
+	U_CodePostal, U_RepSecteur , U_Representant ,U_Modalite, U_Prodrepr,
+  U_DmCompose, U_DmDonn;
+
+{$R *.dfm}
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Procédure   : p_TousLesProduits
+// Description : Enlève le filtre de la requête des articles
+/////////////////////////////////////////////////////////////////////////////////////
+procedure TM_Article.p_AccesArticles ( const avar_Tyde : Variant );
+begin
+  ds_article.DataSet := Nil ;
+	if ( gi_niveau_priv <= U_CST_REPRESENTANT ) Then
+		begin
+
+			 gi_AccesProduits := 2;
+       if avar_Tyde = Null Then
+         ds_article.DataSet := adoq_Article5
+       Else
+         ds_article.DataSet := adoq_Article6
+		end
+	else if ( gi_niveau_priv <= U_CST_ASSISTANT ) Then
+		begin
+
+			 gi_AccesProduits := 1;
+       if avar_Tyde = Null Then
+         ds_article.DataSet := adoq_Article3
+       Else
+         ds_article.DataSet := adoq_Article4
+		end
+		Else
+		begin
+
+			 gi_AccesProduits := 0;
+       if avar_Tyde = Null Then
+         ds_article.DataSet := adoq_Article1
+       Else
+         ds_article.DataSet := adoq_Article2
+		end ;
+	if ( avar_Tyde <> Null )
+  and (( M_Article.ds_Article.DataSet as TADOquery ).Parameters.FindParam ( 'Tyde' ).Value <> avar_Tyde ) Then
+		Begin
+			//li_user =0 => TOUS LES ARTICLES; li_user =1 => LES ARTICLES NON DECLASSES
+			ds_Article.Dataset.Close ;
+			( ds_Article.Dataset as TADOQuery ).Parameters.FindParam ( 'Tyde' ).Value := avar_Tyde ;
+		End ;
+End ;
+
+procedure TM_Article.p_TousLesProduits;
+begin
+  p_AccesArticles ( Null );
+end;
+
+procedure TM_Article.adot_articleAfterScroll(DataSet: TDataSet);
+begin
+ { with  adoq_artfinition do
+  begin
+      Active := false;
+      Parameters.ParamByName('art').Value := ds_article.DataSet.FieldByName('ARTI_Clep').asString;
+      Open;
+	end; }
+{	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		F_SeleArticle.lb_datecreation.Caption := FormatDateTime('d/mm/yyyy',M_Article.adot_Article.FieldByName('ARTI_Datecrea').AsDateTime);}
+
+	TDateField(M_Article.ds_article.DataSet.FieldByName('ARTI_Datecrea')).DisplayFormat := U_CST_format_date_2;		
+end;
+
+
+procedure TM_Article.adot_articleNewRecord(DataSet: TDataSet);
+begin
+	DataSet.FieldByName('ARTI_Datecrea').AsDateTime := now;
+	DataSet.FieldByName('ARTI_Compose').AsBoolean  := False;
+end;
+
+procedure TM_Article.ADOQ_SelGammeAfterScroll(DataSet: TDataSet);
+begin
+	ADOQ_Sel1TypPro.Close ;
+	ADOQ_Sel1TypPro.Parameters.FindParam ( 'groupe' ).Value := DATaset.FieldByName ( 'GAMM_Clep' ).Value;
+	ADOQ_Sel1TypPro.Open ;
+end;
+
+procedure TM_Article.ADOQ_SelTypProAfterScroll(DataSet: TDataSet);
+begin
+	ADOQ_Sel1Carac.Close ;
+	ADOQ_Sel1Carac.Parameters.FindParam ( 'groupe' ).Value := DATaset.FieldByName ( 'TYPR_Clep' ).Value;
+	ADOQ_Sel1Carac.Open ;
+
+end;
+
+procedure TM_Article.ADOQ_SelTypProAfterOpen(DataSet: TDataSet);
+begin
+	ADOQ_SelTypProAfterScroll ( Dataset );
+end;
+
+procedure TM_Article.ADOQ_SelGammeAfterOpen(DataSet: TDataSet);
+begin
+	ADOQ_SelGammeAfterScroll ( Dataset );
+end;
+
+
+procedure TM_Article.adot_articleAfterOpen(DataSet: TDataSet);
+begin
+	TDateTimeField (DataSet.FieldByName( 'ARTI_Datecrea' )).DisplayFormat := U_CST_format_date_2 ;
+	TNumericField  (DataSet.FieldByName( 'ARTI_Pxactu'   )).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField  (DataSet.FieldByName( 'ARTI_Pxfutur'  )).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField  (DataSet.FieldByName( 'ARTI_Cubage'   )).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField  (DataSet.FieldByName( 'ARTI_Coefcub'  )).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField  (DataSet.FieldByName( 'ARTI_Poids'    )).DisplayFormat := U_CST_format_money_1 ;
+end;
+
+procedure TM_Article.adot_AffectePostError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+begin
+	MessageDlg ( 'La zone ''Nom de la zone'' ne peut pas être vide.' + #13 + #13
+													 + 'Effectuer une saisie ou annuler.', mtWarning, [mbOk], 0)
+end;
+
+procedure TM_Article.adoq_artcoulBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		F_SeleArticle.p_BeforePost2 ;
+end;
+
+procedure TM_Article.adot_cpBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_CodePostal )
+	and F_CodePostal.Visible Then
+		F_CodePostal.p_ValideDonnees ;
+end;
+
+procedure TM_Article.adoq_ClieInterBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Client )
+	and F_Client.Visible Then
+		F_Client.p_BeforePostInter ;
+end;
+
+procedure TM_Article.adot_ClieAffecteBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Client )
+	and F_Client.Visible Then
+		F_Client.p_BeforePostAffecte ;
+
+end;
+
+procedure TM_Article.adoq_FinitionAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField ( Dataset.FieldByName ( 'FINI_Txcharge' )).DisplayFormat := U_CST_format_money_1 ;
+end;
+
+procedure TM_Article.adot_articleAfterEdit(DataSet: TDataSet);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		F_SeleArticle.p_ApresEdit ;
+
+end;
+
+procedure TM_Article.adoq_GammeEAfterOpen(DataSet: TDataSet);
+begin
+	ADOQ_GammeEAfterScroll ( Dataset );
+
+end;
+
+procedure TM_Article.adoq_GammeEAfterScroll(DataSet: TDataSet);
+begin
+	ADOQ_Sel1TypPro2.Close ;
+	ADOQ_Sel1TypPro2.Parameters.FindParam ( 'groupe' ).Value := DATaset.FieldByName ( 'GAMM_Clep' ).Value;
+	ADOQ_Sel1TypPro2.Open ;
+
+end;
+
+procedure TM_Article.ADOQ_SelTypPro2AfterOpen(DataSet: TDataSet);
+begin
+	ADOQ_SelTypPro2AfterScroll ( Dataset );
+
+end;
+
+procedure TM_Article.ADOQ_SelTypPro2AfterScroll(DataSet: TDataSet);
+begin
+	ADOQ_Sel1Carac2.Close ;
+	ADOQ_Sel1Carac2.Parameters.FindParam ( 'groupe' ).Value := DATaset.FieldByName ( 'TYPR_Clep' ).Value;
+	ADOQ_Sel1Carac2.Open ;
+
+end;
+
+procedure TM_Article.ADOQ_Sel1TypPro2AfterOpen(DataSet: TDataSet);
+begin
+	ADOQ_SelTypPro2AfterScroll ( Dataset );
+
+end;
+
+procedure TM_Article.ADOQ_Sel1TypPro2AfterScroll(DataSet: TDataSet);
+begin
+	ADOQ_Sel1Carac2.Close ;
+	ADOQ_Sel1Carac2.Parameters.FindParam ( 'groupe' ).Value := DATaset.FieldByName ( 'TYPR_Clep' ).Value;
+	ADOQ_Sel1Carac2.Open ;
+
+end;
+
+procedure TM_Article.adoq_artcoulNewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_ARFI_Choixfinit ).Value := 4 ;
+
+end;
+
+//*****************************
+// Procédure: adot_paysAfterPost
+// Mise à jour affichage des clients associés au pays
+//**************************
+procedure TM_Article.adoq_Article1NewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_ARTI_Date ).Value := FormatDateTime(U_CST_format_date_2,Now) ;
+end;
+
+
+
+procedure TM_Article.adoq_Article1AfterInsert(DataSet: TDataSet);
+begin
+	DataSet.FieldByName ( 'ARTI_Declasse' ).Value := 0;
+	DataSet.FieldByName ( 'ARTI_Compose'  ).Value := 0;
+
+	if gi_niveau_priv = U_CST_ASSISTANT then
+		Dataset.FieldByName ('ARTI_Indicspe').Value := 1
+	else
+		DataSet.FieldByName ( 'ARTI_Indicspe' ).Value := 0;
+end;
+
+procedure TM_Article.adoq_prodDeclasseFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		with F_SeleArticle do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_ArticleOut.DataSourceKeyUnits ).AsString, ed_FiltreArticles.Text, True );
+
+end;
+
+procedure TM_Article.adoq_Article1AfterPost(DataSet: TDataSet);
+begin
+  if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		with F_SeleArticle do
+      Begin
+        if ( MainDataset <> adoq_Article1 ) Then
+          adoq_Article1.Close ;
+        if ( MainDataset <> adoq_Article2 ) Then
+          adoq_Article2.Close ;
+        if ( MainDataset <> adoq_Article3 ) Then
+          adoq_Article3.Close ;
+        if ( MainDataset <> adoq_Article4 ) Then
+          adoq_Article4.Close ;
+        if ( MainDataset <> adoq_Article5 ) Then
+          adoq_Article5.Close ;
+        if ( MainDataset <> adoq_Article6 ) Then
+          adoq_Article6.Close ;
+        p_refreshDeclassement;
+      End ;
+end;
+
+procedure TM_Article.adoq_ArbreArtAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField(adoq_ArbreArt.FieldByName('ARDE_Prix')).DisplayFormat := U_CST_format_money_1 ;
+end;
+
+///////////////////////////////////////////////////////////////////////
+// Procedure : adoq_ArticleBeforeEdit
+// Description : controle du profil, car une assitante ne peut modifier
+//		que les articles speciaux (donc pas de creation ni suppr ni modif
+//		de l'article ou de ses finitions)
+///////////////////////////////////////////////////////////////////////
+// ATTENTION CETTE PROCEDURE EST EGALEMENT UTILISE dans
+//	adoq_artcoulbeforeEdit, adoq_artcoulbeforeInsert,adoq_artcoulbeforedelete
+///////////////////////////////////////////////////////////////////////
+procedure TM_Article.adoq_Article1BeforeEdit(DataSet: TDataSet);
+begin
+	if gi_niveau_priv = U_CST_ASSISTANT then
+	begin
+		if not ds_article.DataSet.FieldByName ('ARTI_Indicspe').Asboolean then
+		begin
+			MessageDlg(U_CST_9032,mtWarning,[mbOk],0);
+			Abort;
+		end;
+	end;
+end;
+
+procedure TM_Article.adoq_artcoulAfterCancel(DataSet: TDataSet);
+begin
+ 	M_DmCompose.p_FiltreCouleur ( adoq_ArFini, DataSet.FieldByName ( CST_ARFI__FINI ));
+
+end;
+
+
+procedure TM_Article.adoq_ArFiniNewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_ARFI_Choixfinit ).Value := 4 ;
+
+end;
+
+end.

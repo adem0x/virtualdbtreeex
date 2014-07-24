@@ -1,0 +1,1686 @@
+inherited F_Repr: TF_Repr
+  Left = 73
+  Height = 537
+  Top = 126
+  Width = 832
+  ActiveControl = bt_fermer
+  Caption = 'Représentant'
+  ClientHeight = 537
+  ClientWidth = 832
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnActivate = F_FormDicoActivate
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 512
+    Top = 25
+    Width = 832
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 512
+    ClientWidth = 832
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 241
+      Height = 510
+      Top = 1
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 246
+      Height = 510
+      Top = 1
+      Width = 585
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 510
+      ClientWidth = 585
+      Constraints.MinWidth = 20
+      TabOrder = 0
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 585
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 585
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 585
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 116
+        Top = 32
+        Width = 585
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 116
+        ClientWidth = 585
+        Constraints.MinHeight = 10
+        TabOrder = 0
+        object lb_nom: TFWLabel
+          Tag = 1005
+          Left = 39
+          Height = 16
+          Top = 59
+          Width = 44
+          AutoSize = False
+          Caption = 'lb_nom'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 34
+          Height = 16
+          Top = 34
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_prenom: TFWLabel
+          Tag = 1006
+          Left = 19
+          Height = 16
+          Top = 84
+          Width = 64
+          AutoSize = False
+          Caption = 'lb_prenom'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_civilite: TFWLabel
+          Tag = 1004
+          Left = 28
+          Height = 16
+          Top = 10
+          Width = 55
+          AutoSize = False
+          Caption = 'lb_civilite'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_nom: TFWDBEdit
+          Tag = 5
+          Left = 102
+          Height = 27
+          Top = 55
+          Width = 370
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 3
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 30
+          Width = 142
+          CharCase = ecUppercase
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 2
+        end
+        object ed_prenom: TFWDBEdit
+          Tag = 6
+          Left = 102
+          Height = 27
+          Top = 80
+          Width = 370
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 4
+        end
+        object cbx_civilite: TFWDBLookupCombo
+          Tag = 4
+          Left = 102
+          Height = 29
+          Top = 6
+          Width = 143
+          AutoSize = True
+          ButtonOnlyWhenFocused = False
+          ButtonWidth = 15
+          PopUpFormOptions.Columns = <>
+          Flat = False
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Glyph.Data = {
+            72000000424D7200000000000000360000002800000005000000030000000100
+            2000000000003C00000064000000640000000000000000000000000000000000
+            0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+            0000000000FF000000FF000000FF000000FF000000FF
+          }
+          NumGlyphs = 1
+          ParentColor = False
+          ParentFont = False
+          ReadOnly = False
+          TabOrder = 0
+          TabStop = True
+        end
+        object bt_civilite: TJvXPButton
+          Left = 247
+          Height = 22
+          Hint = 'Choisir une civilité'
+          Top = 6
+          Width = 22
+          Caption = '...'
+          TabOrder = 1
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = bt_civiliteClick
+        end
+      end
+      object pc_Infos: TPageControl
+        Left = 0
+        Height = 362
+        Top = 148
+        Width = 585
+        ActivePage = ts_generale
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        OnChange = pc_InfosChange
+        OnChanging = pc_InfosChanging
+        object ts_generale: TTabSheet
+          Caption = 'Infos générales'
+          ClientHeight = 338
+          ClientWidth = 583
+          object lb_assist: TFWLabel
+            Tag = 1002
+            Left = 31
+            Height = 16
+            Top = 12
+            Width = 53
+            AutoSize = False
+            Caption = 'lb_assist'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_adresse: TFWLabel
+            Tag = 1007
+            Left = 16
+            Height = 16
+            Top = 37
+            Width = 68
+            AutoSize = False
+            Caption = 'lb_adresse'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_codepost: TFWLabel
+            Tag = 1010
+            Left = 9
+            Height = 16
+            Top = 113
+            Width = 75
+            AutoSize = False
+            Caption = 'lb_codepost'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_ville: TFWLabel
+            Tag = 1011
+            Left = 252
+            Height = 16
+            Top = 112
+            Width = 42
+            AutoSize = False
+            Caption = 'lb_ville'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_pays: TFWLabel
+            Tag = 1003
+            Left = 36
+            Height = 16
+            Top = 134
+            Width = 48
+            AutoSize = False
+            Caption = 'lb_pays'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_tel: TFWLabel
+            Tag = 1012
+            Left = 52
+            Height = 16
+            Top = 162
+            Width = 32
+            AutoSize = False
+            Caption = 'lb_tel'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_poste: TFWLabel
+            Tag = 1013
+            Left = 312
+            Height = 16
+            Top = 162
+            Width = 52
+            AutoSize = False
+            Caption = 'lb_poste'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_mobile: TFWLabel
+            Tag = 1014
+            Left = 25
+            Height = 16
+            Top = 185
+            Width = 59
+            AutoSize = False
+            Caption = 'lb_mobile'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_fax: TFWLabel
+            Tag = 1015
+            Left = 49
+            Height = 16
+            Top = 212
+            Width = 35
+            AutoSize = False
+            Caption = 'lb_fax'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_email: TFWLabel
+            Tag = 1016
+            Left = 33
+            Height = 16
+            Top = 237
+            Width = 51
+            AutoSize = False
+            Caption = 'lb_email'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_web: TFWLabel
+            Tag = 1017
+            Left = 41
+            Height = 16
+            Top = 262
+            Width = 43
+            AutoSize = False
+            Caption = 'lb_web'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object RbSplitter6: TSplitter
+            Left = 0
+            Height = 338
+            Top = 0
+            Width = 5
+          end
+          object cbx_assist: TDBLookupComboBox
+            Tag = 2
+            Left = 103
+            Height = 29
+            Top = 8
+            Width = 370
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ListFieldIndex = 0
+            LookupCache = False
+            ParentFont = False
+            TabOrder = 0
+          end
+          object ed_adresse1: TFWDBEdit
+            Tag = 7
+            Left = 103
+            Height = 27
+            Top = 33
+            Width = 370
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+          end
+          object ed_adresse2: TFWDBEdit
+            Tag = 8
+            Left = 103
+            Height = 27
+            Top = 58
+            Width = 370
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 2
+          end
+          object ed_adresse3: TFWDBEdit
+            Tag = 9
+            Left = 103
+            Height = 27
+            Top = 83
+            Width = 370
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 3
+          end
+          object ed_codepostal: TFWDBEdit
+            Tag = 10
+            Left = 103
+            Height = 27
+            Top = 108
+            Width = 96
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 4
+          end
+          object bt_cp: TJvXPButton
+            Left = 201
+            Height = 22
+            Top = 109
+            Width = 22
+            Caption = '...'
+            TabOrder = 5
+            OnClick = bt_cpClick
+          end
+          object ed_ville: TFWDBEdit
+            Tag = 11
+            Left = 312
+            Height = 27
+            Top = 108
+            Width = 249
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 6
+          end
+          object cbx_pays: TDBLookupComboBox
+            Tag = 3
+            Left = 103
+            Height = 29
+            Top = 133
+            Width = 460
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ListFieldIndex = 0
+            LookupCache = False
+            ParentFont = False
+            TabOrder = 7
+          end
+          object ed_tel: TFWDBEdit
+            Tag = 12
+            Left = 103
+            Height = 27
+            Top = 158
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 8
+          end
+          object ed_poste: TFWDBEdit
+            Tag = 13
+            Left = 383
+            Height = 27
+            Top = 158
+            Width = 68
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 9
+          end
+          object ed_mobile: TFWDBEdit
+            Tag = 14
+            Left = 103
+            Height = 27
+            Top = 183
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 10
+          end
+          object ed_fax: TFWDBEdit
+            Tag = 15
+            Left = 103
+            Height = 27
+            Top = 208
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 11
+          end
+          object ed_email: TFWDBEdit
+            Tag = 16
+            Left = 103
+            Height = 27
+            Top = 233
+            Width = 460
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 12
+          end
+          object ed_web: TFWDBEdit
+            Tag = 17
+            Left = 103
+            Height = 27
+            Top = 258
+            Width = 460
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 13
+          end
+        end
+        object ts_generale2: TTabSheet
+          Caption = 'Infos générales 2'
+          ClientHeight = 338
+          ClientWidth = 583
+          ImageIndex = 1
+          object lb_taux: TFWLabel
+            Tag = 1018
+            Left = 51
+            Height = 16
+            Top = 17
+            Width = 42
+            AutoSize = False
+            Caption = 'lb_taux'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_credit: TFWLabel
+            Tag = 1019
+            Left = 42
+            Height = 16
+            Top = 40
+            Width = 51
+            AutoSize = False
+            Caption = 'lb_credit'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_objca: TFWLabel
+            Tag = 1020
+            Left = 41
+            Height = 16
+            Top = 67
+            Width = 52
+            AutoSize = False
+            Caption = 'lb_objca'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_note: TFWLabel
+            Tag = 1021
+            Left = 49
+            Height = 16
+            Top = 93
+            Width = 44
+            AutoSize = False
+            Caption = 'lb_note'
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object ed_taux: TFWDBEdit
+            Tag = 18
+            Left = 112
+            Height = 27
+            Top = 13
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+          end
+          object ed_credit: TFWDBEdit
+            Tag = 19
+            Left = 112
+            Height = 27
+            Top = 38
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+          end
+          object ed_objca: TFWDBEdit
+            Tag = 20
+            Left = 112
+            Height = 27
+            Top = 63
+            Width = 190
+            CharCase = ecNormal
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 2
+          end
+          object mo_note: TDBMemo
+            Tag = 21
+            Left = 112
+            Height = 161
+            Top = 88
+            Width = 369
+            MaxLength = 600
+            TabOrder = 3
+          end
+        end
+        object ts_Client: TTabSheet
+          Caption = 'Clients'
+          ClientHeight = 338
+          ClientWidth = 583
+          ImageIndex = 2
+          object RbSplitter3: TSplitter
+            Left = 321
+            Height = 304
+            Top = 27
+            Width = 5
+          end
+          object Panel13: TPanel
+            Left = 0
+            Height = 304
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 304
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lv_client_in: TDBGroupView
+              Left = 0
+              Height = 304
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Clients du représentant'
+                  Width = 172
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_Donn.ds_CliInRepr
+              DataKeyUnit = 'CLIE_Clep'
+              DataTableUnit = 'CLIENT'
+              DataTableGroup = 'CLIENT'
+              DataTableOwner = 'REPRESENTANT'
+              DataSourceOwner = M_Donn.ds_repr
+              DataKeyOwner = 'REPR_Clep'
+              DataFieldUnit = 'CLIE_Clep'
+              DataFieldGroup = 'CLIE__REPR'
+              ButtonTotalIn = bt_in_total
+              ButtonIn = bt_in_item
+              ButtonTotalOut = bt_out_total
+              ButtonOut = bt_out_item
+              DataListOpposite = lv_client_out
+              ButtonRecord = bt_enregistrer
+              ButtonCancel = bt_abandonner
+              ButtonBasket = bt_retour
+              DataAllFiltered = False
+            end
+            object Panel14: TPanel
+              Left = 240
+              Height = 304
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 304
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_in_item: TFWInSelect
+                Left = 14
+                Height = 33
+                Hint = 'Le client va être affecté au représentant.'
+                Top = 30
+                Width = 49
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_in_total: TFWInAll
+                Left = 14
+                Height = 33
+                Hint = 'Tous ces clients vont être affectés au représentant.'
+                Top = 70
+                Width = 49
+                Enabled = False
+                TabOrder = 1
+              end
+              object bt_out_item: TFWOutSelect
+                Left = 14
+                Height = 33
+                Hint = 'Ce client va être désaffecté.'
+                Top = 149
+                Width = 49
+                Enabled = False
+                TabOrder = 2
+              end
+              object bt_out_total: TFWOutAll
+                Left = 14
+                Height = 33
+                Hint = 'Tous les client vont être désaffectés.'
+                Top = 189
+                Width = 49
+                Enabled = False
+                TabOrder = 3
+              end
+            end
+          end
+          object lv_client_out: TDBGroupView
+            Left = 326
+            Height = 304
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 255
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+              end            
+              item
+                AutoSize = True
+                Caption = 'Clients à affecter'
+                Width = 185
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 2
+            ViewStyle = vsReport
+            Datasource = M_Donn.ds_CliOutRepr
+            DataKeyUnit = 'CLIE_Clep'
+            DataTableUnit = 'CLIENT'
+            DataTableGroup = 'CLIENT'
+            DataFieldUnit = 'CLIE_Clep'
+            DataFieldGroup = 'CLIE__REPR'
+            DataListPrimary = False
+            ButtonTotalIn = bt_out_total
+            ButtonIn = bt_out_item
+            ButtonTotalOut = bt_in_total
+            ButtonOut = bt_in_item
+            DataListOpposite = lv_client_in
+            ButtonRecord = bt_enregistrer
+            ButtonCancel = bt_abandonner
+            ButtonBasket = bt_retour
+            DataAllFiltered = False
+          end
+          object Panel15: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 581
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 581
+            TabOrder = 1
+            object Panel16: TPanel
+              Left = 222
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel17: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel18: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel19: TPanel
+              Left = 460
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_abandonner: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 99
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+            object bt_enregistrer: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+              OnClick = bt_enregistrerClick
+            end
+            object bt_retour: TJvXPButton
+              Left = 473
+              Height = 25
+              Hint = 'Réaffectation aux Gammes de produits d''origine'
+              Top = 0
+              Width = 92
+              Caption = 'Retour origine'
+              Enabled = False
+              TabOrder = 6
+              Align = alRight
+              ParentShowHint = False
+              ShowHint = True
+            end
+            object Panel22: TPanel
+              Left = 565
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 7
+            end
+          end
+        end
+        object ts_TypeDevis: TTabSheet
+          Caption = 'Types de devis'
+          ClientHeight = 338
+          ClientWidth = 583
+          ImageIndex = 3
+          object RbSplitter1: TSplitter
+            Left = 321
+            Height = 304
+            Top = 27
+            Width = 5
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 304
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 304
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lv_TyDeIn: TDBGroupView
+              Left = 0
+              Height = 304
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Types de devis accessibles par le représentant'
+                  Width = 286
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              TabOrder = 0
+              ViewStyle = vsReport
+              DataKeyUnit = 'TYDE_Clep'
+              DataShowAll = True
+              DataTableUnit = 'TYPE_DEVIS'
+              DataTableGroup = 'REPRESENTANT_TYPE_DEVIS'
+              DataTableOwner = 'REPRESENTANT'
+              DataSourceOwner = M_Donn.ds_repr
+              DataKeyOwner = 'REPR_Clep'
+              DataFieldUnit = 'RETD__TYDE'
+              DataFieldGroup = 'RETD__REPR'
+              ButtonTotalIn = bt_TyDeTotIn
+              ButtonIn = bt_TyDeIn
+              ButtonTotalOut = bt_TyDeTotOut
+              ButtonOut = bt_TyDeOut
+              DataListOpposite = lv_TyDeOut
+              ButtonRecord = bt_EnrTyDe
+              ButtonCancel = bt_AbanTyDe
+              DataAllFiltered = False
+            end
+            object Panel5: TPanel
+              Left = 240
+              Height = 304
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 304
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_TyDeIn: TJvXPButton
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 49
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_TyDeTotIn: TJvXPButton
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales deviennent membre de cette direction opérationnelle'
+                Top = 70
+                Width = 49
+                Enabled = False
+                TabOrder = 1
+              end
+              object bt_TyDeOut: TJvXPButton
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 149
+                Width = 49
+                Enabled = False
+                TabOrder = 2
+              end
+              object bt_TyDeTotOut: TJvXPButton
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales vont être désaffectées de leur direction opérationnelle'
+                Top = 189
+                Width = 49
+                Enabled = False
+                TabOrder = 3
+              end
+            end
+          end
+          object lv_TyDeOut: TDBGroupView
+            Left = 326
+            Height = 304
+            Hint = 'A réaffecter'
+            Top = 27
+            Width = 255
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+              end            
+              item
+                AutoSize = True
+                Caption = 'Types de devis exclus pour le représentant'
+                Width = 265
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            TabOrder = 1
+            ViewStyle = vsReport
+            DataKeyUnit = 'TYDE_Clep'
+            DataShowAll = True
+            DataTableUnit = 'TYPE_DEVIS'
+            DataTableGroup = 'REPRESENTANT_TYPE_DEVIS'
+            DataTableOwner = 'REPRESENTANT'
+            DataSourceOwner = M_Donn.ds_repr
+            DataKeyOwner = 'REPR_Clep'
+            DataFieldUnit = 'RETD__TYDE'
+            DataFieldGroup = 'RETD__REPR'
+            DataListPrimary = False
+            ButtonTotalIn = bt_TyDeTotOut
+            ButtonIn = bt_TyDeOut
+            ButtonTotalOut = bt_TyDeTotIn
+            ButtonOut = bt_TyDeIn
+            DataListOpposite = lv_TyDeIn
+            ButtonRecord = bt_EnrTyDe
+            ButtonCancel = bt_AbanTyDe
+            DataAllFiltered = False
+          end
+          object Panel10: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 581
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 581
+            TabOrder = 2
+            object Panel12: TPanel
+              Left = 222
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel7: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel8: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel9: TPanel
+              Left = 565
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_AbanTyDe: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 99
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object bt_EnrTyDe: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+          end
+        end
+        object TabSheet1: TTabSheet
+          Caption = 'Secteurs'
+          ClientHeight = 338
+          ClientWidth = 583
+          ImageIndex = 4
+          object Panel20: TPanel
+            Left = 0
+            Height = 331
+            Top = 0
+            Width = 581
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 331
+            ClientWidth = 581
+            Constraints.MinWidth = 10
+            TabOrder = 0
+            object Panel21: TPanel
+              Left = 0
+              Height = 32
+              Top = 0
+              Width = 581
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 32
+              ClientWidth = 581
+              TabOrder = 0
+              object nv_secteur: TExtDBNavigator
+                Left = 0
+                Height = 32
+                Top = 0
+                Width = 581
+                Flat = True
+                DataSource = M_Donn.ds_secteur
+                DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+                Align = alClient
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+                GlyphSize = gsLarge
+                Hints.Strings = (
+                  'Premier enregistrement'
+                  'Enregistrement précédent'
+                  'Enregistrement suivant'
+                  'Dernier enregistrement'
+                  'Insérer enregistrement'
+                  'Supprimer l''enregistrement'
+                  'Modifier l''enregistrement'
+                  'Valider modifications'
+                  'Annuler les modifications'
+                  'Rafraîchir les données'
+                  'Rechercher un enregistrement'
+                )
+              end
+            end
+            object gd_secteur: TExtDBGrid
+              Left = 0
+              Height = 299
+              Top = 30
+              Width = 581
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Département'
+                  Title.Orientation = toHorizontal
+                  Width = 82
+                  FieldName = 'dep'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Code insee'
+                  Title.Orientation = toHorizontal
+                  FieldName = 'SECT_Codeinsee'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Commune'
+                  Title.Orientation = toHorizontal
+                  Width = 420
+                  FieldName = 'ville'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              DataSource = M_Donn.ds_secteur
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+              ParentColor = False
+              Scrollbars = ssHorizontal
+              TabOrder = 1
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'MS Sans Serif'
+            end
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 1
+      Height = 510
+      Top = 1
+      Width = 240
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 510
+      ClientWidth = 240
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 240
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 240
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 240
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_repr: TExtDBGrid
+        Left = 0
+        Height = 478
+        Top = 32
+        Width = 240
+        TitleButtons = False
+        AutoSort = False
+        Columns = <>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        OnDblClick = gd_reprDblClick
+      end
+    end
+  end
+  object Panel3: TPanel[1]
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 832
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 25
+    ClientWidth = 832
+    TabOrder = 1
+    object Panel11: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 361
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 0
+    end
+    object bt_apercu: TFWPreview
+      Left = 361
+      Height = 25
+      Hint = 'Aperçu  (Impression / exportation)'
+      Top = 0
+      Caption = 'Aperçu'
+      TabOrder = 4
+      Align = alLeft
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      Visible = False
+    end
+    object Panel4: TPanel
+      Left = 441
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 1
+    end
+    object bt_imprimer: TFWPrint
+      Left = 454
+      Height = 25
+      Hint = 'Impression des résultats de la sélection'
+      Top = 0
+      Caption = 'Imprimer'
+      TabOrder = 5
+      Align = alLeft
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      Visible = False
+    end
+    object Panel1: TPanel
+      Left = 534
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 2
+    end
+    object Panel2: TPanel
+      Left = 547
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 3
+    end
+    object bt_fermer: TFWClose
+      Left = 752
+      Height = 25
+      Top = 0
+      Caption = 'Fermer'
+      TabOrder = 6
+      Layout = blGlyphRight
+      Align = alRight
+      OnClick = bt_fermerClick
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[2]
+    SaveEdits = [feTGrid, feTListView]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 97
+    top = 137
+  end
+  object im_images: TImageList[3]
+    BkColor = clForeground
+    left = 96
+    top = 178
+    Bitmap = {
+      4C69020000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FF000000FFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FF000000FF000000FF000000FFFF00
+      00FF000000FF000000FF000000000000000000000000FF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      FFFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF000000000000FFFF000000000000FFFF000000000000
+      FFFF000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00FFBDFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF000000000000000000000000000000FF000000FFFF0000FF0000
+      00FF000000FF000000FF000000FF000000000000000000000000848400FF0000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000848400FF0000
+      0000848400FF00000000848400FF00000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000
+    }
+  end
+end

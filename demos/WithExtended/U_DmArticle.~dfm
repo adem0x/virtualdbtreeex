@@ -1,0 +1,1002 @@
+object M_Article: TM_Article
+  OldCreateOrder = False
+  Left = 97
+  Top = 65516
+  Height = 823
+  Width = 1032
+  object ds_article: TDataSource
+    DataSet = adoq_Article1
+    Left = 8
+    Top = 13
+  end
+  object adoq_artcoul: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    BeforeInsert = adoq_Article1BeforeEdit
+    BeforeEdit = adoq_Article1BeforeEdit
+    BeforePost = adoq_artcoulBeforePost
+    AfterCancel = adoq_artcoulAfterCancel
+    BeforeDelete = adoq_Article1BeforeEdit
+    OnNewRecord = adoq_artcoulNewRecord
+    Parameters = <
+      item
+        Name = 'article'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * '
+      'from ARTICLE_FINITION'
+      'where ARFI__ARTI = :article')
+    Left = 88
+    Top = 61
+  end
+  object ds_ARCO: TDataSource
+    DataSet = adoq_artcoul
+    Left = 8
+    Top = 61
+  end
+  object ds_GamTProIn: TDataSource
+    DataSet = adoq_GamTProIn
+    Left = 515
+    Top = 64
+  end
+  object adoq_GamTProIn: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 5
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT, GAMME_TYPR'
+      'where TYPR_Clep = GATY__TYPR'
+      'and GATY__GAMM = :groupe'
+      'ORDER BY TYPR_Libelle')
+    Left = 592
+    Top = 64
+  end
+  object ds_GamTProOut: TDataSource
+    DataSet = adoq_GamTProOut
+    Left = 515
+    Top = 109
+  end
+  object adoq_GamTProOut: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT'
+      'where TYPR_Clep NOT in (select GATY__TYPR from GAMME_TYPR'
+      'where GATY__GAMM = :groupe)'
+      'ORDER BY TYPR_Libelle')
+    Left = 592
+    Top = 109
+  end
+  object adoq_Gamme: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * from GAMME')
+    Left = 592
+    Top = 17
+  end
+  object ds_Gamme: TDataSource
+    DataSet = adoq_Gamme
+    Left = 515
+    Top = 17
+  end
+  object ds_TyPGamIn: TDataSource
+    DataSet = ADOQ_TyPGamIn
+    Left = 515
+    Top = 204
+  end
+  object ADOQ_TyPGamIn: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 12
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  GAMM_Clep, GAMM_Libelle FROM GAMME, GAMME_TYPR'
+      'where GAMM_Clep = GATY__GAMM'
+      'and GATY__TYPR = :groupe'
+      'ORDER BY GAMM_Libelle')
+    Left = 592
+    Top = 204
+  end
+  object adoq_TypProduit: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * from TYPE_PRODUIT')
+    Left = 592
+    Top = 157
+  end
+  object ds_TypProduit: TDataSource
+    DataSet = adoq_TypProduit
+    Left = 515
+    Top = 157
+  end
+  object ds_TyPGamOut: TDataSource
+    DataSet = ADOQ_TyPGamOut
+    Left = 515
+    Top = 252
+  end
+  object ADOQ_TyPGamOut: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  GAMM_Clep, GAMM_Libelle FROM GAMME'
+      'where GAMM_Clep not in (select GATY__GAMM from GAMME_TYPR'
+      'where GATY__TYPR = :groupe)'
+      'ORDER BY GAMM_Libelle')
+    Left = 592
+    Top = 252
+  end
+  object ds_TyPCaraIn: TDataSource
+    DataSet = ADOQ_TyPCaraIn
+    Left = 515
+    Top = 300
+  end
+  object ADOQ_TyPCaraIn: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 12
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select  CARA_Clep, CARA_Libelle FROM CARACTERISTIQUE,TYPE_PRODUI' +
+        'T_CARA'
+      'where CARA_Clep =TYPC__CARA '
+      'and TYPC__TYPR = :groupe'
+      'ORDER BY CARA_Libelle')
+    Left = 592
+    Top = 300
+  end
+  object ds_TyPCaraOut: TDataSource
+    DataSet = ADOQ_TyPCaraOut
+    Left = 515
+    Top = 348
+  end
+  object ADOQ_TyPCaraOut: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  CARA_Clep, CARA_Libelle FROM CARACTERISTIQUE'
+      'where CARA_Clep NOT in (select TYPC__CARA from TYPE_PRODUIT_CARA'
+      'where TYPC__TYPR = :groupe)'
+      'ORDER BY CARA_Libelle')
+    Left = 592
+    Top = 348
+  end
+  object ds_CaraTPIn: TDataSource
+    DataSet = ADOQ_CaraTPIn
+    Left = 684
+    Top = 308
+  end
+  object ADOQ_CaraTPIn: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 20
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT, TYPE_PRODUIT_' +
+        'CARA'
+      'where TYPR_Clep = TYPC__TYPR '
+      'and TYPC__CARA = :groupe'
+      'ORDER BY TYPR_Libelle')
+    Left = 779
+    Top = 308
+  end
+  object ADOQ_Carac: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * from CARACTERISTIQUE')
+    Left = 779
+    Top = 260
+  end
+  object ds_Carac: TDataSource
+    DataSet = ADOQ_Carac
+    Left = 684
+    Top = 260
+  end
+  object ds_CaraTPOut: TDataSource
+    DataSet = ADOQ_CaraTPOut
+    Left = 684
+    Top = 356
+  end
+  object ADOQ_CaraTPOut: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        Size = 20
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT'
+      'where TYPR_Clep not in (select TYPC__TYPR from TYPE_PRODUIT_CARA'
+      'where TYPC__CARA = :groupe)'
+      'ORDER BY TYPR_Libelle')
+    Left = 779
+    Top = 356
+  end
+  object ds_SelCarac: TDataSource
+    DataSet = ADOQ_SelCarac
+    Left = 688
+    Top = 113
+  end
+  object ADOQ_SelCarac: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select  * FROM CARACTERISTIQUE')
+    Left = 768
+    Top = 113
+  end
+  object ADOQ_SelTypPro: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = ADOQ_SelTypProAfterOpen
+    AfterScroll = ADOQ_SelTypProAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'select * FROM TYPE_PRODUIT')
+    Left = 768
+    Top = 61
+  end
+  object ds_SelTypPro: TDataSource
+    DataSet = ADOQ_SelTypPro
+    Left = 688
+    Top = 61
+  end
+  object ADOQ_SelGamme: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = ADOQ_SelGammeAfterOpen
+    AfterScroll = ADOQ_SelGammeAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * from GAMME')
+    Left = 768
+    Top = 13
+  end
+  object ds_SelGamme: TDataSource
+    DataSet = ADOQ_SelGamme
+    Left = 688
+    Top = 13
+  end
+  object ds_Sel1Carac: TDataSource
+    DataSet = ADOQ_Sel1Carac
+    Left = 688
+    Top = 208
+  end
+  object ADOQ_Sel1Carac: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 12
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select  CARA_Clep, CARA_Libelle FROM CARACTERISTIQUE, TYPE_PRODU' +
+        'IT_CARA'
+      'where CARA_Clep = TYPC__CARA'
+      'AND TYPC__TYPR = :groupe'
+      'ORDER BY CARA_Libelle')
+    Left = 768
+    Top = 208
+  end
+  object ADOQ_Sel1TypPro: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = ADOQ_SelTypProAfterOpen
+    AfterScroll = ADOQ_SelTypProAfterScroll
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 5
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT, GAMME_TYPR'
+      'where TYPR_Clep = GATY__TYPR'
+      'AND GATY__GAMM = :groupe'
+      'ORDER BY TYPR_Libelle')
+    Left = 768
+    Top = 161
+  end
+  object ds_Sel1TypPro: TDataSource
+    DataSet = ADOQ_Sel1TypPro
+    Left = 688
+    Top = 161
+  end
+  object ds_SelCarac2: TDataSource
+    DataSet = ADOQ_SelCarac2
+    Left = 352
+    Top = 213
+  end
+  object ADOQ_SelCarac2: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select  * FROM CARACTERISTIQUE')
+    Left = 426
+    Top = 213
+  end
+  object ADOQ_SelTypPro2: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = ADOQ_SelTypPro2AfterOpen
+    AfterScroll = ADOQ_SelTypPro2AfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'select * FROM TYPE_PRODUIT')
+    Left = 426
+    Top = 168
+  end
+  object ds_SelTypPro2: TDataSource
+    DataSet = ADOQ_SelTypPro2
+    Left = 352
+    Top = 168
+  end
+  object adoq_GammeE: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = adoq_GammeEAfterOpen
+    AfterScroll = adoq_GammeEAfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * from GAMME')
+    Left = 426
+    Top = 121
+  end
+  object ds_GammeE: TDataSource
+    DataSet = adoq_GammeE
+    Left = 352
+    Top = 121
+  end
+  object ds_Sel1Carac2: TDataSource
+    DataSet = ADOQ_Sel1Carac2
+    Left = 352
+    Top = 308
+  end
+  object ADOQ_Sel1Carac2: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 12
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select  CARA_Clep, CARA_Libelle FROM CARACTERISTIQUE, TYPE_PRODU' +
+        'IT_CARA'
+      'where CARA_Clep = TYPC__CARA'
+      'AND TYPC__TYPR = :groupe'
+      'ORDER BY CARA_Libelle')
+    Left = 426
+    Top = 308
+  end
+  object ADOQ_Sel1TypPro2: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = ADOQ_Sel1TypPro2AfterOpen
+    AfterScroll = ADOQ_Sel1TypPro2AfterScroll
+    Parameters = <
+      item
+        Name = 'groupe'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 5
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYPR_Clep, TYPR_Libelle FROM TYPE_PRODUIT, GAMME_TYPR'
+      'where TYPR_Clep = GATY__TYPR'
+      'AND GATY__GAMM = :groupe'
+      'ORDER BY TYPR_Libelle')
+    Left = 426
+    Top = 261
+  end
+  object ds_Sel1TypPro2: TDataSource
+    DataSet = ADOQ_Sel1TypPro2
+    Left = 352
+    Top = 261
+  end
+  object ds_ArFini: TDataSource
+    DataSet = adoq_ArFini
+    Left = 8
+    Top = 161
+  end
+  object adot_CocoCoul: TADOTable
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'FINI_Clep=NULL'
+    Filtered = True
+    TableName = 'FINITION'
+    Left = 88
+    Top = 208
+  end
+  object ds_CocoCoul: TDataSource
+    DataSet = adot_CocoCoul
+    Left = 8
+    Top = 208
+  end
+  object adoq_TyfiInFini: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select  TYFI_Clep, TYFI_Libelle FROM TYPE_FINITION,GROUPE_FINITI' +
+        'ON'
+      'where TYFI_Clep= GRFI__TYFI'
+      'AND GRFI__FINI = :groupe'
+      'ORDER BY TYFI_Libelle')
+    Left = 88
+    Top = 253
+  end
+  object ds_TyfiInFini: TDataSource
+    DataSet = adoq_TyfiInFini
+    Left = 8
+    Top = 253
+  end
+  object adoq_TyfiOutFini: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'groupe'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  TYFI_Clep, TYFI_Libelle FROM TYPE_FINITION'
+      'where TYFI_Clep not in (select GRFI__TYFI from GROUPE_FINITION'
+      'where GRFI__FINI = :groupe)'
+      'ORDER BY TYFI_Libelle')
+    Left = 88
+    Top = 301
+  end
+  object ds_TyfiOutFini: TDataSource
+    DataSet = adoq_TyfiOutFini
+    Left = 8
+    Top = 301
+  end
+  object adoq_FiniInTyFi: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'FINI_Lib <> '#39'Integrite'#39' and FINI_Lib <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'groupe'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  FINI_Clep, FINI_Lib FROM FINITION,GROUPE_FINITION'
+      'where FINI_Clep= GRFI__FINI'
+      'AND GRFI__TYFI = :groupe'
+      'ORDER BY FINI_Lib')
+    Left = 88
+    Top = 348
+  end
+  object ds_FiniInTyFi: TDataSource
+    DataSet = adoq_FiniInTyFi
+    Left = 8
+    Top = 348
+  end
+  object adoq_FiniOutTyFi: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'FINI_Lib <> '#39'Integrite'#39' and FINI_Lib <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    Parameters = <
+      item
+        Name = 'groupe'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = -1
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select  FINI_Clep, FINI_Lib FROM FINITION'
+      'where FINI_Clep not in (select GRFI__FINI from GROUPE_FINITION'
+      'where GRFI__TYFI = :groupe)'
+      'ORDER BY FINI_Lib')
+    Left = 88
+    Top = 396
+  end
+  object ds_FiniOutTyFi: TDataSource
+    DataSet = adoq_FiniOutTyFi
+    Left = 8
+    Top = 396
+  end
+  object ds_FiltreProduit: TDataSource
+    DataSet = adot_FiltreProduit
+    Left = 170
+    Top = 61
+  end
+  object adot_FiltreProduit: TADOTable
+    Connection = M_Donnees.ADOConnection
+    TableName = 'FILTRE_PRODUIT'
+    Left = 248
+    Top = 61
+  end
+  object adoq_Article1: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'user'
+        DataType = ftSmallint
+        Value = Null
+      end
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * '
+      'from ARTICLE')
+    Left = 72
+    Top = 13
+  end
+  object adoq_prod_acces: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CommandTimeout = 0
+    Parameters = <
+      item
+        Name = 'serveur_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd_ref'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'serveur'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'location'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 512
+        Value = Null
+      end
+      item
+        Name = 'representant'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 15
+        Value = Null
+      end
+      item
+        Name = 'bdd_acces'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end
+      item
+        Name = 'bdd_travail'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end>
+    SQL.Strings = (
+      'PRODUCTION_MC_ACCES_REPR'
+      ':serveur_ref, :bdd_ref, :serveur, :bdd ,'
+      ':location, :representant, :bdd_acces, :bdd_travail')
+    Left = 419
+    Top = 61
+  end
+  object ds_prod_acces: TDataSource
+    DataSet = adoq_prod_acces
+    Left = 338
+    Top = 61
+  end
+  object ds_prodNonDeclasse: TDataSource
+    DataSet = adoq_prodNonDeclasse
+    Left = 160
+    Top = 165
+  end
+  object adoq_prodDeclasse: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    OnFilterRecord = adoq_prodDeclasseFilterRecord
+    Parameters = <>
+    SQL.Strings = (
+      'select ARTI_Clep, ARTI_Libcom, ARTI_Declasse'
+      'from ARTICLE'
+      'where  ARTI_Declasse = 1'
+      'ORDER BY ARTI_Libcom')
+    Left = 248
+    Top = 117
+  end
+  object adoq_prodNonDeclasse: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    OnFilterRecord = adoq_prodDeclasseFilterRecord
+    Parameters = <>
+    SQL.Strings = (
+      'select ARTI_Clep, ARTI_Libcom, ARTI_Declasse'
+      'from ARTICLE'
+      'where  ARTI_Declasse = 0'
+      'ORDER BY ARTI_Libcom')
+    Left = 248
+    Top = 165
+  end
+  object ds_ArbreArt: TDataSource
+    DataSet = adoq_ArbreArt
+    Left = 168
+    Top = 536
+  end
+  object adoq_ArbreArt: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    AfterOpen = adoq_ArbreArtAfterOpen
+    Parameters = <
+      item
+        Name = 'ArticleC'
+        DataType = ftString
+        Size = 20
+        Value = ''
+      end>
+    SQL.Strings = (
+      
+        'select ARDE_Table as '#39'ARDE_Table'#39', ARDE_Clep as '#39'ARDE_Clep'#39', ARD' +
+        'E_Parent as '#39'ARDE_Parent'#39','
+      
+        '(case when ARDE_Table = '#39'STRUCTURE_COMPOSANT'#39' then ARDE_Table_cl' +
+        'ep else '#39#39' end) as '#39'ARDE_Table_clep'#39','
+      'ARDE_Type,ARDE_Selection,'
+      
+        '(case when ARDE_Table = '#39'STRUCTURE_COMPOSANT'#39' then null else ARD' +
+        'E_Prix end) as '#39'ARDE_Prix'#39
+      ', ARDE_Prixfutur, ARDE_Libelle, ARDE_Libcom, ARDE_Position'
+      'from fn_mc_arbre_article_compose ( :ArticleC, 1 )')
+    Left = 240
+    Top = 536
+  end
+  object adoq_code_copieart: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'clep1'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'declare @clep1 varchar (12)'
+      ''
+      'SET @clep1 = :clep1'
+      ''
+      
+        'select cast(substring(ARTI_Clep,len('#39'Z'#39'+ @clep1) +1,len(ARTI_Cle' +
+        'p)) as int) '
+      'from ARTICLE'
+      'where ARTI_Clep like ('#39'Z'#39' + @clep1 +'#39'%'#39')'
+      'and len(@clep1) + 2 <= 12 '
+      'order by 1 desc')
+    Left = 440
+    Top = 536
+  end
+  object adoq_copieart: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    Parameters = <
+      item
+        Name = 'cle1'
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'cle2'
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'exec ps_copie_selearticle :cle1, :cle2')
+    Left = 344
+    Top = 536
+  end
+  object adoq_ArFini: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    OnNewRecord = adoq_ArFiniNewRecord
+    Parameters = <
+      item
+        Name = 'finition'
+        Attributes = [paSigned, paNullable]
+        DataType = ftString
+        Size = 200
+        Value = ''
+      end>
+    SQL.Strings = (
+      'select * '
+      'from FINITION'
+      'WHERE FINI_Clep = :finition')
+    Left = 88
+    Top = 164
+  end
+  object adoq_Article2: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT '
+      'ARTI_Clep,ARTI__FOUR,ARTI_Codecom,ARTI_Libcom,'
+      'ARTI_Desdev,ARTI_Pxactu,ARTI_Pxfutur,ARTI_Cubage,'
+      'ARTI_Coefcub,ARTI_Indicspe,ARTI_Poids,ARTI_Datecrea,'
+      'ARTI__GAMM,ARTI__TYPR,ARTI__CARA,ARTI_Compose,'
+      'ARTI_Declasse'
+      'FROM ARTICLE, FOURNISSEUR_TYPE_DEVIS '
+      
+        'WHERE ARTI_Indicspe = 0 AND ARTI__FOUR = FOTD__FOUR AND FOTD__TY' +
+        'DE = :Tyde')
+    Left = 144
+    Top = 13
+  end
+  object adoq_Article3: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'user'
+        DataType = ftSmallint
+        Value = Null
+      end
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * '
+      'from ARTICLE '
+      'where ARTI_Declasse = 0')
+    Left = 216
+    Top = 13
+  end
+  object adoq_Article4: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT '
+      'ARTI_Clep,ARTI__FOUR,ARTI_Codecom,ARTI_Libcom,'
+      'ARTI_Desdev,ARTI_Pxactu,ARTI_Pxfutur,ARTI_Cubage,'
+      'ARTI_Coefcub,ARTI_Indicspe,ARTI_Poids,ARTI_Datecrea,'
+      'ARTI__GAMM,ARTI__TYPR,ARTI__CARA,ARTI_Compose,'
+      'ARTI_Declasse'
+      'FROM ARTICLE, FOURNISSEUR_TYPE_DEVIS '
+      
+        'WHERE ARTI_Indicspe = 0 AND ARTI__FOUR = FOTD__FOUR AND FOTD__TY' +
+        'DE = :Tyde and  ARTI_Declasse = 0')
+    Left = 288
+    Top = 13
+  end
+  object adoq_Article5: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'user'
+        DataType = ftSmallint
+        Value = Null
+      end
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * '
+      'from ARTICLE '
+      'where ARTI_Declasse = 0 AND ARTI_Indicspe = 0')
+    Left = 360
+    Top = 13
+  end
+  object adoq_Article6: TADOQuery
+    Connection = M_Donnees.ADOConnection
+    CursorType = ctStatic
+    Filter = 'ARTI_Libcom <> '#39'Integrite'#39' and ARTI_Libcom <> '#39'Int'#233'grit'#233#39
+    Filtered = True
+    AfterInsert = adoq_Article1AfterInsert
+    BeforeEdit = adoq_Article1BeforeEdit
+    AfterPost = adoq_Article1AfterPost
+    OnNewRecord = adoq_Article1NewRecord
+    Parameters = <
+      item
+        Name = 'Tyde'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT '
+      'ARTI_Clep,ARTI__FOUR,ARTI_Codecom,ARTI_Libcom,'
+      'ARTI_Desdev,ARTI_Pxactu,ARTI_Pxfutur,ARTI_Cubage,'
+      'ARTI_Coefcub,ARTI_Indicspe,ARTI_Poids,ARTI_Datecrea,'
+      'ARTI__GAMM,ARTI__TYPR,ARTI__CARA,ARTI_Compose,'
+      'ARTI_Declasse'
+      'FROM ARTICLE, FOURNISSEUR_TYPE_DEVIS '
+      
+        'WHERE ARTI_Indicspe = 0 AND ARTI__FOUR = FOTD__FOUR AND FOTD__TY' +
+        'DE = :Tyde and  ARTI_Declasse = 0 AND ARTI_Indicspe = 0')
+    Left = 432
+    Top = 13
+  end
+  object ds_ProdDeclasse: TDataSource
+    DataSet = adoq_prodDeclasse
+    Left = 168
+    Top = 117
+  end
+end

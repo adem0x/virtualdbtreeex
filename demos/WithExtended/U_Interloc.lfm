@@ -1,0 +1,509 @@
+object F_Interloc: TF_Interloc
+  Left = 148
+  Top = 165
+  Width = 736
+  Height = 457
+  Caption = 'Interlocuteurs'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poMainFormCenter
+  OnActivate = F_FormDicoActivate
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  OnDestroy = F_FormDicoDestroy
+  DBSources = <
+    Item
+      ControlFocus = cbx_CiviliteInter
+  NavEdit = nv_SaisiInter
+  Navigator = nv_navInter
+  Grid = gd_Interlo
+  Key = 'INTE__CLIE;INTE_Clep'
+  Table = 'INTERLOCUTEUR'
+      Datasource = M_Dmdevis.ds_Interloc
+    end>
+  BeforeShow = F_FormDicoBeforeShow
+  PixelsPerInch = 96
+  object pa_1: TPanel
+    Left = 0
+    Top = 0
+    Width = 728
+    Height = 430
+    Align = alClient
+    BevelOuter = bvLowered
+    TabOrder = 0
+    object pa_3: TPanel
+      Left = 0
+      Top = 0
+      Width = 726
+      Height = 428
+      Align = alClient
+      BevelOuter = bvNone
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      object pa_5: TPanel
+        Left = 0
+        Top = 0
+        Width = 726
+        Height = 32
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object Label1: TFWLabel
+          Left = 40
+          Top = 0
+          Width = 611
+          Height = 32
+          Align = alClient
+          Caption = 'Label1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label2: TFWLabel
+          Left = 0
+          Top = 0
+          Width = 42
+          Height = 32
+          Align = alLeft
+          Caption = 'Client : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+        end
+        object bt_fermer: TFWClose
+          Left = 651
+          Top = 0
+          Height = 32
+          Align = alRight
+          OnClick = bt_fermerClick
+          Caption = 'Fermer'
+          TabOrder = 0
+          Glyph.Data = {
+            36030000424D3603000000000000360000002800000010000000100000000100
+            1800000000000003000000000000000000000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFF8596DC0F30B51636B81A39B81A39B71839BB17
+            39B91337BD0D35C00A32C0072FBE022CC00026B67F90D1FFFFFFFFFFFF1138D4
+            1F44D92A4DDA2F51DA2E51DB2C51DB2951DC244FDF1C4BE01547E00D42E0053A
+            E00132D70026B5FFFFFFFFFFFF1941DE2C50E13759E34464E57E94EDE2E8FBFF
+            FFFFFFFFFFDCE4FB7192F1134BE90A43E80439E0022BBEFFFFFFFFFFFF2248DF
+            385AE34363E4A2B2F2FFFFFFBBC8F6728FEE6F8FEFBACAF8FFFFFF98B1F60E48
+            E9083EE1052EC1FFFFFFFFFFFF2C51E14261E48B9EEEFFFFFF8398EE4669E640
+            66E73763E82C5DE97294F1FFFFFF6B8DF00F43E10B33C1FFFFFFFFFFFF3558E2
+            4B68E5EBEFFCBBC6F54E6DE6496AE6FFFFFFFFFFFF2D5CE82456E8B6C7F8DBE3
+            FB1848E01238C2FFFFFFFFFFFF3F5FE4536FE7FFFFFF8195ED506DE64868E5FF
+            FFFFFFFFFF2C58E62352E66587EEFFFFFF1F4CDF183CC0FFFFFFFFFFFF4564E5
+            5A75E8FFFFFF8195ED506CE64867E5FFFFFFFFFFFF2C55E42450E46483ECFFFF
+            FF254EDE1D3FBFFFFFFFFFFFFF4F6CE6637DE8EFF1FDB7C2F5516CE64865E4FF
+            FFFFFFFFFF2C52E2264EE2B0BFF5E0E6FB2A50DC2141BFFFFFFFFFFFFF536FE7
+            6C85EA97A9F1FFFFFF8093ED4C67E54261E43A5BE33054E26C86EBFFFFFF728A
+            EC2D51DC2342BEFFFFFFFFFFFF5E79E87A91EC7089EBA6B5F2FFFFFFB1BDF470
+            86EA6B83E9B0BDF4FFFFFF95A8F03053E12F52DB2342BDFFFFFFFFFFFF6B85EA
+            8DA1EF8097ED6F88EB97A8F0EEF0FCFFFFFFFFFFFFE9EDFC899DEE4162E43A5C
+            E33053DC1E3EBCFFFFFFFFFFFF778EEC9DAEF18CA0EF7990EC7089EB6A83E965
+            7EE9627CE95D78E85673E74E6CE64162E42F52DB1939BAFFFFFFFFFFFFB2BFF4
+            768DEC6781EA5B76E85470E74F6CE64A69E64B69E54665E53F60E33B5DE33154
+            E22347D88A9BDEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+          Layout = blGlyphRight
+        end
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 30
+        Width = 726
+        Height = 396
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 1
+        object RbSplitter4: TSplitter
+          Left = 175
+          Top = 0
+          Width = 5
+          Height = 396
+        end
+        object Panel12: TPanel
+          Left = 180
+          Top = 0
+          Width = 544
+          Height = 396
+          Align = alClient
+          BevelOuter = bvNone
+          Constraints.MinWidth = 3
+          TabOrder = 0
+          object Label15: TFWLabel
+            Tag = 1008
+            Left = 17
+            Top = 68
+            Width = 81
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'Nom, pr'#233'nom'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object Label16: TFWLabel
+            Tag = 1003
+            Left = 58
+            Top = 45
+            Width = 39
+            Height = 16
+            Alignment = taRightJustify
+            Caption = 'Civilit'#233
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label17: TFWLabel
+            Tag = 1004
+            Left = 32
+            Top = 93
+            Width = 66
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'T'#233'l'#233'phone'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object Label18: TFWLabel
+            Tag = 1005
+            Left = 57
+            Top = 118
+            Width = 41
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'Mobile'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object Label19: TFWLabel
+            Tag = 1006
+            Left = 60
+            Top = 168
+            Width = 38
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'E-Mail'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object Label20: TFWLabel
+            Tag = 1007
+            Left = 47
+            Top = 193
+            Width = 51
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'Fonction'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object Label23: TFWLabel
+            Tag = 1009
+            Left = 76
+            Top = 143
+            Width = 22
+            Height = 16
+            Alignment = taRightJustify
+            BiDiMode = bdLeftToRight
+            Caption = 'Fax'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+          object ed_NomInter: TFWDBEdit
+            Tag = 8
+            Left = 112
+            Top = 64
+            Width = 370
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Nom'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+          end
+          object ed_TeleInter: TFWDBEdit
+            Tag = 4
+            Left = 112
+            Top = 89
+            Width = 177
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Telephone'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 2
+          end
+          object ed_PortabInter: TFWDBEdit
+            Tag = 5
+            Left = 112
+            Top = 114
+            Width = 177
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Portable'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 3
+          end
+          object ed_MailInter: TFWDBEdit
+            Tag = 6
+            Left = 112
+            Top = 164
+            Width = 370
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Mail'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 5
+          end
+          object ed_FonctionInter: TFWDBEdit
+            Tag = 7
+            Left = 112
+            Top = 189
+            Width = 177
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Fonction'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 6
+          end
+          object nv_SaisiInter: TExtDBNavigator
+            Left = 0
+            Top = 0
+            Width = 544
+            Height = 32
+            DataSource = M_Dmdevis.ds_Interloc
+            VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel]
+            Align = alTop
+            Color = clBtnFace
+            Flat = True
+            GlyphSize = gsLarge
+            Hints.Strings = (
+              'Premier enregistrement'
+              'Enregistrement pr'#233'c'#233'dent'
+              'Enregistrement suivant'
+              'Dernier enregistrement'
+              'Ins'#233'rer enregistrement'
+              'Supprimer l'#39'enregistrement'
+              'Modifier l'#39'enregistrement'
+              'Valider modifications'
+              'Annuler les modifications'
+              'Rafra'#238'chir les donn'#233'es'
+              'Rechercher un enregistrement')
+            Orientation = noHorizontal
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 7
+          end
+          object cbx_CiviliteInter: TFWDBLookupCombo
+            Tag = 3
+            Left = 112
+            Top = 40
+            Width = 183
+            Height = 23
+            Color = clMoneyGreen
+            DataField = 'INTE_Civilite'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+          end
+          object ed_FaxInter: TFWDBEdit
+            Tag = 9
+            Left = 112
+            Top = 139
+            Width = 177
+            Height = 24
+            Color = clMoneyGreen
+            DataField = 'INTE_Fax'
+            DataSource = M_Dmdevis.ds_Interloc
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 4
+          end
+        end
+        object Panel10: TPanel
+          Left = 0
+          Top = 0
+          Width = 177
+          Height = 396
+          Align = alLeft
+          Caption = 'Panel2'
+          Constraints.MinWidth = 3
+          TabOrder = 1
+          object Panel11: TPanel
+            Left = 0
+            Top = 0
+            Width = 175
+            Height = 32
+            Align = alTop
+            BevelOuter = bvNone
+            Caption = 'Panel1'
+            TabOrder = 0
+            object nv_navInter: TExtDBNavigator
+              Left = 0
+              Top = 0
+              Width = 175
+              Height = 32
+              DataSource = M_Dmdevis.ds_Interloc
+              VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+              Align = alClient
+              Color = clBtnFace
+              Flat = True
+              GlyphSize = gsLarge
+              Orientation = noHorizontal
+              TabOrder = 0
+            end
+          end
+          object gd_Interlo: TExtDBGrid
+            Left = 0
+            Top = 31
+            Width = 175
+            Height = 362
+            Align = alClient
+            BorderStyle = bsNone
+            DataSource = M_Dmdevis.ds_Interloc
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = []
+            OnDblClick = gd_InterloDblClick
+            TitleButtons = True
+            ScrollBars = ssHorizontal
+            Controls = <>
+            DefaultRowHeight = 17
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'INTE_Civilite'
+                Title.Caption = 'Civ.'
+                Width = 50
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'INTE_Nom'
+                Title.Caption = 'Nom'
+                Width = 150
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'INTE_Telephone'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'INTE_Portable'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'INTE_Mail'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'INTE_Fonction'
+                Visible = False
+              end>
+          end
+        end
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    Left = 41
+    Top = 129
+  end
+end

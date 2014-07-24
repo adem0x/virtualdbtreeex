@@ -1,0 +1,629 @@
+inherited F_Prodrepr: TF_Prodrepr
+  Left = 195
+  Height = 470
+  Top = 175
+  Width = 795
+  Caption = 'Production des bases de données représentant'
+  ClientHeight = 470
+  ClientWidth = 795
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnClose = F_ProdrestClose
+  OnCreate = F_ProdrestCreate
+  OnDestroy = F_FormDicoDestroy
+  Position = poDefault
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 470
+    Top = 0
+    Width = 795
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 470
+    ClientWidth = 795
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 177
+      Height = 445
+      Top = 24
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 182
+      Height = 445
+      Top = 24
+      Width = 612
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 445
+      ClientWidth = 612
+      TabOrder = 0
+      object pa_6: TPanel
+        Left = 0
+        Height = 66
+        Top = 0
+        Width = 612
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 66
+        ClientWidth = 612
+        TabOrder = 0
+        object ed_libelle: TFWDBEdit
+          Left = 112
+          Height = 27
+          Top = 20
+          Width = 345
+          DataField = 'REPR_Nom'
+          DataSource = M_Donn.ds_repr
+          ReadOnly = True
+          CharCase = ecNormal
+          Color = clLime
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Left = 8
+          Height = 27
+          Top = 20
+          Width = 96
+          DataField = 'REPR_Clep'
+          DataSource = M_Donn.ds_repr
+          ReadOnly = True
+          CharCase = ecNormal
+          Color = clLime
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+          OnChange = ed_codeChange
+        end
+      end
+      object pg_control: TPageControl
+        Left = 0
+        Height = 379
+        Top = 66
+        Width = 612
+        ActivePage = ts_param
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 1
+        object ts_param: TTabSheet
+          Caption = 'Paramètres de production'
+          ClientHeight = 348
+          ClientWidth = 608
+          object lb_servref: TFWLabel
+            Tag = 1004
+            Left = 138
+            Height = 16
+            Top = 36
+            Width = 47
+            AutoSize = False
+            Caption = 'Serveur'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_bddref: TFWLabel
+            Tag = 1005
+            Left = 78
+            Height = 16
+            Top = 61
+            Width = 107
+            AutoSize = False
+            Caption = 'Base de données'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_localisation: TFWLabel
+            Tag = 1003
+            Left = 81
+            Height = 16
+            Top = 207
+            Width = 104
+            AutoSize = False
+            Caption = 'Rép. du package'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object Label3: TFWLabel
+            Left = 14
+            Height = 20
+            Top = 8
+            Width = 39
+            AutoSize = False
+            Caption = 'Vitré'
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object Label7: TFWLabel
+            Left = 14
+            Height = 20
+            Top = 104
+            Width = 111
+            AutoSize = False
+            Caption = 'Représentant'
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_serv: TFWLabel
+            Tag = 1001
+            Left = 138
+            Height = 16
+            Top = 132
+            Width = 47
+            AutoSize = False
+            Caption = 'Serveur'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_bdd: TFWLabel
+            Tag = 1002
+            Left = 20
+            Height = 16
+            Top = 157
+            Width = 165
+            AutoSize = False
+            Caption = 'Base de données de travail'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_bdd_acces: TFWLabel
+            Tag = 1002
+            Left = 27
+            Height = 16
+            Top = 182
+            Width = 158
+            AutoSize = False
+            Caption = 'Base de données d''accès'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object Label1: TFWLabel
+            Tag = 1003
+            Left = 21
+            Height = 16
+            Top = 232
+            Width = 164
+            AutoSize = False
+            Caption = 'Rép. de production des lots'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object Label2: TFWLabel
+            Tag = 1003
+            Left = 33
+            Height = 16
+            Top = 257
+            Width = 152
+            AutoSize = False
+            Caption = 'Rép d''intégration des lots'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object ed_bdd_travail: TEdit
+            Tag = 2
+            Left = 204
+            Height = 27
+            Top = 153
+            Width = 201
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 3
+          end
+          object ed_serveur_ref: TEdit
+            Tag = 4
+            Left = 204
+            Height = 27
+            Top = 32
+            Width = 201
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 0
+          end
+          object ed_serveur: TEdit
+            Tag = 1
+            Left = 204
+            Height = 27
+            Top = 128
+            Width = 201
+            Color = clMoneyGreen
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            TabOrder = 2
+          end
+          object ed_bdd_ref: TEdit
+            Tag = 5
+            Left = 204
+            Height = 27
+            Top = 57
+            Width = 201
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 1
+          end
+          object ed_bdd_acces: TEdit
+            Tag = 2
+            Left = 204
+            Height = 27
+            Top = 178
+            Width = 201
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 4
+          end
+          object DirectoryListBox1: TDirectoryEdit
+            Left = 520
+            Height = 24
+            Top = 0
+            Width = 73
+            ShowHidden = False
+            ButtonWidth = 0
+            NumGlyphs = 0
+            MaxLength = 0
+            TabOrder = 5
+            Visible = False
+          end
+          object FileListBox1: TFileListBox
+            Left = 416
+            Height = 81
+            Top = 0
+            Width = 97
+            Directory = '/home/pierre'
+            ItemHeight = 20
+            ParentShowHint = False
+            TabOrder = 6
+            Visible = False
+          end
+          object ed_location: TEdit
+            Tag = 3
+            Left = 204
+            Height = 27
+            Top = 203
+            Width = 389
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabStop = False
+            TabOrder = 7
+          end
+          object ed_prod: TEdit
+            Tag = 4
+            Left = 204
+            Height = 27
+            Hint = 'Répertoire de production des fichiers des lots'
+            Top = 228
+            Width = 389
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ParentShowHint = False
+            ReadOnly = True
+            ShowHint = True
+            TabOrder = 8
+            Text = 'C:\FDV\TRANSFERT\VERS_VITRE'
+          end
+          object ed_result: TEdit
+            Tag = 5
+            Left = 204
+            Height = 27
+            Hint = 'Répertoire d''intégration des fichiers des lots'
+            Top = 253
+            Width = 389
+            Color = 14155775
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ParentShowHint = False
+            ReadOnly = True
+            ShowHint = True
+            TabOrder = 9
+            Text = 'C:\FDV\TRANSFERT\DE_VITRE'
+          end
+        end
+        object ts_result: TTabSheet
+          Caption = 'Résultats de la production'
+          ClientHeight = 348
+          ClientWidth = 608
+          ImageIndex = 1
+          object RbSplitter2: TSplitter
+            Cursor = crVSplit
+            Left = 0
+            Height = 5
+            Top = 169
+            Width = 518
+            Align = alTop
+            ResizeAnchor = akTop
+          end
+          object gd_acces: TExtDBGrid
+            Left = 0
+            Height = 136
+            Top = 33
+            Width = 518
+            TitleButtons = False
+            AutoSort = False
+            Columns = <>
+            OptionsRx = []
+            Align = alTop
+            BorderStyle = bsNone
+            Color = clWindow
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = M_Donn.ds_prod_acces
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            ParentColor = False
+            ReadOnly = True
+            Scrollbars = ssHorizontal
+            TabOrder = 0
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+          end
+          object gd_travail: TExtDBGrid
+            Left = 0
+            Height = 110
+            Top = 207
+            Width = 518
+            TitleButtons = False
+            AutoSort = False
+            Columns = <>
+            OptionsRx = []
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWindow
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            DataSource = M_Donn.ds_prod_travail
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            ParentColor = False
+            ReadOnly = True
+            Scrollbars = ssHorizontal
+            TabOrder = 1
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 33
+            Top = 174
+            Width = 518
+            Align = alTop
+            Alignment = taLeftJustify
+            Caption = 'Base de données MMO'
+            Font.Color = clMaroon
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+          end
+          object Panel7: TPanel
+            Left = 0
+            Height = 33
+            Top = 0
+            Width = 518
+            Align = alTop
+            Alignment = taLeftJustify
+            Caption = 'Base de données d''accès'
+            Font.Color = clMaroon
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 1
+      Height = 445
+      Top = 24
+      Width = 176
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 445
+      ClientWidth = 176
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 23
+        Top = 0
+        Width = 176
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 23
+        ClientWidth = 176
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 23
+          Top = 0
+          Width = 176
+          Flat = True
+          DataSource = M_Donn.ds_repr
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsSmall
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_prodrepr: TExtDBGrid
+        Left = 0
+        Height = 422
+        Top = 23
+        Width = 176
+        TitleButtons = False
+        AutoSort = False
+        Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Caption = 'Nom'
+            Title.Orientation = toHorizontal
+            Width = 142
+            FieldName = 'REPR_Clep'
+            Filter.DropDownRows = 0
+            Filter.ItemIndex = -1
+            FieldTag = 0
+          end>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        DataSource = M_Donn.ds_repr
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssHorizontal
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel3: TPanel
+      Left = 1
+      Height = 23
+      Top = 1
+      Width = 793
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 23
+      ClientWidth = 793
+      TabOrder = 2
+      object bt_fermer: TFWClose
+        Left = 713
+        Height = 23
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 0
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+      object Panel4: TPanel
+        Left = 565
+        Height = 23
+        Top = 0
+        Width = 148
+        Align = alRight
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object bt_init: TFWInit
+        Left = 484
+        Height = 23
+        Hint = 'Produire les BDD'
+        Top = 0
+        Width = 81
+        Caption = 'Produire'
+        TabOrder = 2
+        Align = alRight
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = bt_initClick
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SauvePosObjects = True
+    SauveEditObjets = [feTGrid]
+    SauvePosForm = True
+    left = 97
+    top = 137
+  end
+end

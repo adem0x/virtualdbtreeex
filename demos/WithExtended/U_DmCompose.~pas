@@ -1,0 +1,442 @@
+unit U_DmCompose;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB;
+
+type
+	TM_DmCompose = class(TDataModule)
+    adoq_Structure: TADOQuery;
+		ds_Structure: TDataSource;
+    ADOQ_BranInBran: TADOQuery;
+    ds_BranInBran: TDataSource;
+    ADOQ_BranOutBr: TADOQuery;
+    ds_BranOutBr: TDataSource;
+    ADOQ_ComInBran: TADOQuery;
+    ds_ComInBran: TDataSource;
+    ADOQ_ComOutBran: TADOQuery;
+    ds_ComOutBra: TDataSource;
+    ADOQ_CompInBra: TADOQuery;
+    ds_CompInBra: TDataSource;
+    ADOQ_CompOutBra: TADOQuery;
+    ds_CompOutBra: TDataSource;
+		ADOQ_ComsInBra: TADOQuery;
+		ds_ComsInBra: TDataSource;
+		ADOQ_ComsOutBra: TADOQuery;
+		ds_ComsOutBra: TDataSource;
+		ds_Comportem: TDataSource;
+		adoq_Comportem: TADOQuery;
+		adoq_ArtInBran: TADOQuery;
+		ds_ArtInBran: TDataSource;
+		adoq_ArtOutBran: TADOQuery;
+		ds_ArtOutBran: TDataSource;
+    adoq_RetrouvArt: TADOQuery;
+		ds_RetrouvArt: TDataSource;
+    adoq_BranInComp: TADOQuery;
+    ds_BranInComp: TDataSource;
+    adoq_BranOutComp: TADOQuery;
+    ds_BranOutCom: TDataSource;
+    adoq_BranInSel: TADOQuery;
+    ds_BranInSel: TDataSource;
+    adoq_BranOutSel: TADOQuery;
+    ds_BranOutSel: TDataSource;
+    adoq_ArbreArtC: TADOQuery;
+    ds_ArbreArtC: TDataSource;
+    adoq_BrLieBrIn: TADOQuery;
+    ds_BrLieBrIn: TDataSource;
+    adoq_BrLieBrOut: TADOQuery;
+		ds_BrLieBrOut: TDataSource;
+    adoq_BranInArt: TADOQuery;
+    ds_BranInArt: TDataSource;
+    adoq_BranOutArt: TADOQuery;
+    ds_BranOutArt: TDataSource;
+    adot_ArticleC: TADOTable;
+    ds_ArticleC: TDataSource;
+    adoq_ArbreArt: TADOQuery;
+    ds_ArbreArt: TDataSource;
+    adoq_Temp: TADOQuery;
+    ds_Temp: TDataSource;
+    ds_Compose: TDataSource;
+    adoq_Compose: TADOQuery;
+    adoq_Comporte: TADOQuery;
+    ds_Comporte: TDataSource;
+    adoq_SelectStru: TADOQuery;
+    ds_SelectStru: TDataSource;
+    adoq_ArbrDevi: TADOQuery;
+    ds_BrType: TDataSource;
+    adoq_BrType: TADOQuery;
+    ds_BrSelect: TDataSource;
+    adoq_BrSelect: TADOQuery;
+    adoq_Comclasse: TADOQuery;
+    ds_Comclasse: TDataSource;
+		adoq_ComDeclas: TADOQuery;
+    ds_ComDeclas: TDataSource;
+    adoq_CompCoul: TADOQuery;
+    ds_CompCoul: TDataSource;
+    adoq_composant: TADOQuery;
+    ds_Composant: TDataSource;
+    ds_CoFini: TDataSource;
+    adoq_code_copiecomp: TADOQuery;
+    adoq_copiecomp: TADOQuery;
+    adoq_CoFini: TADOQuery;
+		procedure adoq_StructureAfterInsert(DataSet: TDataSet);
+		procedure adoq_ComportemDeleteError(DataSet: TDataSet;
+			E: EDatabaseError; var Action: TDataAction);
+    procedure adoq_StructureDeleteError(DataSet: TDataSet;
+      E: EDatabaseError; var Action: TDataAction);
+    procedure adoq_StructureBeforePost(DataSet: TDataSet);
+    procedure adoq_TempAfterOpen(DataSet: TDataSet);
+    procedure adoq_ComporteBeforeOpen(DataSet: TDataSet);
+    procedure adoq_SelectStruBeforeOpen(DataSet: TDataSet);
+    procedure adoq_ArbreArtAfterOpen(DataSet: TDataSet);
+    procedure adoq_ComposeAfterOpen(DataSet: TDataSet);
+    procedure adoq_StructureAfterPost(DataSet: TDataSet);
+    procedure adoq_CompCoulBeforePost(DataSet: TDataSet);
+    procedure adoq_CompCoulNewRecord(DataSet: TDataSet);
+    procedure adoq_composantAfterOpen(DataSet: TDataSet);
+    procedure adoq_composantAfterScroll(DataSet: TDataSet);
+		procedure adoq_composantNewRecord(DataSet: TDataSet);
+		procedure adoq_ComclasseFilterRecord(DataSet: TDataSet;
+			var Accept: Boolean);
+		procedure adoq_ComDeclasFilterRecord(DataSet: TDataSet;
+			var Accept: Boolean);
+		procedure ADOQ_BranOutBrFilterRecord(DataSet: TDataSet;
+			var Accept: Boolean);
+    procedure ADOQ_ComOutBranFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure ADOQ_CompOutBraFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure ADOQ_ComsOutBraFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_ArtOutBranFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_BranOutCompFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_BranOutSelFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_BrLieBrOutFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_BranOutArtFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure adoq_composantAfterPost(DataSet: TDataSet);
+    procedure adoq_BrSelectAfterOpen(DataSet: TDataSet);
+    procedure adoq_StructureAfterScroll(DataSet: TDataSet);
+    procedure adoq_CompCoulAfterCancel(DataSet: TDataSet);
+	private
+		{ Déclarations privées }
+	public
+		procedure p_FiltreCouleur ( const aadoq_QueryFiltre : TADOQuery ; const afie_Field : TField );
+		{ Déclarations publiques }
+	end;
+
+var
+	M_DmCompose: TM_DmCompose;
+
+implementation
+
+uses U_Structure, Dialogs, U_ConstMessage , U_ComposeArticle, U_Composant,
+		 mc_fonctions_db 	, U_Comportement, U_SeleArticle;
+
+{$R *.dfm}
+
+procedure TM_DmCompose.adoq_StructureAfterInsert(DataSet: TDataSet);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		F_Structure.p_ApresInsere ;
+end;
+
+procedure TM_DmCompose.adoq_ComportemDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+begin
+	MessageDlg ( U_CST_9000, mtWarning, [mbOk], 0 );
+end;
+
+procedure TM_DmCompose.adoq_StructureDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+begin
+	MessageDlg ( U_CST_9000, mtWarning, [mbOk], 0 );
+
+end;
+
+procedure TM_DmCompose.adoq_StructureBeforePost(DataSet: TDataSet);
+begin
+	Exit ;
+	adoq_ArbrDevi.Close ;
+	ds_BranInBran .DataSet.Close ;
+	ds_BranOutBr  .DataSet.Close ;
+	ds_BranInComp .DataSet.Close ;
+	ds_BranOutCom .DataSet.Close ;
+	ds_BranInSel  .DataSet.Close ;
+	ds_BranOutSel .DataSet.Close ;
+	ds_BranInArt  .DataSet.Close ;
+	ds_BranOutArt .DataSet.Close ;
+{	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		F_Structure.p_AvantPost ;}
+end;
+
+procedure TM_DmCompose.adoq_TempAfterOpen(DataSet: TDataSet);
+begin
+	if assigned ( DataSet.FindField ( 'ARDE_Prix' )) Then
+		TNumericField ( DataSet.FindField ( 'ARDE_Prix' )).DisplayFormat := U_CST_format_money_1 ;
+	if assigned ( DataSet.FindField ( 'ARDE_Prixfutur' )) Then
+		TNumericField ( DataSet.FindField ( 'ARDE_Prixfutur' )).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_DmCompose.adoq_ComporteBeforeOpen(DataSet: TDataSet);
+begin
+	if adoq_ArbreArt.Active
+	and ( adoq_ArbreArt.FieldByName ( 'ARDE_Table' ).AsString = 'STRUCTURE_LIEE' ) Then
+		Begin
+			adoq_Comporte.Parameters.FindParam ( 'groupe' ).Value := adoq_ArbreArt.FieldValues [ 'ARDE_Table_Clep' ];
+		End
+	Else
+		adoq_Comporte.Parameters.FindParam ( 'groupe' ).Value := '' ;
+
+end;
+
+procedure TM_DmCompose.adoq_SelectStruBeforeOpen(DataSet: TDataSet);
+begin
+	if adoq_ArbreArt.Active
+	and ( adoq_ArbreArt.FieldByName ( 'ARDE_Table' ).AsString = 'STRUCTURE_LIEE' ) Then
+		Begin
+			adoq_SelectStru.Parameters.FindParam ( 'groupe' ).Value := adoq_ArbreArt.FieldValues [ 'ARDE_Table_Clep' ];
+		End
+	Else
+		adoq_SelectStru.Parameters.FindParam ( 'groupe' ).Value := '' ;
+
+end;
+
+procedure TM_DmCompose.adoq_ArbreArtAfterOpen(DataSet: TDataSet);
+begin
+	if assigned ( DataSet.FindField ( 'ARDE_Prix' )) Then
+		TNumericField ( DataSet.FieldByName ( 'ARDE_Prix' )).DisplayFormat := U_CST_format_money_1 ;
+	if assigned ( F_ComposeArticle )
+	and F_ComposeArticle.Visible Then
+		F_ComposeArticle.p_ArbreOpen;
+
+end;
+
+procedure TM_DmCompose.adoq_ComposeAfterOpen(DataSet: TDataSet);
+begin
+	if assigned ( DataSet.FindField ( 'ARDE_Prix' )) Then
+		TNumericField ( DataSet.FindField ( 'ARDE_Prix' )).DisplayFormat := U_CST_format_money_1 ;
+	if assigned ( DataSet.FindField ( 'ARDE_Prixfutur' )) Then
+		TNumericField ( DataSet.FindField ( 'ARDE_Prixfutur' )).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_DmCompose.adoq_StructureAfterPost(DataSet: TDataSet);
+begin
+//  adoq_Structure.UpdateBatch ( arAll );
+	Exit ;
+	adoq_ArbrDevi.Open ;
+	ds_BranInBran .DataSet.Open  ;
+	ds_BranOutBr  .DataSet.Open  ;
+	ds_BranInComp .DataSet.Open  ;
+	ds_BranOutCom .DataSet.Open  ;
+	ds_BranInSel  .DataSet.Open  ;
+	ds_BranOutSel .DataSet.Open  ;
+	ds_BranInArt  .DataSet.Open  ;
+	ds_BranOutArt .DataSet.Open  ;
+
+end;
+
+procedure TM_DmCompose.adoq_CompCoulBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Composant )
+	and F_Composant.Visible Then
+		F_Composant.p_BeforePost2 ;
+
+end;
+
+procedure TM_DmCompose.adoq_CompCoulNewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_COFI_Choixfinit ).Value := 4 ;
+
+end;
+
+procedure TM_DmCompose.adoq_composantAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField (adoq_composant.FieldByName('COMP_Prixactuel')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (adoq_composant.FieldByName('COMP_Prixfutur')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (adoq_composant.FieldByName('COMP_Cubage')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (adoq_composant.FieldByName('COMP_Coefcubage')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (adoq_composant.FieldByName('COMP_Poids')).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_DmCompose.adoq_composantAfterScroll(DataSet: TDataSet);
+begin
+//	F_Composant.Lb_datecreation.Caption := FormatDateTime(U_CST_format_date_2,M_Donn.ds_Composant.DataSet.FieldByName('COMP_Datecreation').AsDateTime);
+
+end;
+
+procedure TM_DmCompose.adoq_composantNewRecord(DataSet: TDataSet);
+begin
+	adoq_composant.FieldByName('COMP_Indicspecial').Value := False;
+	adoq_composant.FieldByName('COMP_Datecreation').Value := Date;
+	adoq_composant.FieldByName('COMP_Declasse'    ).Value := False ;
+
+end;
+
+procedure TM_DmCompose.adoq_ComclasseFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Composant )
+	and F_Composant.Visible Then
+		F_Composant.p_FilterDeclasse ( Dataset, Accept );
+end;
+
+procedure TM_DmCompose.adoq_ComDeclasFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Composant )
+	and F_Composant.Visible Then
+		F_Composant.p_FilterDeclasse ( Dataset, Accept );
+
+end;
+
+procedure TM_DmCompose.ADOQ_BranOutBrFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_BrancheOut.DataSourceKeyUnits ).AsString, ed_FiltreBr.Text, True );
+
+end;
+
+procedure TM_DmCompose.ADOQ_ComOutBranFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_CompoOut.DataSourceKeyUnits ).AsString, ed_FiltreComp.Text, True );
+
+end;
+
+procedure TM_DmCompose.ADOQ_CompOutBraFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_ComporteOut.DataSourceKeyUnits ).AsString, ed_FiltreAction.Text, True );
+
+end;
+
+procedure TM_DmCompose.ADOQ_ComsOutBraFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_SelectionOut.DataSourceKeyUnits ).AsString, ed_FiltreSelect.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_ArtOutBranFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_ArticleOut.DataSourceKeyUnits ).AsString, ed_FiltreArticles.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_BranOutCompFilterRecord(DataSet: TDataSet;
+	var Accept: Boolean);
+begin
+	if assigned ( F_Comportement )
+	and F_Comportement.Visible Then
+		with F_Comportement do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_ComporteOut.DataSourceKeyUnits ).AsString, ed_FiltreStrA.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_BranOutSelFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Comportement )
+	and F_Comportement.Visible Then
+		with F_Comportement do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_SelectionOut.DataSourceKeyUnits ).AsString, ed_FiltreStrS.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_BrLieBrOutFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		with F_Structure do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_LieBrOut.DataSourceKeyUnits ).AsString, ed_FiltreLieBr.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_BranOutArtFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		with F_SeleArticle do
+			Accept := fb_DatasetFilterLikeRecord ( Dataset.FieldByName ( lsv_BrOut.DataSourceKeyUnits ).AsString, ed_FiltreBranches.Text, True );
+
+end;
+
+procedure TM_DmCompose.adoq_composantAfterPost(DataSet: TDataSet);
+begin
+	try
+		adoq_composant.UpdateBatch ;
+		adoq_Comclasse.Close ;
+		adoq_Comclasse.Open  ;
+		adoq_ComDeclas.Close ;
+		adoq_ComDeclas.Open ;
+	finally
+	End ;
+
+end;
+
+procedure TM_DmCompose.adoq_BrSelectAfterOpen(DataSet: TDataSet);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+    F_Structure.p_BrSelectApresOpen ;
+end;
+
+procedure TM_DmCompose.adoq_StructureAfterScroll(DataSet: TDataSet);
+begin
+	if assigned ( F_Structure )
+	and F_Structure.Visible Then
+		F_Structure.p_ApresScroll ;
+end;
+////////////////////////////////////////////////////////////////////////
+// Procédure : p_FiltreCouleur
+// Description : Filtre un query grâce à son paramètre et le champ clé à chercher
+// aadoq_QueryFiltre : LE QUERY à filtrer
+// afie_Field        : Le champ filtre
+/////////////////////////////////////////////////////////////////////////
+
+procedure TM_DmCompose.p_FiltreCouleur ( const aadoq_QueryFiltre : TADOQuery ; const afie_Field: TField);
+begin
+	if afie_Field.Value <> aadoq_QueryFiltre.Parameters [0].Value Then
+    Begin
+      aadoq_QueryFiltre.Close ;
+      aadoq_QueryFiltre.Parameters [0].Value := afie_Field.Value ;
+      aadoq_QueryFiltre.Open ;
+    End ;
+end;
+
+procedure TM_DmCompose.adoq_CompCoulAfterCancel(DataSet: TDataSet);
+begin
+  p_FiltreCouleur ( adoq_CoFini, Dataset.FieldByName ( CST_COFI__FINI ));
+
+end;
+
+end.

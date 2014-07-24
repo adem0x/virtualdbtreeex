@@ -1,0 +1,58 @@
+object F_ListeCoul: TF_ListeCoul
+  Left = 295
+  Height = 480
+  Top = 164
+  Width = 465
+  Caption = 'Fenêtre de sélection d''une couleur'
+  ClientHeight = 480
+  ClientWidth = 465
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
+  LCLVersion = '0.9.30.2'
+  object ExRxDBGrid1: TExtDBGrid
+    Left = 0
+    Height = 480
+    Top = 0
+    Width = 465
+    TitleButtons = False
+    AutoSort = False
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Code'
+        Title.Orientation = toHorizontal
+        Width = 73
+        FieldName = 'COUL_Clep'
+        Filter.DropDownRows = 0
+        Filter.ItemIndex = -1
+        FieldTag = 0
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Caption = 'Libellé'
+        Title.Orientation = toHorizontal
+        Width = 354
+        FieldName = 'COUL_Lib'
+        Filter.DropDownRows = 0
+        Filter.ItemIndex = -1
+        FieldTag = 0
+      end>
+    OptionsRx = []
+    Align = alClient
+    BorderStyle = bsNone
+    Color = clWindow
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    GridLineStyle = psSolid
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    ParentColor = False
+    Scrollbars = ssVertical
+    TabOrder = 0
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+  end
+end

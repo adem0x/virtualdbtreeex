@@ -1,0 +1,134 @@
+program FDV;
+
+uses
+  Forms,
+  U_McFormMainIni,
+  U_FenetrePrincipale,
+  U_Splash,
+  Windows,
+  U_McFormDico,
+  ADODB,
+  U_SeleArticle in 'U_SeleArticle.pas' {F_SeleArticle},
+  U_Categorie in 'U_Categorie.pas' {F_Categ},
+  U_Client in 'U_Client.pas' {F_Client},
+  U_Composant in 'U_Composant.pas' {F_Composant},
+  U_ConstMessage in 'U_ConstMessage.pas',
+  U_DmDonn in 'U_DmDonn.pas' {M_Donn},
+  U_Donnees in 'U_Donnees.pas' {M_Donnees},
+  U_Famille in 'U_Famille.pas' {F_Famille},
+  U_Fournisseur in 'U_Fournisseur.pas' {F_Fournisseur},
+  U_Jalonnement in 'U_Jalonnement.pas' {F_Jalonnement},
+  U_ListeCoul in 'U_ListeCoul.pas' {F_ListeCoul},
+  U_Modalite in 'U_Modalite.pas' {F_Modalite},
+  U_CodePostal in 'U_CodePostal.pas' {F_CodePostal},
+  U_Assistante in 'U_Assistante.pas' {F_Assistante},
+  U_Representant in 'U_Representant.pas' {F_Repr},
+  U_TVA in 'U_TVA.pas' {F_TVA},
+  U_Typedevis in 'U_Typedevis.pas' {F_Typedevis},
+  U_Motifcloture in 'U_Motifcloture.pas' {F_Motifclot},
+  U_Devis in 'U_Devis.pas' {F_Devis},
+  U_Dmdevis in 'U_Dmdevis.pas' {M_Dmdevis},
+  U_comm in 'U_comm.pas' {F_Comm},
+  U_Previewcrystal in 'U_Previewcrystal.pas',
+  U_Sousfamillevente in 'U_Sousfamillevente.pas' {F_Sousfamillevente},
+  U_Soussousfamvente in 'U_Soussousfamvente.pas' {F_Soussousfamvente},
+  U_Famillevente in 'U_Famillevente.pas' {F_Famillevente},
+  U_Gamme in 'U_Gamme.pas' {F_Gamme},
+  U_TypeProduit in 'U_TypeProduit.pas' {F_TypeProduit},
+  U_Caracteristique in 'U_Caracteristique.pas' {F_Caracteristique},
+  U_ComposeArticle in 'U_ComposeArticle.pas' {F_ComposeArticle},
+  U_Civilite in 'U_Civilite.pas' {F_Civilite},
+  U_DmCompose in 'U_DmCompose.pas' {M_DmCompose},
+  U_Structure in 'U_Structure.pas' {F_Structure},
+  U_Comportement in 'U_Comportement.pas' {F_Comportement},
+  U_Pays in 'U_Pays.pas' {F_Pays},
+  U_Commande in 'U_Commande.pas' {F_Commande},
+  U_Dmcommande in 'U_Dmcommande.pas' {M_Dmcommande},
+  U_TypeFinition in 'U_TypeFinition.pas' {F_TypeFinition},
+  U_Finition in 'U_Finition.pas' {F_Finition},
+  U_Prodrepr in 'U_Prodrepr.pas' {F_Prodrepr},
+  U_Prodfiche in 'U_Prodfiche.pas' {F_Prodfiche},
+  U_SeleEditions in 'U_SeleEditions.pas' {F_SeleEdition},
+  U_RepSecteur in 'U_RepSecteur.pas' {F_RepSecteur},
+  U_Interloc in 'U_Interloc.pas' {F_Interloc},
+  U_Affectation in 'U_Affectation.pas' {F_Affectation},
+  U_DmArticle in 'U_DmArticle.pas' {M_Article: TDataModule};
+
+{$R *.res}
+{$R WindowsXP.res}
+
+var
+	gc_classname: Array[0..255] of char;
+	gi_result: integer;
+
+begin
+	Application.Initialize;
+	Application.Title := 'FDV_test';
+
+	// Met dans gc_classname le nom de la class de l'application
+	GetClassName(Application.handle, gc_classname, 254);
+
+	// Renvoie le Handle de la première fenêtre de Class (type) gc_classname
+	// et de titre TitreApplication (0 s'il n'y en a pas)
+	gi_result := FindWindow(gc_classname, 'MMO-Force de Vente');
+
+	if gi_result <> 0 then   // Une instance existante trouvée
+		begin
+			ShowWindow(gi_result, SW_RESTORE);
+			SetForegroundWindow(gi_result);
+			Application.Terminate;
+			Exit;
+		end
+	else  // Première création
+		begin
+			Application.Title := 'MMO-Force de Vente';
+		end;
+
+	F_SplashForm := TF_SplashForm.Create(Application);
+	F_SplashForm.Label1.Caption := 'FORCES DE VENTE' ;
+	F_SplashForm.Label1.Width   := F_SplashForm.Width ;
+	F_SplashForm.Show;   // Affichage de la fiche
+	F_SplashForm.Update; // Force la fiche à se dessiner complètement
+
+	try
+		gb_DicoKeyFormPresent  := True ;
+		gb_DicoUseFormField    := True ;
+		gb_DicoGroupementMontreCaption := False ;
+		Application.CreateForm(TM_Donnees, M_Donnees);
+  Application.CreateForm(TM_Donn, M_Donn);
+  Application.CreateForm(TM_Article, M_Article);
+  Application.CreateForm(TM_Dmdevis, M_Dmdevis);
+  Application.CreateForm(TM_DmCompose, M_DmCompose);
+  Application.CreateForm(TM_Dmcommande, M_Dmcommande);
+  Application.CreateForm(TF_FenetrePrincipale, F_FenetrePrincipale);
+  if gb_MainFormIniDirectAccessOnServer Then
+    with M_Article do
+      Begin
+        adoq_Article1.CursorLocation := clUseServer ;
+        adoq_Article1.CursorType     := ctKeySet ;
+        adoq_Article2.CursorLocation := clUseServer ;
+        adoq_Article2.CursorType     := ctKeySet ;
+        adoq_Article3.CursorLocation := clUseServer ;
+        adoq_Article3.CursorType     := ctKeySet ;
+        adoq_Article4.CursorLocation := clUseServer ;
+        adoq_Article4.CursorType     := ctKeySet ;
+        adoq_Article5.CursorLocation := clUseServer ;
+        adoq_Article5.CursorType     := ctKeySet ;
+        adoq_Article6.CursorLocation := clUseServer ;
+        adoq_Article6.CursorType     := ctKeySet ;
+      End ;
+	finally
+	end;
+
+	p_RegisterClasses ([TF_Modalite, TF_Categ, TF_Client, TF_Composant, TF_Finition,
+											TF_TypeFinition, TF_Famille, TF_Fournisseur, TF_Jalonnement,
+											TF_ListeCoul, TF_CodePostal, TF_Assistante, TF_TVA, TF_Repr,
+											TF_Motifclot, TF_Typedevis, TF_Devis, TF_Modalite, TF_Comm,
+											TF_Famillevente, TF_Sousfamillevente, TF_Soussousfamvente,
+											TF_SeleArticle, TF_Gamme, TF_TypeProduit, TF_Caracteristique,
+											TF_Civilite, TF_Structure, TF_Comportement, TF_ComposeArticle,
+											TF_Pays, TF_Commande, TF_Prodrepr, TF_Affectation,
+											TF_Prodfiche, TF_SeleEdition, TF_RepSecteur, TF_Interloc]);
+
+	Application.Run;
+end.

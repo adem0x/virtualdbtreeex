@@ -1,0 +1,340 @@
+inherited F_ComposeArticle: TF_ComposeArticle
+  Left = 100
+  Height = 587
+  Top = 159
+  Width = 880
+  HelpContext = 8000
+  Caption = 'Fiche produit composé'
+  ClientHeight = 587
+  ClientWidth = 880
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnClose = F_FormDicoClose
+  OnCreate = F_FormDicoCreate
+  OnDestroy = F_FormDicoDestroy
+  OnShow = F_FormDicoShow
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 587
+    Top = 0
+    Width = 880
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 587
+    ClientWidth = 880
+    TabOrder = 0
+    object pa_3: TPanel
+      Left = 0
+      Height = 585
+      Top = 0
+      Width = 878
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 585
+      ClientWidth = 878
+      TabOrder = 0
+      object spl_1: TSplitter
+        Left = 391
+        Height = 560
+        Top = 23
+        Width = 5
+      end
+      object vt_Compositions: TCheckVirtualDBTreeEx
+        Left = 0
+        Height = 560
+        Top = 23
+        Width = 393
+        Align = alLeft
+        BorderStyle = bsSingle
+        Constraints.MinWidth = 10
+        DBOptions = [dboAllowChecking, dboAllowRules, dboSpecialDBChecks, dboAlwaysRule, dboAlwaysStructured, dboCheckDBStructure, dboParentStructure, dboReadOnly, dboShowChecks, dboTrackActive, dboViewAll, dboWriteLevel, dboWriteSecondary]
+        DataSource = M_DmCompose.ds_ArbreArt
+        Header.AutoSizeIndex = 0
+        Header.Columns = <>
+        Header.DefaultHeight = 17
+        Header.Font.Color = clWindowText
+        Header.Font.Height = -11
+        Header.Font.Name = 'MS Sans Serif'
+        Header.MainColumn = -1
+        Header.Options = [hoColumnResize, hoDrag, hoVisible]
+        Header.Style = hsXPStyle
+        KeyFieldName = 'ARDE_Clep'
+        OnBeforeCellPaint = vt_CompositionsBeforeCellPaint
+        OnChecked = vt_CompositionsChecked
+        ParentFieldName = 'ARDE_Parent'
+        TabOrder = 0
+        TreeOptions.MiscOptions = [toCheckSupport, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
+        TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowTreeLines, toShowVertGridLines, toThemeAware, toUseBlendedImages]
+        ViewFieldName = 'ARDE_Libelle'
+        DBDataFieldNames = 'ARDE_Prix;ARDE__COMP;ARDE_Libcom;ARDE_Table_clep;ARDE_Table'
+        RulerConditionField = 'CPTM_Clep'
+        RulerSelectionField = 'CPTM_Clep'
+        RulerActionField = 'CPTM_Selection'
+        RulerChecks = vt_CompositionsRulerChecks
+        DatasourceRules = M_DmCompose.ds_Comporte
+        DatasourceRuleSelect = M_DmCompose.ds_SelectStru
+        CheckFieldName = 'ARDE_Selection'
+      end
+      object Panel1: TPanel
+        Left = 396
+        Height = 560
+        Top = 23
+        Width = 480
+        Align = alClient
+        ClientHeight = 560
+        ClientWidth = 480
+        Constraints.MinWidth = 10
+        TabOrder = 1
+        object RbSplitter1: TSplitter
+          Cursor = crVSplit
+          Left = 0
+          Height = 5
+          Top = 191
+          Width = 478
+          Align = alTop
+          ResizeAnchor = akTop
+        end
+        object vt_Composant: TVirtualDBTreeEx
+          Left = 0
+          Height = 311
+          Top = 196
+          Width = 478
+          Align = alClient
+          BorderStyle = bsSingle
+          DBOptions = [dboListView, dboParentStructure, dboReadOnly, dboTrackActive, dboViewAll]
+          DataSource = M_DmCompose.ds_Compose
+          Header.AutoSizeIndex = 0
+          Header.Columns = <>
+          Header.DefaultHeight = 17
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'MS Sans Serif'
+          Header.MainColumn = -1
+          Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoVisible]
+          Header.Style = hsXPStyle
+          HintMode = hmTooltip
+          KeyFieldName = 'ARDE_Clep'
+          LineMode = lmBands
+          NodeAlignment = naFromTop
+          NodeLines = 5
+          TabOrder = 0
+          TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
+          TreeOptions.MiscOptions = [toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning, toVariableNodeHeight]
+          TreeOptions.PaintOptions = [toHideFocusRect, toHideSelection, toShowButtons, toShowDropmark, toShowHorzGridLines, toShowTreeLines, toShowVertGridLines, toThemeAware, toUseBlendedImages, toAlwaysHideSelection]
+          ViewFieldName = 'ARDE_Table_clep'
+          DBDataFieldNames = 'ARDE_Libelle;ARDE_Prix;ARDE_Libcom'
+          RulerConditionField = 'ARDE_Comporte_Selection'
+          RulerActionField = 'ARDE_Comporte'
+        end
+        object gbx_prix: TGroupBox
+          Left = 0
+          Height = 50
+          Top = 507
+          Width = 478
+          Align = alBottom
+          Caption = 'Prix de Vente'
+          ClientHeight = 34
+          ClientWidth = 474
+          TabOrder = 1
+          object lb_pxactu: TFWLabel
+            Left = 49
+            Height = 16
+            Top = 8
+            Width = 46
+            AutoSize = False
+            Caption = 'Prix tarif'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            ColorFocus = clMaroon
+          end
+          object lb_pxfutur: TFWLabel
+            Left = 217
+            Height = 16
+            Top = 7
+            Width = 49
+            AutoSize = False
+            Caption = 'Prix futur'
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentColor = False
+            ParentFont = False
+            Visible = False
+            ColorFocus = clMaroon
+          end
+          object ed_pxactu: TFWDBEdit
+            Tag = 501
+            Left = 110
+            Height = 27
+            Top = 4
+            Width = 60
+            DataField = 'ARDE_Prix'
+            DataSource = M_DmCompose.ds_Temp
+            ReadOnly = True
+            CharCase = ecNormal
+            Color = clLime
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+          end
+          object ed_pxfutur: TFWDBEdit
+            Tag = 502
+            Left = 286
+            Height = 27
+            Top = 3
+            Width = 60
+            DataField = 'ARDE_Prixfutur'
+            DataSource = M_DmCompose.ds_Temp
+            ReadOnly = True
+            CharCase = ecNormal
+            Color = clLime
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+            Visible = False
+          end
+        end
+        object Panel5: TPanel
+          Left = 0
+          Height = 192
+          Top = 0
+          Width = 478
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 192
+          ClientWidth = 478
+          TabOrder = 2
+          object Panel6: TPanel
+            Left = 0
+            Height = 25
+            Top = 0
+            Width = 478
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 25
+            ClientWidth = 478
+            TabOrder = 0
+            object Label1: TFWLabel
+              Tag = 501
+              Left = 3
+              Height = 16
+              Top = 3
+              Width = 215
+              AutoSize = False
+              Caption = 'Libellé complet de l''article composé'
+              Font.Color = clBlack
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+          end
+          object mem_LibelleArt: TFWMemo
+            Tag = 501
+            Left = 0
+            Height = 167
+            Top = 23
+            Width = 478
+            Align = alClient
+            Color = clLime
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 1
+          end
+        end
+      end
+      object Panel3: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 878
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 25
+        ClientWidth = 878
+        TabOrder = 2
+        object Panel2: TPanel
+          Left = 0
+          Height = 25
+          Top = 0
+          Width = 13
+          Align = alLeft
+          BevelOuter = bvNone
+          TabOrder = 0
+        end
+        object pa_CocheStru: TPanel
+          Left = 645
+          Height = 25
+          Top = 0
+          Width = 231
+          Align = alRight
+          BevelOuter = bvNone
+          ClientHeight = 25
+          ClientWidth = 231
+          TabOrder = 1
+          object bt_Valide: TFWOK
+            Left = 56
+            Height = 25
+            Hint = 'Valider les composants'
+            Top = 0
+            Width = 80
+            TabStop = False
+            Caption = 'Valider'
+            TabOrder = 0
+            Layout = blGlyphRight
+            Align = alRight
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = bt_ValideClick
+          end
+          object Panel4: TPanel
+            Left = 136
+            Height = 25
+            Top = 0
+            Width = 13
+            Align = alRight
+            BevelOuter = bvNone
+            TabOrder = 1
+          end
+          object bt_fermer: TFWClose
+            Left = 149
+            Height = 25
+            Hint = 'Quitter la fonction'
+            Top = 0
+            TabStop = False
+            Caption = 'Fermer'
+            TabOrder = 2
+            Layout = blGlyphRight
+            Align = alRight
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = bt_fermerClick
+          end
+        end
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTVirtualTrees]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+end

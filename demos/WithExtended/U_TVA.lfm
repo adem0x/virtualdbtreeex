@@ -1,0 +1,323 @@
+inherited F_TVA: TF_TVA
+  Left = 130
+  Height = 457
+  Top = 189
+  Width = 668
+  Caption = 'T.V.A.'
+  ClientHeight = 457
+  ClientWidth = 668
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 457
+    Top = 0
+    Width = 668
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 457
+    ClientWidth = 668
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 239
+      Height = 430
+      Top = 24
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 244
+      Height = 430
+      Top = 24
+      Width = 421
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 430
+      ClientWidth = 421
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 421
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 421
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 421
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 129
+        Top = 30
+        Width = 421
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 129
+        ClientWidth = 421
+        TabOrder = 0
+        object lb_taux: TFWLabel
+          Tag = 1002
+          Left = 41
+          Height = 16
+          Top = 39
+          Width = 42
+          AutoSize = False
+          Caption = 'lb_taux'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 34
+          Height = 16
+          Top = 14
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_taux: TFWDBEdit
+          Tag = 2
+          Left = 102
+          Height = 27
+          Top = 35
+          Width = 65
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 10
+          Width = 20
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 0
+      Height = 430
+      Top = 24
+      Width = 240
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 430
+      ClientWidth = 240
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 240
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 240
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 240
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_tva: TExtDBGrid
+        Left = 0
+        Height = 398
+        Top = 30
+        Width = 240
+        TitleButtons = False
+        AutoSort = False
+        Columns = <>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel2: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 666
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 25
+      ClientWidth = 666
+      TabOrder = 2
+      object Panel11: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 361
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+      object bt_apercu: TFWPreview
+        Left = 359
+        Height = 25
+        Hint = 'Aperçu  (Impression / exportation)'
+        Top = 0
+        Caption = 'Aperçu'
+        TabOrder = 4
+        Align = alLeft
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        ParentFont = False
+        Visible = False
+      end
+      object Panel4: TPanel
+        Left = 432
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object bt_imprimer: TFWPrint
+        Left = 445
+        Height = 25
+        Hint = 'Impression des résultats de la sélection'
+        Top = 0
+        Width = 80
+        Caption = 'Imprimer'
+        TabOrder = 5
+        Align = alLeft
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        ParentFont = False
+        Visible = False
+      end
+      object Panel7: TPanel
+        Left = 525
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 2
+      end
+      object Panel8: TPanel
+        Left = 538
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 3
+      end
+      object bt_fermer: TFWClose
+        Left = 584
+        Height = 25
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 6
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTGrid]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+end

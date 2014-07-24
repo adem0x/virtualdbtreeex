@@ -1,0 +1,895 @@
+inherited F_Caracteristique: TF_Caracteristique
+  Left = 16
+  Height = 602
+  Top = 91
+  Width = 968
+  Caption = 'Caractéristiques d''articles'
+  ClientHeight = 602
+  ClientWidth = 968
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 602
+    Top = 0
+    Width = 968
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 602
+    ClientWidth = 968
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 279
+      Height = 574
+      Top = 25
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 284
+      Height = 574
+      Top = 25
+      Width = 681
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 574
+      ClientWidth = 681
+      Constraints.MinWidth = 20
+      TabOrder = 0
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 681
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 681
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 681
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          Orientation = noHorizontal
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 74
+        Top = 30
+        Width = 681
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 74
+        ClientWidth = 681
+        TabOrder = 0
+        object lb_libelle: TFWLabel
+          Tag = 1002
+          Left = 29
+          Height = 16
+          Top = 42
+          Width = 54
+          AutoSize = False
+          Caption = 'lb_libelle'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 34
+          Height = 16
+          Top = 14
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_libelle: TFWDBEdit
+          Tag = 2
+          Left = 102
+          Height = 27
+          Top = 35
+          Width = 460
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 10
+          Width = 201
+          CharCase = ecUppercase
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+      end
+      object pc_Groupes: TPageControl
+        Left = 0
+        Height = 468
+        Top = 104
+        Width = 681
+        ActivePage = ts_ssfam
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        object ts_ssfam: TTabSheet
+          Caption = 'Types dont cette caractéristique est membre'
+          ClientHeight = 437
+          ClientWidth = 677
+          object RbSplitter1: TSplitter
+            Left = 321
+            Height = 412
+            Top = 25
+            Width = 5
+          end
+          object Panel10: TPanel
+            Left = 0
+            Height = 25
+            Top = 0
+            Width = 677
+            Align = alTop
+            ClientHeight = 25
+            ClientWidth = 677
+            TabOrder = 0
+            object Panel12: TPanel
+              Left = 235
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel13: TPanel
+              Left = 104
+              Height = 23
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel1: TPanel
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel5: TPanel
+              Left = 661
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_abandonner: TFWCancel
+              Left = 123
+              Height = 23
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 112
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object bt_enregistrer: TFWOK
+              Left = 12
+              Height = 23
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+            object bt_TypePro: TJvXPButton
+              Left = 248
+              Height = 23
+              Hint = 'Accéder à la fiche Type de produit'
+              Top = 0
+              Width = 22
+              Caption = '...'
+              TabOrder = 6
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = bt_TypeProClick
+            end
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 412
+            Top = 25
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 412
+            ClientWidth = 321
+            Constraints.MinWidth = 10
+            TabOrder = 1
+            object lv_CaracIn: TDBGroupView
+              Left = 0
+              Height = 412
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Types dont cette caractéristique est membre'
+                  Width = 311
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_Article.ds_CaraTPIn
+              DataKeyUnit = 'TYPR_Clep'
+              DataTableUnit = 'TYPE_PRODUIT'
+              DataTableGroup = 'TYPE_PRODUIT_CARA'
+              DataTableOwner = 'CARACTERISTIQUE'
+              DataSourceOwner = M_Article.ds_Carac
+              DataKeyOwner = 'CARA_Clep'
+              DataFieldUnit = 'TYPC__TYPR'
+              DataFieldGroup = 'TYPC__CARA'
+              ButtonTotalIn = bt_in_total
+              ButtonIn = bt_in_item
+              ButtonTotalOut = bt_out_total
+              ButtonOut = bt_out_item
+              DataListOpposite = lv_transfert
+              ButtonRecord = bt_enregistrer
+              ButtonCancel = bt_abandonner
+              DataAllFiltered = False
+            end
+            object Panel2: TPanel
+              Left = 240
+              Height = 412
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 412
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_in_item: TFWInSelect
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 49
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_in_total: TFWInAll
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales deviennent membre de cette direction opérationnelle'
+                Top = 70
+                Width = 49
+                Enabled = False
+                TabOrder = 1
+              end
+              object bt_out_item: TFWOutSelect
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 149
+                Width = 49
+                Enabled = False
+                TabOrder = 2
+              end
+              object bt_out_total: TFWOutAll
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales vont être désaffectées de leur direction opérationnelle'
+                Top = 189
+                Width = 49
+                Enabled = False
+                TabOrder = 3
+              end
+            end
+          end
+          object lv_transfert: TDBGroupView
+            Left = 326
+            Height = 412
+            Hint = 'A réaffecter'
+            Top = 25
+            Width = 351
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+              end            
+              item
+                AutoSize = True
+                Caption = 'Types dont cette caractéristique n''est pas membre'
+                Width = 350
+              end>
+            Constraints.MinWidth = 10
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 2
+            ViewStyle = vsReport
+            Datasource = M_Article.ds_CaraTPOut
+            DataKeyUnit = 'TYPR_Clep'
+            DataTableUnit = 'TYPE_PRODUIT'
+            DataTableGroup = 'TYPE_PRODUIT_CARA'
+            DataTableOwner = 'CARACTERISTIQUE'
+            DataSourceOwner = M_Article.ds_Carac
+            DataKeyOwner = 'CARA_Clep'
+            DataFieldUnit = 'TYPC__TYPR'
+            DataFieldGroup = 'TYPC__CARA'
+            DataListPrimary = False
+            ButtonTotalIn = bt_out_total
+            ButtonIn = bt_out_item
+            ButtonTotalOut = bt_in_total
+            ButtonOut = bt_in_item
+            DataListOpposite = lv_CaracIn
+            ButtonRecord = bt_enregistrer
+            ButtonCancel = bt_abandonner
+            DataAllFiltered = False
+          end
+        end
+        object TabSheet1: TTabSheet
+          Caption = 'Articles affectés à la caractéristique'
+          ClientHeight = 437
+          ClientWidth = 677
+          ImageIndex = 1
+          object Panel7: TPanel
+            Left = 0
+            Height = 25
+            Top = 0
+            Width = 665
+            Align = alTop
+            ClientHeight = 25
+            ClientWidth = 665
+            TabOrder = 0
+            object Panel18: TPanel
+              Left = 215
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel19: TPanel
+              Left = 104
+              Height = 23
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel20: TPanel
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel21: TPanel
+              Left = 649
+              Height = 23
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_AbanArt: TJvXPButton
+              Left = 123
+              Height = 23
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Abandonner'
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object bt_EnrArt: TFWOK
+              Left = 12
+              Height = 23
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+            object bt_retour: TJvXPButton
+              Left = 557
+              Height = 23
+              Hint = 'Réaffectation aux Directions opérationnelles d''origine'
+              Top = 0
+              Width = 92
+              Caption = 'Retour origine'
+              Enabled = False
+              TabOrder = 6
+              Align = alRight
+            end
+          end
+          object Panel22: TPanel
+            Left = 0
+            Height = 384
+            Top = 25
+            Width = 665
+            Align = alClient
+            ClientHeight = 384
+            ClientWidth = 665
+            TabOrder = 1
+            object RbSplitter3: TSplitter
+              Left = 343
+              Height = 382
+              Top = 0
+              Width = 5
+            end
+            object Panel23: TPanel
+              Left = 0
+              Height = 382
+              Top = 0
+              Width = 344
+              Align = alLeft
+              BevelOuter = bvNone
+              ClientHeight = 382
+              ClientWidth = 344
+              Constraints.MinWidth = 10
+              TabOrder = 0
+              object lv_artin: TDBGroupView
+                Left = 0
+                Height = 382
+                Hint = 'Liste des membres'
+                Top = 0
+                Width = 265
+                Align = alClient
+                Columns = <                
+                  item
+                    Caption = ' '
+                  end                
+                  item
+                    AutoSize = True
+                    Caption = 'Articles affectés'
+                    Width = 208
+                  end>
+                DragMode = dmAutomatic
+                MultiSelect = True
+                ParentShowHint = False
+                ReadOnly = True
+                RowSelect = True
+                ShowHint = True
+                SortColumn = 1
+                StateImages = im_images
+                TabOrder = 0
+                ViewStyle = vsReport
+                Datasource = ds_caraarti
+                DataKeyUnit = 'ARTI_Clep'
+                DataShowAll = True
+                DataTableUnit = 'ARTICLE'
+                DataTableGroup = 'ARTICLE'
+                DataTableOwner = 'CARACTERISTIQUE'
+                DataSourceOwner = M_Article.ds_Carac
+                DataKeyOwner = 'CARA_Clep'
+                DataFieldUnit = 'ARTI_Clep'
+                DataFieldGroup = 'ARTI__CARA'
+                ButtonTotalIn = bt_in_totart
+                ButtonIn = bt_in_art
+                ButtonTotalOut = bt_out_totart
+                ButtonOut = bt_out_art
+                DataListOpposite = lv_ArtOut
+                ButtonRecord = bt_EnrArt
+                ButtonCancel = bt_AbanArt
+                ButtonBasket = bt_retour
+                DataAllFiltered = False
+              end
+              object Panel24: TPanel
+                Left = 263
+                Height = 382
+                Top = 0
+                Width = 79
+                Align = alRight
+                BevelOuter = bvNone
+                ClientHeight = 382
+                ClientWidth = 79
+                TabOrder = 1
+                object bt_in_art: TFWInSelect
+                  Left = 14
+                  Height = 33
+                  Hint = 'Cet article devient membre de cette gamme'
+                  Top = 30
+                  Width = 49
+                  Enabled = False
+                  TabOrder = 0
+                  ShowFocusRect = True
+                  ParentShowHint = False
+                end
+                object bt_in_totart: TFWInSelect
+                  Left = 14
+                  Height = 33
+                  Hint = 'Ces directions régionales deviennent membre de cette direction opérationnelle'
+                  Top = 70
+                  Width = 49
+                  Enabled = False
+                  TabOrder = 1
+                end
+                object bt_out_art: TFWOutSelect
+                  Left = 14
+                  Height = 33
+                  Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                  Top = 149
+                  Width = 49
+                  Enabled = False
+                  TabOrder = 2
+                end
+                object bt_out_totart: TFWOutSelect
+                  Left = 14
+                  Height = 33
+                  Hint = 'Ces directions régionales vont être désaffectées de leur direction opérationnelle'
+                  Top = 189
+                  Width = 49
+                  Enabled = False
+                  TabOrder = 3
+                end
+              end
+            end
+            object lv_ArtOut: TDBGroupView
+              Left = 348
+              Height = 382
+              Hint = 'A réaffecter'
+              Top = 0
+              Width = 314
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = ' '
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'A réaffecter'
+                  Width = 257
+                end>
+              Constraints.MinWidth = 10
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              TabOrder = 1
+              ViewStyle = vsReport
+              DataKeyUnit = 'ARTI_Clep'
+              DataShowAll = True
+              DataTableUnit = 'ARTICLE'
+              DataTableGroup = 'ARTICLE'
+              DataTableOwner = 'CARACTERISTIQUE'
+              DataSourceOwner = M_Article.ds_Carac
+              DataKeyOwner = 'CARA_Clep'
+              DataFieldUnit = 'ARTI_Clep'
+              DataFieldGroup = 'ARTI__CARA'
+              DataListPrimary = False
+              ButtonTotalIn = bt_out_totart
+              ButtonIn = bt_out_art
+              ButtonTotalOut = bt_in_totart
+              ButtonOut = bt_in_art
+              DataListOpposite = lv_artin
+              ButtonRecord = bt_enregistrer
+              ButtonCancel = bt_AbanArt
+              ButtonBasket = bt_retour
+              DataAllFiltered = False
+            end
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 0
+      Height = 574
+      Top = 25
+      Width = 280
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 574
+      ClientWidth = 280
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 280
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 280
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 280
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_famillevente: TExtDBGrid
+        Left = 0
+        Height = 542
+        Top = 30
+        Width = 280
+        TitleButtons = True
+        AutoSort = False
+        Columns = <>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Height = 26
+      Top = 0
+      Width = 966
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 26
+      ClientWidth = 966
+      TabOrder = 2
+      object bt_fermer: TFWClose
+        Left = 884
+        Height = 26
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 0
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 26
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTGrid, feTListView]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+  object im_images: TImageList[2]
+    BkColor = clForeground
+    left = 96
+    top = 178
+    Bitmap = {
+      4C69020000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FF000000FFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FF000000FF000000FF000000FFFF00
+      00FF000000FF000000FF000000000000000000000000FF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      FFFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF000000000000FFFF000000000000FFFF000000000000
+      FFFF000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00FFBDFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF000000000000000000000000000000FF000000FFFF0000FF0000
+      00FF000000FF000000FF000000FF000000000000000000000000848400FF0000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000848400FF0000
+      0000848400FF00000000848400FF00000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000
+    }
+  end
+  object ds_caraarti: TDatasource[3]
+    DataSet = zq_caraarti
+    left = 32
+    top = 296
+  end
+  object zq_caraarti: TIBQuery[4]
+    Database = M_Donnees.Database
+    SQL.Strings = (
+      'select ARTI_Clep, ARTI_Libcom'
+      'from ARTICLE'
+      'where ARTI__CARA = :cara'
+      'ORDER BY ARTI_Libcom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cara'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 104
+    top = 296
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cara'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_maj: TIBQuery[5]
+    Database = M_Donnees.Database
+    SQL.Strings = (
+      'INSERT GAMME_TYPR SELECT distinct ARTI__GAMM,ARTI__TYPR from ARTICLE'
+      'WHERE ARTI__TYPR NOT IN '
+      '(select GATY__TYPR from GAMME_TYPR where GATY__GAMM = ARTI__GAMM) and ARTI__TYPR is not null and ARTI__GAMM is not null'
+      ''
+      'INSERT TYPE_PRODUIT_CARA SELECT distinct ARTI__TYPR,ARTI__CARA from ARTICLE'
+      'WHERE ARTI__CARA NOT IN '
+      '(select TYPC__CARA from TYPE_PRODUIT_CARA where TYPC__TYPR = ARTI__TYPR) and ARTI__CARA is not null '
+      'and ARTI__TYPR is not null and ARTI__GAMM is not null'
+      ''
+      ''
+    )
+    Params = <>
+    left = 104
+    top = 344
+  end
+end

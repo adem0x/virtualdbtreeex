@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <General>
+      <Flags>
+        <MainUnitHasUsesSectionForAllUnits Value="False"/>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+      </Flags>
+      <MainUnit Value="0"/>
+      <Title Value="FDV"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="10">
+      <Item1>
+        <PackageName Value="lazregisteribx"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="CodeTools"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="ExtCopy"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="lazextcomponents"/>
+        <MinVersion Major="1" Build="8" Valid="True"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="ExpertSuperForm"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="virtualdbtreeexlaz"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="rxnew"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="JvXPBarLaz"/>
+      </Item8>
+      <Item9>
+        <PackageName Value="virtualtreeview_package"/>
+      </Item9>
+      <Item10>
+        <PackageName Value="LCL"/>
+      </Item10>
+    </RequiredPackages>
+    <Units Count="66">
+      <Unit0>
+        <Filename Value="FDV.dpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FDV"/>
+        <EditorIndex Value="24"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="49"/>
+        <CursorPos X="24" Y="81"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="U_SeleArticle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_SeleArticle"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_SeleArticle"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="244"/>
+        <CursorPos X="1" Y="266"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="U_Categorie.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Categ"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Categorie"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="29"/>
+        <CursorPos X="1" Y="53"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="U_Client.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Client"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Client"/>
+        <EditorIndex Value="14"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="225"/>
+        <CursorPos X="1" Y="247"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="U_Composant.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Composant"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Composant"/>
+        <EditorIndex Value="17"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="113"/>
+        <CursorPos X="1" Y="129"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="U_ConstMessage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="U_ConstMessage"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="49"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="U_DmDonn.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="M_Donn"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="U_DmDonn"/>
+        <EditorIndex Value="15"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="130"/>
+        <CursorPos X="1" Y="152"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="U_Famille.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_Famille"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="34"/>
+        <CursorPos X="20" Y="56"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="U_Fournisseur.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Fournisseur"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Fournisseur"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="61"/>
+        <CursorPos X="50" Y="82"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="U_Jalonnement.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Jalonnement"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Jalonnement"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="81"/>
+        <CursorPos X="66" Y="102"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="U_ListeCoul.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_ListeCoul"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_ListeCoul"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="10" Y="22"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="U_Modalite.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Modalite"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Modalite"/>
+        <EditorIndex Value="28"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="45"/>
+        <CursorPos X="1" Y="67"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="U_CodePostal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_CodePostal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_CodePostal"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2"/>
+        <CursorPos X="62" Y="25"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="U_Assistante.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Assistante"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Assistante"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="98"/>
+        <CursorPos X="39" Y="104"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="U_Representant.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Repr"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Representant"/>
+        <EditorIndex Value="29"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="126"/>
+        <CursorPos X="1" Y="148"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="U_TVA.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_TVA"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_TVA"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="24"/>
+        <CursorPos X="1" Y="53"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="U_Typedevis.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Typedevis"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Typedevis"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="27"/>
+        <CursorPos X="36" Y="57"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="U_Motifcloture.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Motifclot"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Motifcloture"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="89"/>
+        <CursorPos X="3" Y="123"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="U_Devis.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Devis"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Devis"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="6717"/>
+        <CursorPos X="27" Y="6740"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="U_Dmdevis.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="M_Dmdevis"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="U_Dmdevis"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="187"/>
+        <CursorPos X="59" Y="221"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="U_comm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Comm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_comm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="44" Y="2"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="U_Sousfamillevente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Sousfamillevente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Sousfamillevente"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="71"/>
+        <CursorPos X="5" Y="112"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="U_Soussousfamvente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Soussousfamvente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Soussousfamvente"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="72"/>
+        <CursorPos X="5" Y="113"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="U_Famillevente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_Famillevente"/>
+        <EditorIndex Value="13"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="40"/>
+        <CursorPos X="1" Y="63"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="U_Gamme.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Gamme"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Gamme"/>
+        <EditorIndex Value="21"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="81"/>
+        <CursorPos X="1" Y="103"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="U_TypeProduit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_TypeProduit"/>
+        <EditorIndex Value="20"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="94"/>
+        <CursorPos X="1" Y="138"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="U_Caracteristique.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Caracteristique"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Caracteristique"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="72"/>
+        <CursorPos X="1" Y="110"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="U_ComposeArticle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_ComposeArticle"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_ComposeArticle"/>
+        <EditorIndex Value="16"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="89"/>
+        <CursorPos X="44" Y="114"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="U_Civilite.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Civilite"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Civilite"/>
+        <EditorIndex Value="8"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="29"/>
+        <CursorPos X="1" Y="54"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="U_DmCompose.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="M_DmCompose"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="U_DmCompose"/>
+        <EditorIndex Value="18"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="81"/>
+        <CursorPos X="1" Y="103"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="U_Structure.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Structure"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Structure"/>
+        <EditorIndex Value="19"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="396"/>
+        <CursorPos X="1" Y="265"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="U_Comportement.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Comportement"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Comportement"/>
+        <EditorIndex Value="22"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="71"/>
+        <CursorPos X="1" Y="93"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="U_Pays.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Pays"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Pays"/>
+        <EditorIndex Value="9"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="39"/>
+        <CursorPos X="1" Y="61"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="U_Commande.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Commande"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Commande"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="273"/>
+        <CursorPos X="29" Y="294"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="U_Dmcommande.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="M_Dmcommande"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="U_Dmcommande"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="34" Y="10"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="U_TypeFinition.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_TypeFinition"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="159"/>
+        <CursorPos X="31" Y="178"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="U_Finition.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_Finition"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="223"/>
+        <CursorPos X="31" Y="242"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="U_Prodrepr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Prodrepr"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Prodrepr"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="83"/>
+        <CursorPos X="31" Y="121"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="U_Prodfiche.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Prodfiche"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Prodfiche"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="10"/>
+        <CursorPos X="1" Y="32"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="U_SeleEditions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_SeleEdition"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_SeleEditions"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="214"/>
+        <CursorPos X="64" Y="235"/>
+        <UsageCount Value="41"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="U_RepSecteur.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_RepSecteur"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_RepSecteur"/>
+        <EditorIndex Value="27"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="42"/>
+        <CursorPos X="1" Y="64"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="U_Interloc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="U_Interloc"/>
+        <EditorIndex Value="11"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="45"/>
+        <CursorPos X="1" Y="81"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="U_Affectation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="F_Affectation"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="U_Affectation"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="12"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="31"/>
+        <CursorPos X="1" Y="54"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="U_DmArticle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="M_Article"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="U_DmArticle"/>
+        <EditorIndex Value="26"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="75"/>
+        <CursorPos X="1" Y="97"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="U_SeleArticle.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="U_Finition.dfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="U_Representant.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="../ZEOSDBO/src/component/ZAbstractRODataset.pas"/>
+        <UnitName Value="ZAbstractRODataset"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="389"/>
+        <CursorPos X="15" Y="409"/>
+        <UsageCount Value="12"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="U_Jalonnement.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="148"/>
+        <CursorPos X="27" Y="180"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="U_Jalonnement.dfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="148"/>
+        <CursorPos X="27" Y="180"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="U_Commande.lfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="16"/>
+        <CursorPos X="1" Y="19"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="U_SeleEditions.dfm"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="../../Lazarus/composants/jvXP/JvXPButtons.pas"/>
+        <UnitName Value="JvXPButtons"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="403"/>
+        <CursorPos X="58" Y="423"/>
+        <UsageCount Value="13"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="../../Lazarus/composants/jvXP/JvXPCore.pas"/>
+        <UnitName Value="JvXPCore"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="140"/>
+        <CursorPos X="3" Y="171"/>
+        <UsageCount Value="11"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="../Extended/core/fonctions_db.pas"/>
+        <UnitName Value="fonctions_db"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="964"/>
+        <CursorPos X="10" Y="985"/>
+        <UsageCount Value="11"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="../Extended/core/fonctions_variant.pas"/>
+        <UnitName Value="fonctions_variant"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="187"/>
+        <CursorPos X="50" Y="225"/>
+        <UsageCount Value="11"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="../Extended/extcomp/U_GroupView.pas"/>
+        <UnitName Value="U_GroupView"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2111"/>
+        <CursorPos X="24" Y="2134"/>
+        <UsageCount Value="11"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="../../../../../development/lazarus/lcl/dbgrids.pas"/>
+        <UnitName Value="DBGrids"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1112"/>
+        <CursorPos X="20" Y="1135"/>
+        <UsageCount Value="11"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="../ManFrames/mansoftware/u_formdico.pas"/>
+        <UnitName Value="u_formdico"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="78"/>
+        <CursorPos X="14" Y="100"/>
+        <UsageCount Value="11"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="../ManFrames/manframes/u_customframework.pas"/>
+        <UnitName Value="u_customframework"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="6" Y="1"/>
+        <UsageCount Value="11"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="../ManFrames/manbase/fonctions_manbase.pas"/>
+        <UnitName Value="fonctions_manbase"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="320"/>
+        <CursorPos X="5" Y="358"/>
+        <UsageCount Value="11"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="../Extended/extcomp/U_ExtComboInsert.pas"/>
+        <UnitName Value="U_ExtComboInsert"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="182"/>
+        <CursorPos X="1" Y="187"/>
+        <UsageCount Value="10"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="../Extended/extcomp/u_extsearchedit.pas"/>
+        <UnitName Value="u_extsearchedit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="208"/>
+        <CursorPos X="27" Y="243"/>
+        <UsageCount Value="10"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="../Extended/btncomp/fonctions_dialogs.pas"/>
+        <UnitName Value="fonctions_dialogs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="10"/>
+        <CursorPos X="11" Y="38"/>
+        <UsageCount Value="10"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="../../../Extended/inicomp/fonctions_forms.pas"/>
+        <UnitName Value="fonctions_forms"/>
+        <EditorIndex Value="25"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="119"/>
+        <CursorPos X="30" Y="142"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="../../../FDV Demo/FDV.lpr"/>
+        <UnitName Value="FDV"/>
+        <EditorIndex Value="23"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="92"/>
+        <CursorPos X="115" Y="131"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit65>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="U_Soussousfamvente.pas"/>
+        <Caret Line="149" Column="12" TopLine="107"/>
+      </Position1>
+      <Position2>
+        <Filename Value="U_Soussousfamvente.pas"/>
+        <Caret Line="67" Column="1" TopLine="45"/>
+      </Position2>
+      <Position3>
+        <Filename Value="U_Soussousfamvente.pas"/>
+        <Caret Line="69" Column="1" TopLine="49"/>
+      </Position3>
+      <Position4>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="214" Column="19" TopLine="203"/>
+      </Position4>
+      <Position5>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="115" Column="21" TopLine="91"/>
+      </Position5>
+      <Position6>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="125" Column="49" TopLine="112"/>
+      </Position6>
+      <Position7>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="115" Column="20" TopLine="102"/>
+      </Position7>
+      <Position8>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="137" Column="3" TopLine="96"/>
+      </Position8>
+      <Position9>
+        <Filename Value="U_Caracteristique.pas"/>
+        <Caret Line="93" Column="1" TopLine="71"/>
+      </Position9>
+      <Position10>
+        <Filename Value="U_Civilite.pas"/>
+        <Caret Line="149" Column="3" TopLine="107"/>
+      </Position10>
+      <Position11>
+        <Filename Value="U_Civilite.pas"/>
+        <Caret Line="73" Column="21" TopLine="50"/>
+      </Position11>
+      <Position12>
+        <Filename Value="U_Pays.pas"/>
+        <Caret Line="157" Column="33" TopLine="135"/>
+      </Position12>
+      <Position13>
+        <Filename Value="U_Pays.pas"/>
+        <Caret Line="104" Column="1" TopLine="69"/>
+      </Position13>
+      <Position14>
+        <Filename Value="U_Pays.pas"/>
+        <Caret Line="82" Column="23" TopLine="72"/>
+      </Position14>
+      <Position15>
+        <Filename Value="U_Pays.pas"/>
+        <Caret Line="59" Column="1" TopLine="55"/>
+      </Position15>
+      <Position16>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="37" Column="1" TopLine="17"/>
+      </Position16>
+      <Position17>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="13" Column="40" TopLine="1"/>
+      </Position17>
+      <Position18>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="104" Column="25" TopLine="59"/>
+      </Position18>
+      <Position19>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="74" Column="21" TopLine="49"/>
+      </Position19>
+      <Position20>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="34" Column="1" TopLine="8"/>
+      </Position20>
+      <Position21>
+        <Filename Value="U_Prodfiche.pas"/>
+        <Caret Line="35" Column="1" TopLine="35"/>
+      </Position21>
+      <Position22>
+        <Filename Value="U_Interloc.pas"/>
+        <Caret Line="126" Column="31" TopLine="107"/>
+      </Position22>
+      <Position23>
+        <Filename Value="U_Interloc.pas"/>
+        <Caret Line="81" Column="21" TopLine="58"/>
+      </Position23>
+      <Position24>
+        <Filename Value="U_Interloc.pas"/>
+        <Caret Line="102" Column="1" TopLine="80"/>
+      </Position24>
+      <Position25>
+        <Filename Value="U_Interloc.pas"/>
+        <Caret Line="123" Column="29" TopLine="82"/>
+      </Position25>
+      <Position26>
+        <Filename Value="U_Affectation.pas"/>
+        <Caret Line="113" Column="4" TopLine="92"/>
+      </Position26>
+      <Position27>
+        <Filename Value="U_Affectation.pas"/>
+        <Caret Line="80" Column="21" TopLine="57"/>
+      </Position27>
+      <Position28>
+        <Filename Value="U_Affectation.pas"/>
+        <Caret Line="89" Column="1" TopLine="77"/>
+      </Position28>
+      <Position29>
+        <Filename Value="U_Affectation.pas"/>
+        <Caret Line="112" Column="29" TopLine="71"/>
+      </Position29>
+      <Position30>
+        <Filename Value="U_Affectation.pas"/>
+        <Caret Line="50" Column="1" TopLine="27"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="$(TargetCPU)-$(TargetOS)/FDV"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <SyntaxMode Value="Delphi"/>
+      </SyntaxOptions>
+    </Parsing>
+    <Other>
+      <CompilerMessages>
+        <UseMsgFile Value="True"/>
+      </CompilerMessages>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+  <EditorMacros Count="0"/>
+</CONFIG>

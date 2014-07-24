@@ -1,0 +1,569 @@
+inherited F_Sousfamillevente: TF_Sousfamillevente
+  Left = 128
+  Height = 500
+  Top = 141
+  Width = 868
+  Caption = 'Type de produit'
+  ClientHeight = 500
+  ClientWidth = 868
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 500
+    Top = 0
+    Width = 868
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 500
+    ClientWidth = 868
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 255
+      Height = 473
+      Top = 24
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 260
+      Height = 473
+      Top = 24
+      Width = 605
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 473
+      ClientWidth = 605
+      Constraints.MinWidth = 20
+      TabOrder = 0
+      object RbSplitter2: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 5
+        Top = 128
+        Width = 605
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 605
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 605
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 605
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 98
+        Top = 30
+        Width = 605
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 98
+        ClientWidth = 605
+        Constraints.MinHeight = 1
+        TabOrder = 0
+        object lb_libelle: TFWLabel
+          Tag = 1003
+          Left = 28
+          Height = 16
+          Top = 39
+          Width = 54
+          AutoSize = False
+          Caption = 'lb_libelle'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 33
+          Height = 16
+          Top = 14
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_famille: TFWLabel
+          Tag = 1002
+          Left = 25
+          Height = 16
+          Top = 63
+          Width = 57
+          AutoSize = False
+          Caption = 'lb_famille'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_libelle: TFWDBEdit
+          Tag = 3
+          Left = 102
+          Height = 27
+          Top = 35
+          Width = 460
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 10
+          Width = 55
+          CharCase = ecUppercase
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+        object ed_famille: TFWDBLookupCombo
+          Tag = 2
+          Left = 102
+          Height = 29
+          Top = 60
+          Width = 460
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ListFieldIndex = 0
+          LookupCache = False
+          ParentFont = False
+          TabOrder = 2
+        end
+        object bt_sousfam: TJvXPButton
+          Left = 565
+          Height = 22
+          Top = 60
+          Width = 22
+          Caption = '...'
+          TabOrder = 3
+          OnClick = bt_sousfamClick
+        end
+      end
+      object ct_ssfv: TPageControl
+        Left = 0
+        Height = 338
+        Top = 133
+        Width = 605
+        ActivePage = ts_ssfam
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        object ts_ssfam: TTabSheet
+          Caption = 'Sous sous Famille'
+          ClientHeight = 307
+          ClientWidth = 601
+          object RbSplitter1: TSplitter
+            Left = 321
+            Height = 280
+            Top = 27
+            Width = 5
+          end
+          object Panel10: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 601
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 601
+            TabOrder = 0
+            object Panel12: TPanel
+              Left = 231
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel13: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel1: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel5: TPanel
+              Left = 585
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_abandonner: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 108
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object bt_enregistrer: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+            object bt_retour: TJvXPButton
+              Left = 493
+              Height = 25
+              Hint = 'Réaffectation aux Directions opérationnelles d''origine'
+              Top = 0
+              Width = 92
+              Caption = 'Retour origine'
+              Enabled = False
+              TabOrder = 6
+              Align = alRight
+            end
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 280
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 280
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 1
+            object lv_sousssfam: TDBGroupView
+              Left = 0
+              Height = 280
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = ' '
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Sous sous famille membre'
+                  Width = 186
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = -1
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_Donn.ds_sofv_ssfv
+              DataKeyUnit = 'SSFV_Clep'
+              DataShowAll = True
+              DataTableUnit = 'SOUS_SOUSFAMILLEV'
+              DataTableGroup = 'SOUS_SOUSFAMILLEV'
+              DataTableOwner = 'SOUS_FAMILLEV'
+              DataSourceOwner = M_Donn.ds_sofv
+              DataKeyOwner = 'SOFV_Clep'
+              DataFieldUnit = 'SSFV_Clep'
+              DataFieldGroup = 'SSFV__SOFV'
+              ButtonTotalIn = bt_in_total
+              ButtonIn = bt_in_item
+              ButtonTotalOut = bt_out_total
+              ButtonOut = bt_out_item
+              DataListOpposite = lv_transfert
+              ButtonRecord = bt_enregistrer
+              ButtonCancel = bt_abandonner
+              ButtonBasket = bt_retour
+              DataAllFiltered = False
+            end
+            object Panel2: TPanel
+              Left = 240
+              Height = 280
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 280
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_in_item: TFWInSelect
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 49
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_in_total: TFWInAll
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales deviennent membre de cette direction opérationnelle'
+                Top = 70
+                Width = 49
+                Enabled = False
+                TabOrder = 1
+              end
+              object bt_out_item: TFWOutSelect
+                Left = 14
+                Height = 33
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 149
+                Width = 49
+                Enabled = False
+                TabOrder = 2
+              end
+              object bt_out_total: TFWOutAll
+                Left = 14
+                Height = 33
+                Hint = 'Ces directions régionales vont être désaffectées de leur direction opérationnelle'
+                Top = 189
+                Width = 49
+                Enabled = False
+                TabOrder = 3
+              end
+            end
+          end
+          object lv_transfert: TDBGroupView
+            Left = 326
+            Height = 280
+            Hint = 'A réaffecter'
+            Top = 27
+            Width = 275
+            Align = alClient
+            Columns = <            
+              item
+                Caption = ' '
+              end            
+              item
+                AutoSize = True
+                Caption = 'A réaffecter'
+                Width = 207
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = -1
+            TabOrder = 2
+            ViewStyle = vsReport
+            Datasource = M_Donn.ds_sofv_ssfv
+            DataKeyUnit = 'SSFV_Clep'
+            DataShowAll = True
+            DataTableUnit = 'SOUS_SOUSFAMILLEV'
+            DataTableGroup = 'SOUS_SOUSFAMILLEV'
+            DataTableOwner = 'SOUS_FAMILLEV'
+            DataSourceOwner = M_Donn.ds_sofv
+            DataKeyOwner = 'SOFV_Clep'
+            DataFieldUnit = 'SSFV_Clep'
+            DataFieldGroup = 'SSFV__SOFV'
+            DataListPrimary = False
+            ButtonTotalIn = bt_out_total
+            ButtonIn = bt_out_item
+            ButtonTotalOut = bt_in_total
+            ButtonOut = bt_in_item
+            DataListOpposite = lv_sousssfam
+            ButtonRecord = bt_enregistrer
+            ButtonCancel = bt_abandonner
+            ButtonBasket = bt_retour
+            DataAllFiltered = False
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 0
+      Height = 473
+      Top = 24
+      Width = 256
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 473
+      ClientWidth = 256
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 256
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 256
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 256
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_sofv: TExtDBGrid
+        Left = 0
+        Height = 441
+        Top = 30
+        Width = 256
+        TitleButtons = True
+        AutoSort = False
+        Columns = <>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel3: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 866
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 25
+      ClientWidth = 866
+      TabOrder = 2
+      object bt_fermer: TFWClose
+        Left = 784
+        Height = 25
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 0
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = [feTGrid, feTListView]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+end

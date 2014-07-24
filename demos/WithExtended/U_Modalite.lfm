@@ -1,0 +1,478 @@
+inherited F_Modalite: TF_Modalite
+  Left = 109
+  Height = 620
+  Top = 167
+  Width = 933
+  Caption = 'Fiches des modalités'
+  ClientHeight = 620
+  ClientWidth = 933
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnActivate = F_FormDicoActivate
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 620
+    Top = 0
+    Width = 933
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 620
+    ClientWidth = 933
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 342
+      Height = 593
+      Top = 24
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 347
+      Height = 593
+      Top = 24
+      Width = 583
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 593
+      ClientWidth = 583
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      object RbSplitter5: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 5
+        Top = 238
+        Width = 583
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+      object pa_5: TPanel
+        Left = 0
+        Height = 30
+        Top = 0
+        Width = 583
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 30
+        ClientWidth = 583
+        TabOrder = 1
+        object nv_saisieModalite: TExtDBNavigator
+          Left = 0
+          Height = 30
+          Top = 0
+          Width = 583
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 210
+        Top = 28
+        Width = 583
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 210
+        ClientWidth = 583
+        Constraints.MinHeight = 210
+        TabOrder = 0
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 55
+          Height = 16
+          Top = 15
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_design: TFWLabel
+          Tag = 1002
+          Left = 45
+          Height = 16
+          Top = 40
+          Width = 59
+          AutoSize = False
+          Caption = 'lb_design'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_lib: TFWLabel
+          Tag = 1003
+          Left = 72
+          Height = 16
+          Top = 61
+          Width = 32
+          AutoSize = False
+          Caption = 'lb_lib'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_Defaut: TFWLabel
+          Tag = 1004
+          Left = 72
+          Height = 16
+          Top = 180
+          Width = 32
+          AutoSize = False
+          Caption = 'lb_lib'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_design: TFWDBEdit
+          Tag = 2
+          Left = 123
+          Height = 27
+          Top = 36
+          Width = 361
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 123
+          Height = 27
+          Top = 11
+          Width = 57
+          CharCase = ecNormal
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+        object mo_lib: TDBMemo
+          Tag = 3
+          Left = 123
+          Height = 111
+          Top = 61
+          Width = 361
+          Color = clMoneyGreen
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 300
+          ParentFont = False
+          TabOrder = 2
+        end
+        object ch_Defaut: TDBCheckBox
+          Tag = 4
+          Left = 123
+          Height = 17
+          Top = 180
+          Width = 14
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          OnClick = ch_DefautClick
+          ParentFont = False
+          TabOrder = 3
+          ValueChecked = 'Vrai'
+          ValueUnchecked = 'Faux'
+        end
+      end
+      object Panel1: TPanel
+        Left = 0
+        Height = 348
+        Top = 243
+        Width = 583
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 348
+        ClientWidth = 583
+        TabOrder = 2
+        object Panel2: TPanel
+          Left = 0
+          Height = 348
+          Top = 0
+          Width = 583
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 348
+          ClientWidth = 583
+          Constraints.MinWidth = 10
+          TabOrder = 0
+          object Panel3: TPanel
+            Left = 0
+            Height = 30
+            Top = 0
+            Width = 583
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 30
+            ClientWidth = 583
+            TabOrder = 0
+            object nv_navModalite: TExtDBNavigator
+              Left = 0
+              Height = 30
+              Top = 0
+              Width = 583
+              Flat = True
+              DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+              Align = alClient
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              Orientation = noHorizontal
+              VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+              GlyphSize = gsLarge
+              Hints.Strings = (
+                'Premier enregistrement'
+                'Enregistrement précédent'
+                'Enregistrement suivant'
+                'Dernier enregistrement'
+                'Insérer enregistrement'
+                'Supprimer l''enregistrement'
+                'Modifier l''enregistrement'
+                'Valider modifications'
+                'Annuler les modifications'
+                'Rafraîchir les données'
+                'Rechercher un enregistrement'
+              )
+            end
+          end
+          object gd_modalite: TExtDBGrid
+            Left = 0
+            Height = 318
+            Top = 28
+            Width = 583
+            TitleButtons = False
+            AutoSort = False
+            Columns = <>
+            OptionsRx = []
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWindow
+            FocusColor = clRed
+            SelectedColor = clHighlight
+            GridLineStyle = psSolid
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            ParentColor = False
+            Scrollbars = ssHorizontal
+            TabOrder = 1
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 0
+      Height = 593
+      Top = 24
+      Width = 343
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 593
+      ClientWidth = 343
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 30
+        Top = 0
+        Width = 343
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 30
+        ClientWidth = 343
+        TabOrder = 0
+        object nv_typModalite: TExtDBNavigator
+          Left = 0
+          Height = 30
+          Top = 0
+          Width = 343
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Orientation = noHorizontal
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_typModalite: TExtDBGrid
+        Left = 0
+        Height = 563
+        Top = 28
+        Width = 343
+        TitleButtons = False
+        AutoSort = False
+        Columns = <>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssHorizontal
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel4: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 931
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 25
+      ClientWidth = 931
+      TabOrder = 2
+      object Panel11: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 361
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+      object bt_apercu: TFWPreview
+        Left = 359
+        Height = 25
+        Hint = 'Aperçu  (Impression / exportation)'
+        Top = 0
+        Caption = 'Aperçu'
+        TabOrder = 4
+        Align = alLeft
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        ParentFont = False
+        Visible = False
+      end
+      object Panel5: TPanel
+        Left = 432
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object bt_imprimer: TFWPrint
+        Left = 445
+        Height = 25
+        Hint = 'Impression des résultats de la sélection'
+        Top = 0
+        Width = 80
+        Caption = 'Imprimer'
+        TabOrder = 5
+        Align = alLeft
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        ParentFont = False
+        Visible = False
+      end
+      object Panel7: TPanel
+        Left = 525
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 2
+      end
+      object Panel8: TPanel
+        Left = 538
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 3
+      end
+      object dbtn_fermer: TFWClose
+        Left = 849
+        Height = 25
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 6
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = dbtn_fermerClick
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    SaveEdits = []
+    SaveForm = [sfSavePos,sfSaveSize,sfSaveSize,sfSaveSize,sfSaveSize]
+    left = 97
+    top = 137
+  end
+end

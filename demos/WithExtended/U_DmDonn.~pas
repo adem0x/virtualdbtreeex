@@ -1,0 +1,640 @@
+unit U_DmDonn;
+
+interface
+
+uses
+	SysUtils,StrUtils, Classes, DB, ADODB, Forms,Dialogs,controls,U_Donnees, mc_fonction_string, U_Mcformdico, U_ConstMessage ;
+type
+	TM_Donn = class(TDataModule)
+		ds_Finition: TDataSource;
+    ds_client: TDataSource;
+    ds_cp: TDataSource;
+    adot_cp: TADOTable;
+    adot_four: TADOTable;
+		ds_four: TDataSource;
+		adoq_RechcliDevis: TADOQuery;
+		adoq_Rechfourcomp: TADOQuery;
+    adoq_Rechfourarti: TADOQuery;
+    ds_jalon: TDataSource;
+    adot_jalon: TADOTable;
+    ds_famille: TDataSource;
+    adot_famille: TADOTable;
+    adoq_Finition: TADOQuery;
+    ds_categ: TDataSource;
+    adot_categ: TADOTable;
+    adot_modalite: TADOTable;
+		ds_modalite: TDataSource;
+    adoq_maj_groupe: TADOQuery;
+    adoq_client: TADOQuery;
+    ds_Composant: TDataSource;
+		adoq_composant: TADOQuery;
+    ds_assist: TDataSource;
+    adot_assist: TADOTable;
+    ds_maxnumcod: TDataSource;
+    adoq_maxnumcod: TADOQuery;
+    ds_repr: TDataSource;
+    adoq_repr: TADOQuery;
+    ds_tva: TDataSource;
+    adoq_tva: TADOQuery;
+    ds_typedevis: TDataSource;
+    adoq_typedevis: TADOQuery;
+    ds_motifclot: TDataSource;
+    adoq_motifclot: TADOQuery;
+    ds_fave: TDataSource;
+    adoq_fave: TADOQuery;
+    ds_sofv: TDataSource;
+		adoq_sofv: TADOQuery;
+    ds_ssfv: TDataSource;
+    adoq_ssfv: TADOQuery;
+    ds_sofv_ssfv: TDataSource;
+    adoq_sofv_ssfv: TADOQuery;
+    ds_ssfv_pvr: TDataSource;
+    adoq_ssfv_pvr: TADOQuery;
+    ds_fave_sofv: TDataSource;
+    adoq_fave_sofv: TADOQuery;
+    ds_ClieAffecte: TDataSource;
+    ds_ClieInter: TDataSource;
+    ADOQ_Civilite: TADOQuery;
+    ds_Civilite: TDataSource;
+    ds_pays: TDataSource;
+    ds_PaysClient: TDataSource;
+    ADOQ_CliInRepr: TADOQuery;
+    ds_CliInRepr: TDataSource;
+    ADOQ_CliOutRepr: TADOQuery;
+    ds_CliOutRepr: TDataSource;
+    ds_clidiffin: TDataSource;
+    adoq_clidiffin: TADOQuery;
+    adoq_clidiffout: TADOQuery;
+    ds_clidiffout: TDataSource;
+    adot_ClieAffecte: TADOTable;
+    ds_CliDevis: TDataSource;
+    ds_CliCmde: TDataSource;
+    adoq_CliDevis: TADOQuery;
+    adoq_InteFonct: TADOQuery;
+		adoq_AffeZone: TADOQuery;
+    adoq_CliCmde: TADOQuery;
+    ds_ville: TDataSource;
+		adoq_ville: TADOQuery;
+    adoq_prod_travail: TADOQuery;
+    adoq_prod_acces: TADOQuery;
+    adoq_location: TADOQuery;
+    adoq_prod_fichiers: TADOQuery;
+    ds_prod_travail: TDataSource;
+    ds_prod_acces: TDataSource;
+    ds_RepSecteur: TDataSource;
+    adoq_RepSecteur: TADOQuery;
+    adoq_dep: TADOQuery;
+    ds_dep: TDataSource;
+    ds_villeInDep: TDataSource;
+    adoq_villeInDep: TADOQuery;
+    ds_villeSearched: TDataSource;
+    adoq_villeSearched: TADOQuery;
+    adoq_depSearched: TADOQuery;
+		ds_secteur: TDataSource;
+    adoq_secteur: TADOQuery;
+    ds_villeAlone: TDataSource;
+    adoq_villeAlone: TADOQuery;
+    ds_filtreville: TDataSource;
+    adoq_filtreville: TADOQuery;
+    ds_filtrecp: TDataSource;
+    adoq_filtrecp: TADOQuery;
+    adoq_deleteVille: TADOQuery;
+    adoq_deleteDep: TADOQuery;
+    ds_typModalite: TDataSource;
+    adoq_typModalite: TADOQuery;
+		ds_modalit: TDataSource;
+    adoq_modalit: TADOQuery;
+    adoq_updModaliteDft: TADOQuery;
+    adoq_devis_repr: TADOQuery;
+    adoq_commande_repr: TADOQuery;
+    ds_cheminbase: TDataSource;
+    adoq_cheminbase: TADOQuery;
+    adoq_client_diffgen: TADOQuery;
+    adoq_attache_base: TADOQuery;
+    adoq_attache_cmd: TADOQuery;
+    adoq_ini_access: TADOQuery;
+    ds_FinitionDeclasse: TDataSource;
+    adoq_FinitionDeclasse: TADOQuery;
+    adoq_FinitionNonDeclasse: TADOQuery;
+    ds_FinitionNonDeclasse: TDataSource;
+    adoq_dts: TADOQuery;
+    adoq_detache_cmd: TADOQuery;
+    adoq_detache_base: TADOQuery;
+    adoq_Pays: TADOQuery;
+    adoq_ClieInter: TADOQuery;
+    adoq_PaysClient: TADOQuery;
+    adot_TypeFini: TADOTable;
+    ds_TypeFini: TDataSource;
+    procedure adot_clientBeforeDelete(DataSet: TDataSet);
+    procedure adot_fourBeforeDelete(DataSet: TDataSet);
+    procedure adot_fourNewRecord(DataSet: TDataSet);
+		procedure adoq_clientNewRecord(DataSet: TDataSet);
+    procedure adoq_clientAfterScroll(DataSet: TDataSet);
+    procedure adoq_composantAfterScroll(DataSet: TDataSet);
+    procedure adot_categNewRecord(DataSet: TDataSet);
+    procedure adot_articleNewRecord(DataSet: TDataSet);
+		procedure adoq_faveDeleteError(DataSet: TDataSet; E: EDatabaseError;
+      var Action: TDataAction);
+    procedure adoq_sofvDeleteError(DataSet: TDataSet; E: EDatabaseError;
+      var Action: TDataAction);
+    procedure adoq_ssfvDeleteError(DataSet: TDataSet; E: EDatabaseError;
+      var Action: TDataAction);
+    procedure adoq_sofv_ssfvDeleteError(DataSet: TDataSet;
+      E: EDatabaseError; var Action: TDataAction);
+    procedure adoq_ClieInterAfterInsert(DataSet: TDataSet);
+    procedure adot_AffectePostError(DataSet: TDataSet; E: EDatabaseError;
+      var Action: TDataAction);
+		procedure adoq_artcoulBeforePost(DataSet: TDataSet);
+    procedure adot_cpBeforePost(DataSet: TDataSet);
+    procedure adoq_ClieInterBeforePost(DataSet: TDataSet);
+    procedure adot_ClieAffecteBeforePost(DataSet: TDataSet);
+    procedure ds_clientStateChange(Sender: TObject);
+    procedure adoq_ClieInterAfterPost(DataSet: TDataSet);
+    procedure adoq_clientAfterPost(DataSet: TDataSet);
+    procedure adoq_composantNewRecord(DataSet: TDataSet);
+    procedure adoq_FinitionAfterOpen(DataSet: TDataSet);
+    procedure adot_fourAfterOpen(DataSet: TDataSet);
+    procedure adoq_tvaAfterOpen(DataSet: TDataSet);
+    procedure adot_articleAfterEdit(DataSet: TDataSet);
+    procedure adoq_composantAfterOpen(DataSet: TDataSet);
+    procedure adoq_CompCoulBeforePost(DataSet: TDataSet);
+    procedure adoq_CompCoulNewRecord(DataSet: TDataSet);
+    procedure adoq_artcoulNewRecord(DataSet: TDataSet);
+    procedure adoq_Article1NewRecord(DataSet: TDataSet);
+    procedure adoq_RepSecteurAfterScroll(DataSet: TDataSet);
+    procedure adoq_RepSecteurBeforePost(DataSet: TDataSet);
+    procedure adoq_reprAfterScroll(DataSet: TDataSet);
+    procedure adoq_RepSecteurAfterPost(DataSet: TDataSet);
+    procedure adoq_RepSecteurAfterDelete(DataSet: TDataSet);
+    procedure adoq_RepSecteurAfterCancel(DataSet: TDataSet);
+    procedure adoq_modalitAfterPost(DataSet: TDataSet);
+    procedure adot_familleNewRecord(DataSet: TDataSet);
+		procedure adoq_clientBeforePost(DataSet: TDataSet);
+		procedure Modifieadoq_Clie(DataSet: TDataSet);
+    procedure adoq_FinitionAfterInsert(DataSet: TDataSet);
+    procedure adoq_clientAfterOpen(DataSet: TDataSet);
+
+	private
+		{ Déclarations privées }
+	public
+		{ Déclarations publiques }
+	end;
+
+var
+	M_Donn: TM_Donn;
+
+implementation
+
+uses U_Client, U_FenetrePrincipale, U_Composant,
+		 U_SeleArticle, U_ComposeArticle, Variants , mc_fonctions_db,
+	U_CodePostal, U_RepSecteur , U_Representant ,U_Modalite, U_Prodrepr,
+  U_DmCompose;
+
+{$R *.dfm}
+
+procedure TM_Donn.adot_clientBeforeDelete(DataSet: TDataSet);
+begin
+  adoq_RechcliDevis.Active := FALSE;
+  adoq_RechcliDevis.Parameters.ParamByName('client1').Value := M_Donn.ds_client.DataSet.Fields[0].AsString;
+  adoq_RechcliDevis.Parameters.ParamByName('client2').Value := M_Donn.ds_client.DataSet.Fields[0].AsString;
+  adoq_RechcliDevis.Parameters.ParamByName('client3').Value := M_Donn.ds_client.DataSet.Fields[0].AsString;
+
+  adoq_RechcliDevis.Active := TRUE;
+  If adoq_RechcliDevis.Fields[0].Value <> 0 then
+  begin
+    MessageDlg ('Impossible de supprimer ce client,'+#13+
+                'il est rattaché à un devis.',mtWarning , [mbOk], 0);
+    abort;
+  end ;
+
+end;
+
+procedure TM_Donn.adot_fourBeforeDelete(DataSet: TDataSet);
+var lb_supp:boolean;
+begin
+  lb_supp := FALSE;
+
+  adoq_Rechfourcomp.Active := FALSE;
+  adoq_Rechfourcomp.Parameters.ParamByName('four').Value := M_Donn.ds_four.DataSet.Fields[0].AsString;
+  adoq_Rechfourcomp.Active := TRUE;
+  If adoq_Rechfourcomp.Fields[0].Value <> 0 then
+    lb_supp := TRUE;
+
+  adoq_Rechfourarti.Active := FALSE;
+  adoq_Rechfourarti.Parameters.ParamByName('four').Value := M_Donn.ds_four.DataSet.Fields[0].AsString;
+
+  adoq_Rechfourarti.Active := TRUE;
+  If adoq_Rechfourarti.Fields[0].Value <> 0 then
+    lb_supp := TRUE;
+
+  if lb_supp then
+  begin
+    MessageDlg ('Impossible de supprimer ce fournisseur,'+#13+
+                'il est rattaché à un composant ou un article.',mtWarning , [mbOk], 0);
+    abort;
+  end ;
+end;
+
+procedure TM_Donn.adot_fourNewRecord(DataSet: TDataSet);
+begin
+    // affectation des valeurs par defaut
+    ds_four.DataSet.Fields[1].AsString := 'fr';
+end;
+
+procedure TM_Donn.adoq_clientNewRecord(DataSet: TDataSet);
+begin
+
+
+		// affectation des valeurs par defaut
+		adoq_client.Fields.DataSet.fieldbyname('CLIE__FAMI').AsInteger := 0;
+		adoq_client.Fields.DataSet.fieldbyname('CLIE__PAYS').AsString := 'F';
+		adoq_client.Fields.DataSet.fieldbyname('CLIE_Type').AsBoolean := FALSE;
+		adoq_client.Fields.DataSet.fieldbyname('CLIE_Datecrea').AsDatetime := now;
+		adoq_client.Fields.DataSet.fieldbyname('CLIE__REPR').AsString := gs_Resto;
+
+		if assigned(F_Client )
+		and (F_Client.visible)then
+		 	F_Client.p_ApresInsert;
+
+end;
+
+procedure TM_Donn.adoq_clientAfterScroll(DataSet: TDataSet);
+begin
+//	if assigned ( F_Client )
+//	and F_Client.Visible Then
+//		F_Client.Lb_datecreation.Caption := FormatDateTime('d/mm/yyyy',M_Donn.ds_client.DataSet.FieldByName('CLIE_Datecrea').AsDateTime);
+end;
+
+procedure TM_Donn.adoq_composantAfterScroll(DataSet: TDataSet);
+begin
+//  F_Composant.Lb_date.Caption := FormatDateTime('d/mm/yyyy',M_Donn.ds_Composant.DataSet.FieldByName('COMP_Datecreation').AsDateTime);
+	F_Composant.Lb_datecreation.Caption := FormatDateTime(U_CST_format_date_2,M_Donn.ds_Composant.DataSet.FieldByName('COMP_Datecreation').AsDateTime);
+
+end;
+
+procedure TM_Donn.adot_categNewRecord(DataSet: TDataSet);
+begin
+	adot_categ.FieldByName('CATE_Valide').asBoolean := TRUE;
+end;
+
+procedure TM_Donn.adot_articleNewRecord(DataSet: TDataSet);
+begin
+	DataSet.FieldByName('ARTI_Datecrea').AsDateTime := now;
+	DataSet.FieldByName('ARTI_Compose').AsBoolean  := False;
+end;
+
+procedure TM_Donn.adoq_faveDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+
+var lTs_mes : array[0..3] of string;
+begin
+		lTs_mes[0] := 'Sous famille';
+		lTs_mes[1] := 'cette Famille';
+		lTs_mes[2] := 'Sous famille';
+		lTs_mes[3] := 'cette Famille';
+
+		MessageDlg(fs_RemplaceMsg(U_CST_9005,lTs_mes ), mtWarning, [mbOk], 0);
+end;
+
+
+
+procedure TM_Donn.adoq_sofvDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+
+  var lTs_mes : array[0..3] of string;
+begin
+   	// En cas de retour d'erreur lié a un restaurant et une DR
+		lTs_mes[0] := 'Sous-sous-famille';
+		lTs_mes[1] := 'cette Sous-famille';
+		lTs_mes[2] := 'Sous-sous-famille';
+		lTs_mes[3] := 'cette Sous-famille';
+
+		MessageDlg(fs_RemplaceMsg(U_CST_9005,lTs_mes ), mtWarning, [mbOk], 0);
+
+
+end;
+
+procedure TM_Donn.adoq_ssfvDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+
+  var lTs_mes : array[0..3] of string;
+begin
+   	// En cas de retour d'erreur lié a un restaurant et une DR
+		lTs_mes[0] := 'produits de vente de regroupement';
+		lTs_mes[1] := 'cette sous sous famille';
+		lTs_mes[2] := 'produits de vente de regroupement';
+		lTs_mes[3] := 'cette sous sous famille';
+
+		MessageDlg(fs_RemplaceMsg(U_CST_9005,lTs_mes ), mtWarning, [mbOk], 0);
+
+end;
+
+procedure TM_Donn.adoq_sofv_ssfvDeleteError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+begin
+	MessageDlg(U_CST_9000, mtWarning, [mbOK], 0);
+
+end;
+
+procedure TM_Donn.adoq_ClieInterAfterInsert(DataSet: TDataSet);
+begin
+	adoq_ClieInter.FieldByName ( 'INTE__CLIE' ).Value := adoq_client.FieldByName ( 'CLIE_Clep' ).Value ;
+end;
+
+procedure TM_Donn.adot_AffectePostError(DataSet: TDataSet;
+  E: EDatabaseError; var Action: TDataAction);
+begin
+	MessageDlg ( 'La zone ''Nom de la zone'' ne peut pas être vide.' + #13 + #13
+													 + 'Effectuer une saisie ou annuler.', mtWarning, [mbOk], 0)
+end;
+
+procedure TM_Donn.adoq_artcoulBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		F_SeleArticle.p_BeforePost2 ;
+end;
+
+procedure TM_Donn.adot_cpBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_CodePostal )
+	and F_CodePostal.Visible Then
+		F_CodePostal.p_ValideDonnees ;
+end;
+
+procedure TM_Donn.adoq_ClieInterBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Client )
+	and F_Client.Visible Then
+		F_Client.p_BeforePostInter ;
+end;
+
+procedure TM_Donn.adot_ClieAffecteBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Client )
+	and F_Client.Visible Then
+		F_Client.p_BeforePostAffecte ;
+
+end;
+
+procedure TM_Donn.ds_clientStateChange(Sender: TObject);
+begin
+  // le code client ne peut pas etre modifié par un représentant et privileges <
+	if assigned ( F_Client ) and F_Client.Visible and (gi_niveau_priv < U_CST_ASSISTANT) Then
+		F_Client.fb_controlSetReadOnly ( F_Client.ed_Code, adoq_Client.State <> dsInsert );
+end;
+
+procedure TM_Donn.adoq_ClieInterAfterPost(DataSet: TDataSet);
+begin
+	adoq_InteFonct.Close ;
+	Modifieadoq_Clie(DataSet);
+{	if assigned(F_Client) and F_Client .Visible Then
+		begin
+			F_Client .cbx_Inter.LookupSource.DataSet.Close ;
+			F_Client .cbx_Inter.LookupSource.DataSet.Open ;
+	end;
+}
+end;
+
+procedure TM_Donn.adoq_clientAfterPost(DataSet: TDataSet);
+begin
+	adoq_client.UpdateBatch ( arAll );
+	if gi_niveau_priv = U_CST_ADMIN then
+		begin
+			F_Client.cbx_repr.ReadOnly := false;
+			F_Client.cbx_repr.Color := F_Client.ColorEdit;
+			F_Client.cbx_repr.Enabled := true;
+		end;
+end;
+
+procedure TM_Donn.adoq_composantNewRecord(DataSet: TDataSet);
+begin
+	adoq_composant.FieldByName('COMP_Indicspecial').asBoolean := False;
+	adoq_composant.FieldByName('COMP_Datecreation').AsVariant := Date;
+
+end;
+
+procedure TM_Donn.adoq_FinitionAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField ( Dataset.FieldByName ( 'FINI_Txcharge' )).DisplayFormat := U_CST_format_money_1 ;
+end;
+
+procedure TM_Donn.adot_fourAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField ( Dataset.FieldByName ( 'FOUR_Coefrefac' )).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField ( Dataset.FieldByName ( 'FOUR_Coefport'  )).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_Donn.adoq_tvaAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField ( Dataset.FieldByName ( 'TTVA_Taux'  )).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_Donn.adot_articleAfterEdit(DataSet: TDataSet);
+begin
+	if assigned ( F_SeleArticle )
+	and F_SeleArticle.Visible Then
+		F_SeleArticle.p_ApresEdit ;
+
+end;
+
+procedure TM_Donn.adoq_composantAfterOpen(DataSet: TDataSet);
+begin
+	TNumericField (M_Donn.adoq_composant.FieldByName('COMP_Prixactuel')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (M_Donn.adoq_composant.FieldByName('COMP_Prixfutur')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (M_Donn.adoq_composant.FieldByName('COMP_Cubage')).DisplayFormat := U_CST_format_money_1 ;
+	TNumericField (M_Donn.adoq_composant.FieldByName('COMP_Coefcubage')).DisplayFormat := U_CST_format_money_1 ;
+
+end;
+
+procedure TM_Donn.adoq_CompCoulBeforePost(DataSet: TDataSet);
+begin
+	if assigned ( F_Composant )
+	and F_Composant.Visible Then
+		F_Composant.p_BeforePost2 ;
+
+end;
+
+procedure TM_Donn.adoq_CompCoulNewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_COFI_Choixfinit ).Value := 4 ;
+end;
+
+procedure TM_Donn.adoq_artcoulNewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_ARFI_Choixfinit ).Value := 4 ;
+
+end;
+
+//*****************************
+// Procédure: adot_paysAfterPost
+// Mise à jour affichage des clients associés au pays
+//**************************
+procedure TM_Donn.adoq_Article1NewRecord(DataSet: TDataSet);
+begin
+	Dataset.FieldByName ( CST_ARTI_Date ).Value := FormatDateTime(U_CST_format_date_2,Now) ;
+end;
+
+
+
+procedure TM_Donn.adoq_RepSecteurAfterScroll(DataSet: TDataSet);
+begin
+  if assigned(F_RepSecteur)
+  and (F_RepSecteur.visible) then
+    begin
+     with F_RepSecteur do
+        begin
+         if not gb_dontScrollSecteur then
+          begin
+            if (b_activateSecteur and (not (adoq_RepSecteur.State in [dsInsert]))) then
+              begin
+                p_affichageCombo;
+                gs_depSecteur := M_Donn.adoq_RepSecteur.FieldByName('SECT_Codeinsee').AsString;
+              end
+            else
+              begin
+                cbx_dep.text := '';
+                cbx_ville.text := '';
+              end;
+          end;
+        end;
+    end;
+end;
+
+
+procedure TM_Donn.adoq_RepSecteurBeforePost(DataSet: TDataSet);
+begin
+  if assigned(F_RepSecteur)
+  and (F_RepSecteur.visible)then
+    begin
+      //Verif que le departement n'est pas deja selectionné pour un autre représentant
+      F_RepSecteur.p_verifDep;
+    end;
+end;
+
+procedure TM_Donn.adoq_reprAfterScroll(DataSet: TDataSet);
+begin
+	if assigned(F_Repr)
+	and (F_Repr.visible)then
+		begin
+			//initialisation du Grid des secteurs
+			F_Repr.p_initSecteur;
+			{
+			// on réaffiche la liste des devis et des commandes du représentant
+			adoq_devis_repr.close;
+			adoq_devis_repr.parameters.ParamByName('coderepr').Value:=adoq_repr.FieldByName('REPR_Clep').AsString;
+      adoq_devis_repr.open;
+			adoq_comm_repr.close;
+			adoq_comm_repr.parameters.ParamByName('coderepr').Value:=adoq_repr.FieldByName('REPR_Clep').AsString;
+			adoq_comm_repr.open;}
+		end;
+
+	if assigned(F_Prodrepr)
+	and (F_Prodrepr.visible)then
+		begin
+			F_Prodrepr.ed_location.Text := ExtractFilePath(Application.ExeName)+'Package\'+DataSet.fieldbyname('REPR_Clep').AsString;
+		end;
+
+end;
+
+
+procedure TM_Donn.adoq_RepSecteurAfterPost(DataSet: TDataSet);
+begin
+  if not M_Donn.adoq_RepSecteur.FieldByName('SECT_Codeinsee').isNull then
+    begin
+      if length(M_Donn.adoq_RepSecteur.FieldByName('SECT_Codeinsee').AsString) = 2 then
+        begin
+          F_RepSecteur.gs_repSecteur := M_Donn.adoq_RepSecteur.FieldByName('SECT__REPR').AsString;
+          F_RepSecteur.gs_depSecteur := M_Donn.adoq_RepSecteur.FieldByName('SECT_Codeinsee').AsString;
+          F_RepSecteur.p_deleteVilles;
+        end
+      else
+        begin
+          F_RepSecteur.gs_repSecteur := M_Donn.adoq_RepSecteur.FieldByName('SECT__REPR').AsString;
+					F_RepSecteur.gs_villeSecteur := M_Donn.adoq_RepSecteur.FieldByName('SECT_Codeinsee').AsString;
+					F_RepSecteur.p_deleteDep;
+        end;
+
+      //ajout dans la combobox des villes
+      F_RepSecteur.p_initComboVille;
+
+      //Réinitialisation de la listes des villes non assignés a des représentants
+      M_Donn.adoq_villeAlone.Close;
+      M_Donn.adoq_villeAlone.open;
+    end;
+end;
+
+procedure TM_Donn.adoq_RepSecteurAfterDelete(DataSet: TDataSet);
+begin
+  //Réinitialisation de la listes des villes non assignés a des représentants
+  M_Donn.adoq_villeAlone.Close;
+  M_Donn.adoq_villeAlone.open;
+end;
+
+procedure TM_Donn.adoq_RepSecteurAfterCancel(DataSet: TDataSet);
+begin
+    F_RepSecteur.p_affichageCombo;
+end;
+
+procedure TM_Donn.adoq_modalitAfterPost(DataSet: TDataSet);
+var ls_typ,ls_cle : string;
+begin
+   if (not M_Donn.adoq_modalit.fieldbyname('MODA__TYMO').ISNULL)
+      and (not M_Donn.adoq_modalit.fieldbyname('MODA_Clep').ISNULL) then
+        begin
+          if F_Modalite.ch_Defaut.Checked then
+            begin
+              //initialisation de variable
+              ls_typ := M_Donn.adoq_modalit.fieldbyname('MODA__TYMO').value;
+              ls_cle := M_Donn.adoq_modalit.fieldbyname('MODA_Clep').value;
+              //requete sql
+              M_Donn.adoq_updModaliteDft.close;
+              M_Donn.adoq_updModaliteDft.Parameters.ParamByName('typ').Value := ls_typ;
+              M_Donn.adoq_updModaliteDft.Parameters.ParamByName('cle').Value := ls_cle;
+              M_Donn.adoq_updModaliteDft.ExecSQL;
+              //rafraichissement
+              M_Donn.adoq_modalit.Refresh;
+              //M_Donn.adoq_modalit.open;
+              //M_Donn.adoq_modalit.Locate('MODA__TYMO;MODA_Clep',varArrayOf([ls_typ,ls_cle]),[]);
+            end;
+        end;
+end;
+
+procedure TM_Donn.adot_familleNewRecord(DataSet: TDataSet);
+begin
+		DataSet.fieldbyname('FAMI_Valide').AsBoolean := True;
+end;
+
+procedure TM_Donn.adoq_clientBeforePost(DataSet: TDataSet);
+begin
+		DataSet.fieldbyname('CLIE_Diffgen').AsBoolean := True;
+end;
+
+///////////////////////////////////////////////////////////////////////
+// Procedure : TM_Donn.Modifieadoq_Clie
+// Description : Modifie la fiche client lorsque l'on modifie les interlocuteurs
+// ou les affectations
+// Arguments : DataSet: TDataSet
+///////////////////////////////////////////////////////////////////////
+procedure TM_Donn.Modifieadoq_Clie(DataSet: TDataSet);
+begin
+	// pour mettre à jour le champs CLIE_Diffgen (adoq_clientBeforePost)
+	// de la table Client qui indique la modification de la fiche client
+	M_Donn.adoq_client.Edit;
+	M_Donn.adoq_client.post;
+end;
+
+procedure TM_Donn.adoq_FinitionAfterInsert(DataSet: TDataSet);
+begin
+  adoq_Finition.FieldByName('FINI_Declasse').Value := 0;
+end;
+
+procedure TM_Donn.adoq_clientAfterOpen(DataSet: TDataSet);
+begin
+  TNumericField ( DataSet.FieldByName('CLIE_Datecrea')).DisplayFormat := 'd/mm/yyyy' ;
+end;
+
+
+end.

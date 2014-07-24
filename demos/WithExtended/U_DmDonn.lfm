@@ -1,0 +1,2129 @@
+object M_Donn: TM_Donn
+  OldCreateOrder = False
+  left = 34
+  top = 37
+  Height = 823
+  HorizontalOffset = 0
+  VerticalOffset = 24
+  Width = 1032
+  object ds_Finition: TDataSource
+    DataSet = zq_Finition
+    left = 8
+    top = 492
+  end
+  object ds_client: TDataSource
+    DataSet = zq_client
+    OnStateChange = ds_clientStateChange
+    left = 170
+    top = 176
+  end
+  object ds_cp: TDataSource
+    DataSet = zq_cp
+    left = 340
+    top = 492
+  end
+  object zq_cp: TIBQuery
+    BeforePost = zq_cpBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM CODE_POSTAL'
+    )
+    Params = <>
+    left = 435
+    top = 492
+  end
+  object zq_four: TIBQuery
+    AfterOpen = zq_fourAfterOpen
+    BeforeDelete = zq_fourBeforeDelete
+    OnNewRecord = zq_fourNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM FOURNISSEUR'
+    )
+    Params = <>
+    left = 248
+    top = 221
+  end
+  object ds_four: TDataSource
+    DataSet = zq_four
+    left = 170
+    top = 221
+  end
+  object zq_RechcliDevis: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) from DEVIS '
+      'where DEVI__CLIE1 = :client1'
+      'or DEVI__CLIE2 = :client2'
+      'or DEVI__CLIE3 = :client3'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'client1'
+        ParamType = ptUnknown
+        Size = 2
+      end    
+      item
+        DataType = ftString
+        Name = 'client2'
+        ParamType = ptUnknown
+        Size = 2
+      end    
+      item
+        DataType = ftString
+        Name = 'client3'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+    left = 340
+    top = 253
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'client1'
+        ParamType = ptUnknown
+        Size = 2
+      end    
+      item
+        DataType = ftString
+        Name = 'client2'
+        ParamType = ptUnknown
+        Size = 2
+      end    
+      item
+        DataType = ftString
+        Name = 'client3'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+  end
+  object zq_Rechfourcomp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) from COMPOSANT'
+      'where COMP__FOUR = :four'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'four'
+        ParamType = ptUnknown
+      end>
+    left = 340
+    top = 301
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'four'
+        ParamType = ptUnknown
+      end>
+  end
+  object zq_Rechfourarti: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select count(*) from ARTICLE'
+      'where ARTI__FOUR = :four'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'four'
+        ParamType = ptUnknown
+      end>
+    left = 435
+    top = 253
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'four'
+        ParamType = ptUnknown
+      end>
+  end
+  object ds_jalon: TDataSource
+    DataSet = zq_jalon
+    left = 170
+    top = 13
+  end
+  object zq_jalon: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM JALONNEMENT'
+    )
+    Params = <>
+    left = 248
+    top = 13
+  end
+  object ds_famille: TDataSource
+    DataSet = zq_famille
+    left = 170
+    top = 81
+  end
+  object zq_famille: TIBQuery
+    OnNewRecord = zq_familleNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM FAMILLE'
+    )
+    Params = <>
+    Filtered = True
+    left = 248
+    top = 81
+  end
+  object zq_Finition: TIBQuery
+    AfterInsert = zq_FinitionAfterInsert
+    AfterOpen = zq_FinitionAfterOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'DECLARE @TyFi AS VARCHAR ( 50 )'
+      'DECLARE @user int'
+      'SET @user= :user'
+      'SET @TyFi = :TyFi'
+      ''
+      ''
+      '--FINITION DECLASSEES + FINITION NON DECLASSES'
+      'IF @user = 0  '
+      'BEGIN'
+      ''
+      'IF @TyFi <> '''''
+      'SELECT * FROM FINITION, GROUPE_FINITION '
+      'WHERE FINI_Lib <> ''Integrite'' and FINI_Lib <> ''Intégrité'' '
+      'AND FINI_Clep = GRFI__FINI '
+      'AND GRFI__TYFI = @TyFi'
+      'ELSE'
+      'select * '
+      'from FINITION'
+      'where FINI_Lib <> ''Integrite'''
+      'and FINI_Lib <> ''Intégrité'''
+      ''
+      ''
+      'END'
+      'ELSE'
+      'BEGIN'
+      '-- FINITION NON DECLASSES SEULEMENT'
+      ''
+      ''
+      'IF @TyFi <> '''''
+      'SELECT * FROM FINITION, GROUPE_FINITION '
+      'WHERE FINI_Lib <> ''Integrite'' and FINI_Lib <> ''Intégrité'' '
+      'AND FINI_Clep = GRFI__FINI '
+      'AND GRFI__TYFI = @TyFi'
+      'AND FINI_Declasse<>1'
+      'ELSE'
+      'select * '
+      'from FINITION'
+      'where FINI_Lib <> ''Integrite'''
+      'and FINI_Lib <> ''Intégrité'''
+      'AND FINI_Declasse<>1'
+      ''
+      ''
+      'END'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'user'
+        ParamType = ptUnknown
+        Size = 1
+      end    
+      item
+        DataType = ftString
+        Name = 'TyFi'
+        ParamType = ptUnknown
+        Size = 50
+      end>
+    left = 88
+    top = 492
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'user'
+        ParamType = ptUnknown
+        Size = 1
+      end    
+      item
+        DataType = ftString
+        Name = 'TyFi'
+        ParamType = ptUnknown
+        Size = 50
+      end>
+  end
+  object ds_categ: TDataSource
+    DataSet = zq_categ
+    left = 170
+    top = 129
+  end
+  object zq_categ: TIBQuery
+    OnNewRecord = zq_categNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM CATEGORIE'
+    )
+    Params = <>
+    left = 248
+    top = 129
+  end
+  object zq_modalite: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM MODALITE'
+    )
+    Params = <>
+    Filtered = True
+    left = 435
+    top = 61
+  end
+  object ds_modalite: TDataSource
+    DataSet = zq_modalite
+    left = 340
+    top = 61
+  end
+  object zq_maj_groupe: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    Params = <>
+    left = 435
+    top = 301
+  end
+  object zq_client: TIBQuery
+    AfterOpen = zq_clientAfterOpen
+    AfterPost = zq_clientAfterPost
+    AfterScroll = zq_clientAfterScroll
+    BeforePost = zq_clientBeforePost
+    OnNewRecord = zq_clientNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'DECLARE @Repr AS VARCHAR ( 50 )'
+      'SET @Repr = :Repr'
+      'IF @Repr <> '''''
+      'AND @Repr IS NOT NULL'
+      'BEGIN'
+      'SELECT * FROM CLIENT WHERE'
+      ' CLIE_Clep IN ( SELECT DEVI__CLIE1 FROM DEVIS WHERE DEVI__REPR = @Repr )'
+      ' OR CLIE_Clep IN ( SELECT DEVI__CLIE2 FROM DEVIS WHERE DEVI__REPR = @Repr )'
+      ' OR CLIE_Clep IN ( SELECT DEVI__CLIE3 FROM DEVIS WHERE DEVI__REPR = @Repr )'
+      ' OR CLIE_Clep IN ( SELECT Client_fac FROM COMMANDE WHERE COMM__REPR = @Repr )'
+      ' OR CLIE_Clep IN ( SELECT Client_liv FROM COMMANDE WHERE COMM__REPR = @Repr )'
+      ' OR CLIE__REPR = @Repr'
+      'AND CLIE_Nom <> ''Intégrité'''
+      'and CLIE_Nom <> ''Integrite'''
+      'END'
+      'ELSE'
+      'select * FROM CLIENT'
+      'where CLIE_Nom <> ''Intégrité'''
+      'and CLIE_Nom <> ''Integrite'''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'Repr'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+    left = 248
+    top = 176
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'Repr'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+  end
+  object ds_Composant: TDataSource
+    DataSet = zq_composant
+    left = 340
+    top = 208
+  end
+  object zq_composant: TIBQuery
+    AfterOpen = zq_composantAfterOpen
+    AfterScroll = zq_composantAfterScroll
+    OnNewRecord = zq_composantNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from COMPOSANT'
+      'where COMP_Lib <> ''Integrite'''
+      'and COMP_Lib <> ''Intégrité'''
+    )
+    Params = <>
+    left = 435
+    top = 208
+  end
+  object ds_assist: TDataSource
+    DataSet = zq_assist
+    left = 170
+    top = 396
+  end
+  object zq_assist: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM ASSISTANTE'
+    )
+    Params = <>
+    left = 248
+    top = 396
+  end
+  object ds_maxnumcod: TDataSource
+    DataSet = zq_maxnumcod
+    left = 340
+    top = 541
+  end
+  object zq_maxnumcod: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select max(COPO_Numcod)'
+      'from CODE_POSTAL'
+      'where COPO_Clep = :cle'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 435
+    top = 541
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'cle'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_repr: TDataSource
+    DataSet = zq_repr
+    left = 170
+    top = 348
+  end
+  object zq_repr: TIBQuery
+    AfterScroll = zq_reprAfterScroll
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT *'
+      'FROM REPRESENTANT'
+    )
+    Params = <>
+    left = 248
+    top = 348
+  end
+  object ds_tva: TDataSource
+    DataSet = zq_tva
+    left = 523
+    top = 13
+  end
+  object zq_tva: TIBQuery
+    AfterOpen = zq_tvaAfterOpen
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from TTVA'
+      ''
+    )
+    Params = <>
+    left = 600
+    top = 13
+  end
+  object ds_typedevis: TDataSource
+    DataSet = zq_typedevis
+    left = 523
+    top = 61
+  end
+  object zq_typedevis: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from TYPE_DEVIS'
+      ''
+    )
+    Params = <>
+    left = 600
+    top = 61
+  end
+  object ds_motifclot: TDataSource
+    DataSet = zq_motifclot
+    left = 523
+    top = 113
+  end
+  object zq_motifclot: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from MOTIF_CLOTURE'
+    )
+    Params = <>
+    left = 600
+    top = 113
+  end
+  object ds_fave: TDataSource
+    DataSet = zq_fave
+    left = 698
+    top = 20
+  end
+  object zq_fave: TIBQuery
+    OnDeleteError = zq_faveDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from FAMILLE_VENTE'
+    )
+    Params = <>
+    left = 770
+    top = 20
+  end
+  object ds_sofv: TDataSource
+    DataSet = zq_sofv
+    left = 698
+    top = 68
+  end
+  object zq_sofv: TIBQuery
+    OnDeleteError = zq_sofvDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from SOUS_FAMILLEV'
+    )
+    Params = <>
+    left = 770
+    top = 68
+  end
+  object ds_ssfv: TDataSource
+    DataSet = zq_ssfv
+    left = 698
+    top = 116
+  end
+  object zq_ssfv: TIBQuery
+    OnDeleteError = zq_ssfvDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from SOUS_SOUSFAMILLEV'
+    )
+    Params = <>
+    left = 770
+    top = 116
+  end
+  object ds_sofv_ssfv: TDataSource
+    DataSet = zq_sofv_ssfv
+    left = 170
+    top = 492
+  end
+  object zq_sofv_ssfv: TIBQuery
+    OnDeleteError = zq_sofv_ssfvDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = ds_sofv
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select SSFV_Clep, SSFV_Libelle'
+      'from SOUS_SOUSFAMILLEV'
+      'where SSFV__SOFV = :ssfam'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ssfam'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 248
+    top = 492
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ssfam'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_ssfv_pvr: TDataSource
+    DataSet = zq_ssfv_pvr
+    left = 170
+    top = 541
+  end
+  object zq_ssfv_pvr: TIBQuery
+    OnDeleteError = zq_sofv_ssfvDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = ds_sofv
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select ARTI_Clep, ARTI_Libcom'
+      'from ARTICLE'
+      'where ARTI__SSFA = :ssfv'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ssfv'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 248
+    top = 541
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ssfv'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_fave_sofv: TDataSource
+    DataSet = zq_fave_sofv
+    left = 170
+    top = 444
+  end
+  object zq_fave_sofv: TIBQuery
+    OnDeleteError = zq_sofv_ssfvDeleteError
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select SOFV_Clep, SOFV_Libelle'
+      'from SOUS_FAMILLEV'
+      'where SOFV__FAVE = :fam'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'fam'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 248
+    top = 444
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'fam'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_ClieAffecte: TDataSource
+    DataSet = zq_ClieAffecte
+    left = 170
+    top = 269
+  end
+  object ds_ClieInter: TDataSource
+    DataSet = zq_ClieInter
+    left = 340
+    top = 13
+  end
+  object zq_Civilite: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * '
+      'from CIVILITE'
+    )
+    Params = <>
+    left = 608
+    top = 165
+  end
+  object ds_Civilite: TDataSource
+    DataSet = zq_Civilite
+    left = 528
+    top = 165
+  end
+  object ds_pays: TDataSource
+    DataSet = zq_Pays
+    left = 880
+    top = 220
+  end
+  object ds_PaysClient: TDataSource
+    DataSet = zq_PaysClient
+    left = 864
+    top = 268
+  end
+  object zq_CliInRepr: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  CLIE_Clep, CLIE_Nom,CLIE_Codepostal,CLIE_Ville,CLIE_Codeinsee FROM CLIENT'
+      'where CLIE__REPR = :repr'
+      'ORDER BY  CLIE_Nom'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 608
+    top = 213
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_CliInRepr: TDataSource
+    DataSet = zq_CliInRepr
+    left = 528
+    top = 213
+  end
+  object zq_CliOutRepr: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  CLIE_Clep, CLIE_Nom,CLIE_Codepostal,CLIE_Ville,CLIE_Codeinsee FROM CLIENT'
+      'Where CLIE__REPR is null'
+      'ORDER BY  CLIE_Nom'
+    )
+    Params = <>
+    left = 608
+    top = 260
+  end
+  object ds_CliOutRepr: TDataSource
+    DataSet = zq_CliOutRepr
+    left = 528
+    top = 260
+  end
+  object ds_clidiffin: TDataSource
+    DataSet = zq_clidiffin
+    left = 340
+    top = 113
+  end
+  object zq_clidiffin: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  REPR_Clep, REPR_Nom FROM REPRESENTANT, CLIENT_DIFFUSION'
+      'where REPR_Clep = CLDI__REPR'
+      'AND CLDI__CLIE = :groupe'
+      'ORDER BY  REPR_Nom'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 10
+      end>
+    left = 435
+    top = 113
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 10
+      end>
+  end
+  object zq_clidiffout: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select  REPR_Clep, REPR_Nom FROM REPRESENTANT'
+      'where REPR_Clep not in (select CLDI__REPR from CLIENT_DIFFUSION'
+      'where CLDI__CLIE = :groupe)'
+      'ORDER BY REPR_Nom'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 50
+      end>
+    left = 435
+    top = 161
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'groupe'
+        ParamType = ptUnknown
+        Size = 50
+      end>
+  end
+  object ds_clidiffout: TDataSource
+    DataSet = zq_clidiffout
+    left = 340
+    top = 161
+  end
+  object zq_ClieAffecte: TIBQuery
+    AfterDelete = Modifiezq_Clie
+    AfterPost = Modifiezq_Clie
+    BeforeDelete = zq_ClieAffecteBeforeDelete
+    BeforePost = zq_ClieAffecteBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM AFFECTATION'
+    )
+    Params = <>
+    left = 248
+    top = 269
+  end
+  object ds_CliDevis: TDataSource
+    DataSet = zq_CliDevis
+    left = 856
+    top = 13
+  end
+  object ds_CliCmde: TDataSource
+    DataSet = zq_CliCmde
+    left = 856
+    top = 61
+  end
+  object zq_CliDevis: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT DEVI_Clep1, DEVI_Clep2, DEVI__TYDE, '
+      'DEVI_Dateenreg, DEVI_Datearrivee, DEVI_Aval, DEVI_Rectif, JALO_Lib '
+      'FROM DEVIS,JALONNEMENT '
+      'WHERE'
+      'DEVI__CLIE3= :client'
+      'AND DEVI__JALO = JALO_Clep'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 10
+      end>
+    left = 930
+    top = 13
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 10
+      end>
+  end
+  object zq_InteFonct: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT DISTINCT INTE_Fonction FROM INTERLOCUTEUR'
+    )
+    Params = <>
+    left = 930
+    top = 113
+  end
+  object zq_AffeZone: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT DISTINCT AFFE_Libelle FROM AFFECTATION'
+    )
+    Params = <>
+    left = 856
+    top = 113
+  end
+  object zq_CliCmde: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT Num_cde, Dat_crea, Dat_modif,'
+      'Num_rectif, Num_devis, Dat_devis'
+      'FROM COMMANDE'
+      'WHERE'
+      'Client_fac= :client'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 10
+      end>
+    left = 930
+    top = 61
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 10
+      end>
+  end
+  object ds_ville: TDataSource
+    DataSet = zq_ville
+    left = 8
+    top = 541
+  end
+  object zq_ville: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL'
+    )
+    Params = <>
+    left = 88
+    top = 541
+  end
+  object zq_prod_travail: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'PRODUCTION_MMO_REPR'
+      ':serveur_ref, :bdd_ref, :serveur, :bdd ,'
+      ':location, :representant, :prod, :result'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'serveur_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'serveur'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'location'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 512
+      end    
+      item
+        DataType = ftString
+        Name = 'representant'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 15
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'prod'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'result'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 104
+    top = 21
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'serveur_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'serveur'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'location'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 512
+      end    
+      item
+        DataType = ftString
+        Name = 'representant'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 15
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'prod'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'result'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_prod_acces: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'PRODUCTION_MC_ACCES_REPR'
+      ':serveur_ref, :bdd_ref, :serveur, :bdd ,'
+      ':location, :representant, :bdd_acces, :bdd_travail'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'serveur_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'serveur'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'location'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 512
+      end    
+      item
+        DataType = ftString
+        Name = 'representant'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 15
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_acces'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_travail'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end>
+    left = 99
+    top = 77
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'serveur_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_ref'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'serveur'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'location'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 512
+      end    
+      item
+        DataType = ftString
+        Name = 'representant'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 15
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_acces'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end    
+      item
+        DataType = ftString
+        Name = 'bdd_travail'
+        NumericScale = 255
+        ParamType = ptUnknown
+        Precision = 255
+        Size = 32
+      end>
+  end
+  object zq_location: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT LOTS_Lieuproducts'
+      'FROM LOTS'
+    )
+    Params = <>
+    left = 768
+    top = 165
+  end
+  object zq_prod_fichiers: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'ps_export_representant :repr'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = 15
+      end>
+    left = 696
+    top = 165
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = 15
+      end>
+  end
+  object ds_prod_travail: TDataSource
+    DataSet = zq_prod_travail
+    left = 24
+    top = 21
+  end
+  object ds_prod_acces: TDataSource
+    DataSet = zq_prod_acces
+    left = 18
+    top = 77
+  end
+  object ds_RepSecteur: TDataSource
+    DataSet = zq_RepSecteur
+    left = 8
+    top = 597
+  end
+  object zq_RepSecteur: TIBQuery
+    AfterCancel = zq_RepSecteurAfterCancel
+    AfterDelete = zq_RepSecteurAfterDelete
+    AfterPost = zq_RepSecteurAfterPost
+    AfterScroll = zq_RepSecteurAfterScroll
+    BeforePost = zq_RepSecteurBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select SECT__REPR,'
+      #9'--case LEN(SECT_Codeinsee) WHEN 2 then SECT_Codeinsee else NULL end as dep,'
+      #9'--case LEN(SECT_Codeinsee) WHEN 5 then SECT_Codeinsee else NULL end as ville,'
+      '                SECT_Codeinsee'
+      'from SECTEUR'
+    )
+    Params = <>
+    left = 88
+    top = 597
+  end
+  object zq_dep: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select distinct(LEFT(COPO_Codinsee,2)) as ''dep'''
+      'from CODE_POSTAL'
+      'where COPO_Codinsee<>'''''
+      'order by dep'
+    )
+    Params = <>
+    left = 248
+    top = 600
+  end
+  object ds_dep: TDataSource
+    DataSet = zq_dep
+    left = 171
+    top = 595
+  end
+  object ds_villeInDep: TDataSource
+    DataSet = zq_villeInDep
+    left = 344
+    top = 597
+  end
+  object zq_villeInDep: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select COPO_Codinsee as ''ville'', ''('' + COPO_Codinsee + '') '' + COPO_Ville as Villes'
+      'from CODE_POSTAL '
+      'where COPO_Codinsee like :dep + ''%'''
+      'and COPO_Codinsee<>'''''
+      'and COPO_Codinsee  not in (select  SECT_Codeinsee  from SECTEUR where LEN(COPO_Codinsee)=5)'
+      'order by COPO_Codinsee'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+    left = 440
+    top = 597
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = 2
+      end>
+  end
+  object ds_villeSearched: TDataSource
+    DataSet = zq_villeSearched
+    left = 8
+    top = 701
+  end
+  object zq_villeSearched: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select ''('' + COPO_Codinsee + '') '' + COPO_Ville as Ville'
+      'from CODE_POSTAL '
+      'where COPO_Codinsee= :ville'
+      'order by COPO_Codinsee'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 88
+    top = 693
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_depSearched: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from SECTEUR'
+      'where SECT_Codeinsee= :dep'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 612
+    top = 311
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_secteur: TDataSource
+    DataSet = zq_secteur
+    left = 688
+    top = 221
+  end
+  object zq_secteur: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select LEFT(SECT_Codeinsee,2) as dep,'
+      '          case LEN(SECT_Codeinsee) WHEN 5 then SECT_Codeinsee else NULL end as SECT_Codeinsee,'
+      '          case LEN(SECT_Codeinsee) WHEN 5 then (select COPO_Ville from CODE_POSTAL where COPO_Codinsee = SECT_Codeinsee) else NULL end as ville'
+      'from SECTEUR'
+      'where SECT__REPR = :rep'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 768
+    top = 221
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_villeAlone: TDataSource
+    DataSet = zq_villeAlone
+    left = 175
+    top = 701
+  end
+  object zq_villeAlone: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select LEFT(COPO_Codinsee,2) as dep,COPO_Codinsee, COPO_Ville'
+      'from CODE_POSTAL'
+      'where (LEFT(COPO_Codinsee,2) '
+      '           not in (select SECT_Codeinsee '
+      '                      from SECTEUR'
+      '                      where LEN(SECT_Codeinsee) =2))'
+      'and (COPO_Codinsee '
+      '       not in (select SECT_Codeinsee '
+      '                      from SECTEUR'
+      '                      where LEN(SECT_Codeinsee) =5))'
+      'and COPO_Codinsee<>'' '''
+      'order by dep,COPO_Codinsee'
+    )
+    Params = <>
+    left = 248
+    top = 701
+  end
+  object ds_filtreville: TDataSource
+    DataSet = zq_filtreville
+    left = 8
+    top = 645
+  end
+  object zq_filtreville: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL'
+      'WHERE COPO_Ville = :laville'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'laville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 88
+    top = 645
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'laville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_filtrecp: TDataSource
+    DataSet = zq_filtrecp
+    left = 168
+    top = 653
+  end
+  object zq_filtrecp: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT     COPO_Clep, COPO_Ville, COPO_Codinsee'
+      'FROM         CODE_POSTAL'
+      'WHERE COPO_Clep = :lecp'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'lecp'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 248
+    top = 653
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'lecp'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_deleteVille: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'delete from SECTEUR'
+      'where SECT__REPR = :rep'
+      'and SECT_Codeinsee like :dep + ''%'''
+      'and LEN(SECT_Codeinsee)=5'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 440
+    top = 653
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'dep'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_deleteDep: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'delete from SECTEUR'
+      'where SECT__REPR = :rep'
+      'and SECT_Codeinsee = LEFT(:ville,2)'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'ville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 344
+    top = 653
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'rep'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'ville'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_typModalite: TDataSource
+    DataSet = zq_typModalite
+    left = 528
+    top = 421
+  end
+  object zq_typModalite: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from TYPE_MODALITE'
+    )
+    Params = <>
+    left = 616
+    top = 421
+  end
+  object ds_modalit: TDataSource
+    DataSet = zq_modalit
+    left = 528
+    top = 477
+  end
+  object zq_modalit: TIBQuery
+    AfterPost = zq_modalitAfterPost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from MODALITE'
+      'where MODA_Clep<>'''''
+    )
+    Params = <>
+    left = 944
+    top = 173
+  end
+  object zq_updModaliteDft: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'update MODALITE'
+      'set MODA_Defaut = 0'
+      'where MODA__TYMO = :typ'
+      'and MODA_Clep <> :cle'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'typ'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'cle'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 856
+    top = 171
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'typ'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'cle'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_devis_repr: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'Update DEVIS'
+      'Set DEVI__REPR = :repr'
+      'Where DEVI__CLIE1 = :client'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 432
+    top = 352
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_commande_repr: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'Update COMMANDE'
+      'Set COMM__REPR = :repr'
+      'Where Client_liv = :client'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 424
+    top = 410
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'repr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_cheminbase: TDataSource
+    DataSet = zq_cheminbase
+    left = 8
+    top = 565
+  end
+  object zq_cheminbase: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'Select filename from sysfiles'
+      'where fileid = 1'
+      ''
+    )
+    Params = <>
+    Filtered = True
+    left = 88
+    top = 565
+  end
+  object zq_client_diffgen: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'Update CLIENT'
+      'Set CLIE_Diffgen = 1'
+      'Where CLIE_Clep = :client'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 624
+    top = 365
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_attache_base: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_attache_base(:baseaccess,:baserepr, :baseficaccess, :baseficrepr)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baserepr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseficaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseficrepr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    Filtered = True
+    left = 928
+    top = 397
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baserepr'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseficaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseficrepr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_attache_cmd: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_attache_cmd(:serveur)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    Filtered = True
+    left = 872
+    top = 397
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_ini_access: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_fichier_ini_access(:serveur, :baseaccess)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    Filtered = True
+    left = 944
+    top = 333
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object ds_FinitionDeclasse: TDataSource
+    DataSet = zq_FinitionDeclasse
+    left = 16
+    top = 376
+  end
+  object zq_FinitionDeclasse: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select FINI_Clep, FINI_Lib, FINI_Declasse from FINITION'
+      'where FINI_Declasse = 1'
+      'ORDER BY FINI_Lib'
+    )
+    Params = <>
+    left = 88
+    top = 379
+  end
+  object zq_FinitionNonDeclasse: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select FINI_Clep,FINI_Lib, FINI_Declasse from FINITION'
+      'where FINI_Declasse = 0'
+      'ORDER BY FINI_Lib'
+    )
+    Params = <>
+    left = 96
+    top = 432
+  end
+  object ds_FinitionNonDeclasse: TDataSource
+    DataSet = zq_FinitionNonDeclasse
+    left = 8
+    top = 430
+  end
+  object zq_dts: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_integration_dts()'
+    )
+    Params = <>
+    Filtered = True
+    left = 856
+    top = 461
+  end
+  object zq_detache_cmd: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_detache_cmd(:serveur)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    Filtered = True
+    left = 792
+    top = 472
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'serveur'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_detache_base: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from fn_detache_base(:baseaccess,:baserepr)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baserepr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    Filtered = True
+    left = 912
+    top = 461
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'baseaccess'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'baserepr'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+  object zq_Pays: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM PAYS'
+      'ORDER BY PAYS_Clep'
+    )
+    Params = <>
+    left = 944
+    top = 224
+  end
+  object zq_ClieInter: TIBQuery
+    AfterInsert = zq_ClieInterAfterInsert
+    AfterPost = zq_ClieInterAfterPost
+    BeforePost = zq_ClieInterBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from INTERLOCUTEUR'
+      'where INTE__CLIE = :client'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+    left = 436
+    top = 13
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+  end
+  object zq_PaysClient: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM CLIENT'
+      'WHERE CLIE__PAYS = :pays'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'pays'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+    left = 936
+    top = 272
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'pays'
+        ParamType = ptUnknown
+        Size = 100
+      end>
+  end
+  object zq_TypeFini: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'SELECT * FROM TYPE_FINITION'
+    )
+    Params = <>
+    left = 88
+    top = 324
+  end
+  object ds_TypeFini: TDataSource
+    DataSet = zq_TypeFini
+    left = 16
+    top = 324
+  end
+  object zq_affe_devi: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    GeneratorField.ApplyOnEvent = gaeOnNewRecord
+    SQL.Strings = (
+      'select * from LIGNE_DEVIS, DEVIS'
+      'where DEVI_Clep1 = LIDE__DEVI_1'
+      'and DEVI_Clep2 = LIDE__DEVI_2'
+      'and DEVI__TYDE = LIDE__TYDE'
+      'and DEVI__CLIE1 = :client'
+      'and LIDE__AFFE = :affe'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'affe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+    left = 248
+    top = 312
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'client'
+        ParamType = ptUnknown
+        Size = -1
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'affe'
+        ParamType = ptUnknown
+        Size = -1
+      end>
+  end
+end

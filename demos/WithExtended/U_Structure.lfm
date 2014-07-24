@@ -1,0 +1,2309 @@
+inherited F_Structure: TF_Structure
+  Left = 13
+  Height = 618
+  Top = 72
+  Width = 992
+  HelpContext = 9100
+  Caption = 'Structure d''un article composé'
+  ClientHeight = 618
+  ClientWidth = 992
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  OnDestroy = F_FormDicoDestroy
+  OnShow = F_FormDicoShow
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 618
+    Top = 0
+    Width = 992
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 618
+    ClientWidth = 992
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 281
+      Height = 591
+      Top = 26
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 286
+      Height = 591
+      Top = 26
+      Width = 705
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 591
+      ClientWidth = 705
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 705
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 705
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 705
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_6: TPanel
+        Left = 0
+        Height = 146
+        Top = 32
+        Width = 705
+        HelpContext = 9100
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 146
+        ClientWidth = 705
+        Constraints.MinHeight = 10
+        TabOrder = 0
+        object lb_libelle: TFWLabel
+          Tag = 1003
+          Left = 29
+          Height = 16
+          Top = 39
+          Width = 54
+          AutoSize = False
+          Caption = 'lb_libelle'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 34
+          Height = 16
+          Top = 13
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object Label4: TFWLabel
+          Tag = 1002
+          Left = 17
+          Height = 16
+          Top = 65
+          Width = 66
+          AutoSize = False
+          Caption = 'lb_Gamme'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+          ColorFocus = clMaroon
+        end
+        object Label1: TFWLabel
+          Tag = 1004
+          Left = 17
+          Height = 16
+          Top = 91
+          Width = 66
+          AutoSize = False
+          Caption = 'lb_Gamme'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+          ColorFocus = clMaroon
+        end
+        object Label2: TFWLabel
+          Tag = 1005
+          Left = 34
+          Height = 16
+          Top = 117
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_libelle: TFWDBEdit
+          Tag = 3
+          Left = 102
+          Height = 27
+          Top = 35
+          Width = 460
+          HelpContext = 9100
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 102
+          Height = 27
+          Top = 9
+          Width = 193
+          HelpContext = 9100
+          CharCase = ecUppercase
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+        object cbx_Type: TFWDBLookupCombo
+          Tag = 2
+          Left = 102
+          Height = 29
+          Top = 61
+          Width = 457
+          HelpContext = 9100
+          AutoSize = True
+          ButtonOnlyWhenFocused = False
+          ButtonWidth = 15
+          PopUpFormOptions.Columns = <>
+          Flat = False
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Glyph.Data = {
+            72000000424D7200000000000000360000002800000005000000030000000100
+            2000000000003C00000064000000640000000000000000000000000000000000
+            0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+            0000000000FF000000FF000000FF000000FF000000FF
+          }
+          NumGlyphs = 1
+          ParentColor = False
+          ParentFont = False
+          ReadOnly = False
+          TabOrder = 2
+          TabStop = True
+        end
+        object cbx_Selection: TFWDBLookupCombo
+          Tag = 4
+          Left = 102
+          Height = 29
+          Top = 87
+          Width = 457
+          HelpContext = 9100
+          AutoSize = True
+          ButtonOnlyWhenFocused = False
+          ButtonWidth = 15
+          PopUpFormOptions.Columns = <>
+          Flat = False
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Glyph.Data = {
+            72000000424D7200000000000000360000002800000005000000030000000100
+            2000000000003C00000064000000640000000000000000000000000000000000
+            0000000000FF000000000000000000000000000000FF000000FF000000FF0000
+            0000000000FF000000FF000000FF000000FF000000FF
+          }
+          NumGlyphs = 1
+          ParentColor = False
+          ParentFont = False
+          ReadOnly = False
+          TabOrder = 3
+          TabStop = True
+        end
+        object DBEdit1: TFWDBEdit
+          Tag = 5
+          Left = 102
+          Height = 27
+          Top = 113
+          Width = 73
+          HelpContext = 9100
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 4
+        end
+      end
+      object pc_ComposeStru: TPageControl
+        Left = 0
+        Height = 413
+        Top = 178
+        Width = 705
+        ActivePage = ts_Racine
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        OnChanging = pc_ComposeStruChanging
+        object ts_Racine: TTabSheet
+          Caption = 'Lien article'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 4
+          object RbSplitter3: TSplitter
+            Left = 321
+            Height = 362
+            Top = 27
+            Width = 5
+          end
+          object Panel31: TPanel
+            Left = 0
+            Height = 362
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 362
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lsv_ArticleIn: TDBGroupView
+              Left = 0
+              Height = 362
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 256
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                  Width = 85
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Articles membres de la branche'
+                  Width = 200
+                end>
+              DragMode = dmAutomatic
+              HideSelection = False
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_ArtInBran
+              DataKeyUnit = 'ARTI_Clep'
+              BeforeDataScroll = lsv_ArticleInBeforeDataScroll
+              DataTableUnit = 'ARTICLE'
+              DataTableGroup = 'ARTICLE_STRUCTURE'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'ARST__ARTI'
+              DataFieldGroup = 'ARST__STRU'
+              ButtonIn = bt_InArticle
+              ButtonOut = bt_OutArticle
+              DataListOpposite = lsv_ArticleOut
+              ButtonRecord = bt_EnrArticle
+              ButtonCancel = bt_AbandArticle
+              DataAllFiltered = False
+            end
+            object Panel32: TPanel
+              Left = 256
+              Height = 362
+              Top = 0
+              Width = 65
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 362
+              ClientWidth = 65
+              TabOrder = 1
+              object bt_InArticle: TFWInSelect
+                Left = 0
+                Height = 44
+                Hint = 'L''article sélectionné devient membre de la branche'
+                Top = 30
+                Width = 58
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_OutArticle: TFWOutSelect
+                Left = 0
+                Height = 44
+                Hint = 'L''article sélectionné est exclu de la branche'
+                Top = 138
+                Width = 58
+                Enabled = False
+                TabOrder = 1
+                ParentShowHint = False
+              end
+            end
+          end
+          object lsv_ArticleOut: TDBGroupView
+            Left = 326
+            Height = 362
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 377
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+                Width = 85
+              end            
+              item
+                AutoSize = True
+                Caption = 'Articles non membres de la branche'
+                Width = 272
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            HideSelection = False
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 1
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_ArtOutBran
+            DataKeyUnit = 'ARTI_Clep'
+            BeforeDataScroll = lsv_ArticleOutBeforeDataScroll
+            DataTableUnit = 'ARTICLE'
+            DataTableGroup = 'ARTICLE_STRUCTURE'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'ARST__ARTI'
+            DataFieldGroup = 'ARST__STRU'
+            DataListPrimary = False
+            ButtonIn = bt_OutArticle
+            ButtonOut = bt_InArticle
+            DataListOpposite = lsv_ArticleIn
+            ButtonRecord = bt_EnrArticle
+            ButtonCancel = bt_AbandArticle
+            DataAllFiltered = False
+          end
+          object Panel33: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 703
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 703
+            TabOrder = 2
+            object Label3: TFWLabel
+              Left = 270
+              Height = 25
+              Top = 1
+              Width = 130
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel34: TPanel
+              Left = 224
+              Height = 25
+              Top = 1
+              Width = 24
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel35: TPanel
+              Left = 106
+              Height = 25
+              Top = 1
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel36: TPanel
+              Left = 1
+              Height = 25
+              Top = 1
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel37: TPanel
+              Left = 689
+              Height = 25
+              Top = 1
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_AbandArticle: TFWCancel
+              Left = 125
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 1
+              Width = 99
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+            end
+            object bt_EnrArticle: TFWOK
+              Left = 14
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 1
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+            end
+            object bt_Article: TJvXPButton
+              Left = 248
+              Height = 25
+              Hint = 'Accéder à la fiche Article'
+              Top = 1
+              Width = 22
+              Caption = '...'
+              TabOrder = 6
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = bt_ArticleClick
+            end
+            object ed_FiltreArticles: TEdit
+              Tag = 501
+              Left = 406
+              Height = 27
+              Top = 0
+              Width = 159
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreArticlesKeyUp
+              ParentFont = False
+              TabOrder = 7
+            end
+          end
+        end
+        object ts_LienBra: TTabSheet
+          Caption = 'Lien branche parente'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 6
+          object RbSplitter4: TSplitter
+            Left = 321
+            Height = 355
+            Top = 27
+            Width = 5
+          end
+          object Panel39: TPanel
+            Left = 0
+            Height = 355
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 355
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lsv_LieBrIn: TDBGroupView
+              Left = 0
+              Height = 355
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 256
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                  Width = 85
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Branches membres de la branche'
+                  Width = 212
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_BrLieBrIn
+              DataKeyUnit = 'STRU_Clep'
+              BeforeDataScroll = lsv_LieBrInBeforeDataScroll
+              DataTableUnit = 'STRUCTURE'
+              DataTableGroup = 'STRUCTURE_LIEE'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'STLI__Parent'
+              DataFieldGroup = 'STLI__Enfant'
+              ButtonIn = bt_inLieBr
+              ButtonOut = bt_OutLieBr
+              DataListOpposite = lsv_LieBrOut
+              ButtonRecord = bt_EnrLieBr
+              ButtonCancel = bt_AbandLieBr
+              DataAllFiltered = False
+            end
+            object Panel40: TPanel
+              Left = 254
+              Height = 355
+              Top = 0
+              Width = 65
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 355
+              ClientWidth = 65
+              TabOrder = 1
+              object bt_inLieBr: TFWInSelect
+                Left = 0
+                Height = 44
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 59
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_OutLieBr: TFWOutSelect
+                Left = 0
+                Height = 44
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 138
+                Width = 59
+                Enabled = False
+                TabOrder = 1
+              end
+            end
+          end
+          object lsv_LieBrOut: TDBGroupView
+            Left = 326
+            Height = 355
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 375
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+                Width = 85
+              end            
+              item
+                AutoSize = True
+                Caption = 'Branches non membres de la branche'
+                Width = 270
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 1
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_BrLieBrOut
+            DataKeyUnit = 'STRU_Clep'
+            BeforeDataScroll = lsv_LieBrOutBeforeDataScroll
+            DataTableUnit = 'STRUCTURE'
+            DataTableGroup = 'STRUCTURE_LIEE'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'STLI_Parent'
+            DataFieldGroup = 'STLI_Enfant'
+            DataListPrimary = False
+            ButtonIn = bt_OutLieBr
+            ButtonOut = bt_inLieBr
+            DataListOpposite = lsv_LieBrIn
+            ButtonRecord = bt_EnrLieBr
+            ButtonCancel = bt_AbandLieBr
+            DataAllFiltered = False
+          end
+          object Panel41: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 701
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 701
+            TabOrder = 2
+            object Label8: TFWLabel
+              Left = 236
+              Height = 25
+              Top = 0
+              Width = 119
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel42: TPanel
+              Left = 223
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel43: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel44: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel45: TPanel
+              Left = 685
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_AbandLieBr: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 100
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object bt_EnrLieBr: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+            end
+            object ed_FiltreLieBr: TEdit
+              Tag = 507
+              Left = 374
+              Height = 27
+              Top = 0
+              Width = 191
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreLieBrKeyUp
+              ParentFont = False
+              TabOrder = 6
+            end
+          end
+        end
+        object ts_Structure: TTabSheet
+          Caption = 'Composer la branche'
+          ClientHeight = 389
+          ClientWidth = 703
+          object RbSplitter1: TSplitter
+            Left = 321
+            Height = 355
+            Top = 27
+            Width = 5
+          end
+          object Panel10: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 701
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 701
+            TabOrder = 0
+            object Label9: TFWLabel
+              Left = 236
+              Height = 25
+              Top = 0
+              Width = 119
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel12: TPanel
+              Left = 223
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel13: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel1: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object Panel5: TPanel
+              Left = 685
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 3
+            end
+            object bt_abandbranche: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 100
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+              ParentShowHint = False
+            end
+            object bt_enrbranche: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 5
+              Align = alLeft
+              ParentShowHint = False
+            end
+            object ed_FiltreBr: TEdit
+              Tag = 503
+              Left = 374
+              Height = 27
+              Top = 0
+              Width = 191
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreBrKeyUp
+              ParentFont = False
+              TabOrder = 6
+            end
+          end
+          object Panel6: TPanel
+            Left = 0
+            Height = 355
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 355
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 1
+            object lsv_BrancheIn: TDBGroupView
+              Left = 0
+              Height = 355
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 252
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                  Width = 85
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Branches membres de la branche'
+                  Width = 212
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_BranInBran
+              DataKeyUnit = 'STRU_Clep'
+              BeforeDataScroll = lsv_BrancheInBeforeDataScroll
+              DataTableUnit = 'STRUCTURE'
+              DataTableGroup = 'STRUCTURE_LIEE'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'STLI__Enfant'
+              DataFieldGroup = 'STLI__Parent'
+              ButtonIn = bt_in_item
+              ButtonOut = bt_out_item
+              DataListOpposite = lsv_BrancheOut
+              ButtonRecord = bt_enrbranche
+              ButtonCancel = bt_abandbranche
+              DataAllFiltered = False
+            end
+            object Panel2: TPanel
+              Left = 250
+              Height = 355
+              Top = 0
+              Width = 69
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 355
+              ClientWidth = 69
+              TabOrder = 1
+              object bt_in_item: TFWInSelect
+                Left = 4
+                Height = 44
+                Hint = 'La branche sélectionnée devient membre de la branche'
+                Top = 30
+                Width = 58
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_out_item: TFWOutSelect
+                Left = 4
+                Height = 45
+                Hint = 'La branche sélectionnée est exclue de la branche'
+                Top = 149
+                Width = 66
+                Enabled = False
+                TabOrder = 1
+                ParentShowHint = False
+              end
+            end
+          end
+          object lsv_BrancheOut: TDBGroupView
+            Left = 326
+            Height = 355
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 375
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+                Width = 85
+              end            
+              item
+                AutoSize = True
+                Caption = 'Branches non membres de la branche'
+                Width = 270
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 2
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_BranOutBr
+            DataKeyUnit = 'STRU_Clep'
+            BeforeDataScroll = lsv_BrancheOutBeforeDataScroll
+            DataTableUnit = 'STRUCTURE'
+            DataTableGroup = 'STRUCTURE_LIEE'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'STLI__Enfant'
+            DataFieldGroup = 'STLI__Parent'
+            DataListPrimary = False
+            ButtonIn = bt_out_item
+            ButtonOut = bt_in_item
+            DataListOpposite = lsv_BrancheIn
+            ButtonRecord = bt_enrbranche
+            ButtonCancel = bt_abandbranche
+            DataAllFiltered = False
+          end
+        end
+        object ts_Composant: TTabSheet
+          Caption = 'Composer la branche'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 1
+          object RbSplitter2: TSplitter
+            Left = 321
+            Height = 355
+            Top = 27
+            Width = 5
+          end
+          object Panel9: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 701
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 701
+            TabOrder = 0
+            object Label5: TFWLabel
+              Left = 265
+              Height = 25
+              Top = 0
+              Width = 135
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel14: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel15: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel16: TPanel
+              Left = 685
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object bt_AbandonComp: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 101
+              Enabled = False
+              TabOrder = 3
+              Align = alLeft
+            end
+            object bt_EnrComp: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object Panel11: TPanel
+              Left = 224
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 5
+            end
+            object bt_Compos: TJvXPButton
+              Left = 245
+              Height = 25
+              Hint = 'Accéder à la fiche Composant'
+              Top = 1
+              Width = 22
+              Caption = '...'
+              TabOrder = 6
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = bt_ComposClick
+            end
+            object ed_FiltreComp: TEdit
+              Tag = 504
+              Left = 406
+              Height = 27
+              Top = 0
+              Width = 159
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreCompKeyUp
+              ParentFont = False
+              TabOrder = 7
+            end
+          end
+          object lsv_CompoOut: TDBGroupView
+            Left = 326
+            Height = 355
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 375
+            Align = alClient
+            Columns = <            
+              item
+                Caption = 'Code'
+                Width = 85
+              end            
+              item
+                AutoSize = True
+                Caption = 'Composants non membres de la branche'
+                Width = 270
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = 1
+            StateImages = im_images
+            TabOrder = 1
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_ComOutBra
+            DataKeyUnit = 'COMP_Clep'
+            BeforeDataScroll = lsv_CompoOutBeforeDataScroll
+            DataTableUnit = 'COMPOSANT'
+            DataTableGroup = 'STRUCTURE_COMPOSANT'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'SCOM__COMP'
+            DataFieldGroup = 'SCOM__STRU'
+            DataListPrimary = False
+            ButtonIn = bt_out_comp
+            ButtonOut = bt_in_comp
+            DataListOpposite = lsv_CompoIn
+            ButtonRecord = bt_EnrComp
+            ButtonCancel = bt_AbandonComp
+            DataAllFiltered = False
+          end
+          object Panel7: TPanel
+            Left = 0
+            Height = 355
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 355
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 2
+            object lsv_CompoIn: TDBGroupView
+              Left = 0
+              Height = 355
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 257
+              Align = alClient
+              Columns = <              
+                item
+                  Caption = 'Code'
+                  Width = 85
+                end              
+                item
+                  AutoSize = True
+                  Caption = 'Composants membres de la branche'
+                  Width = 230
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = 1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_ComInBran
+              DataKeyUnit = 'COMP_Clep'
+              BeforeDataScroll = lsv_CompoInBeforeDataScroll
+              DataTableUnit = 'COMPOSANT'
+              DataTableGroup = 'STRUCTURE_COMPOSANT'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'SCOM__COMP'
+              DataFieldGroup = 'SCOM__STRU'
+              ButtonIn = bt_in_comp
+              ButtonOut = bt_out_comp
+              DataListOpposite = lsv_CompoOut
+              ButtonRecord = bt_EnrComp
+              ButtonCancel = bt_AbandonComp
+              DataAllFiltered = False
+            end
+            object Panel8: TPanel
+              Left = 255
+              Height = 355
+              Top = 0
+              Width = 64
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 355
+              ClientWidth = 64
+              TabOrder = 1
+              object bt_in_comp: TFWInSelect
+                Left = 3
+                Height = 43
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 56
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_out_comp: TFWOutSelect
+                Left = 3
+                Height = 41
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 149
+                Width = 58
+                Enabled = False
+                TabOrder = 1
+              end
+            end
+          end
+        end
+        object ts_Comporte: TTabSheet
+          Caption = 'Condition d''action'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 2
+          object RbSplitter5: TSplitter
+            Left = 321
+            Height = 355
+            Top = 27
+            Width = 5
+          end
+          object Panel17: TPanel
+            Left = 0
+            Height = 355
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 355
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lsv_ComporteIn: TDBGroupView
+              Left = 0
+              Height = 355
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  AutoSize = True
+                  Caption = 'Comportements membres de la branche'
+                  Width = 253
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              SortColumn = -1
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_CompInBra
+              DataKeyUnit = 'CPTM_Clep'
+              DataTableUnit = 'COMPORTEMENT'
+              DataTableGroup = 'STRUCTURE_CPTM_ACT'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'SCPA__CPTM'
+              DataFieldGroup = 'SCPA__STRU'
+              ButtonIn = bt_inComp
+              ButtonOut = bt_OutComp
+              DataListOpposite = lsv_ComporteOut
+              ButtonRecord = bt_EnrComporte
+              ButtonCancel = bt_AbandComporte
+              DataAllFiltered = False
+            end
+            object Panel18: TPanel
+              Left = 240
+              Height = 355
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 355
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_inComp: TFWInSelect
+                Left = 6
+                Height = 43
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 64
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_OutComp: TFWOutSelect
+                Left = 8
+                Height = 44
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 146
+                Width = 63
+                Enabled = False
+                TabOrder = 1
+              end
+            end
+          end
+          object lsv_ComporteOut: TDBGroupView
+            Left = 326
+            Height = 355
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 375
+            Align = alClient
+            Columns = <            
+              item
+                AutoSize = True
+                Caption = 'Comportements non membres de la branche'
+                Width = 355
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            SortColumn = -1
+            StateImages = im_images
+            TabOrder = 1
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_CompOutBra
+            DataKeyUnit = 'CPTM_Clep'
+            DataTableUnit = 'COMPORTEMENT'
+            DataTableGroup = 'STRUCTURE_CPTM_ACT'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'SCPA__CPTM'
+            DataFieldGroup = 'SCPA__STRU'
+            DataListPrimary = False
+            ButtonIn = bt_OutComp
+            ButtonOut = bt_inComp
+            DataListOpposite = lsv_ComporteIn
+            ButtonRecord = bt_EnrComporte
+            ButtonCancel = bt_AbandComporte
+            DataAllFiltered = False
+          end
+          object Panel19: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 701
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 701
+            TabOrder = 2
+            object Label6: TFWLabel
+              Left = 264
+              Height = 25
+              Top = 0
+              Width = 135
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel20: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel21: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel22: TPanel
+              Left = 685
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object bt_AbandComporte: TFWCancel
+              Left = 123
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 0
+              Width = 100
+              Enabled = False
+              TabOrder = 3
+              Align = alLeft
+            end
+            object bt_EnrComporte: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object Panel23: TPanel
+              Left = 223
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 5
+            end
+            object bt_ComporteAct: TJvXPButton
+              Left = 244
+              Height = 25
+              Hint = 'Accéder à la fiche Comportement'
+              Top = 1
+              Width = 22
+              Caption = '...'
+              TabOrder = 6
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = bt_ComporteActClick
+            end
+            object ed_FiltreAction: TEdit
+              Tag = 505
+              Left = 406
+              Height = 27
+              Top = 0
+              Width = 159
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreActionKeyUp
+              ParentFont = False
+              TabOrder = 7
+            end
+          end
+        end
+        object ts_Selection: TTabSheet
+          Caption = 'Condition de (dé)sélection'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 3
+          object RbSplitter6: TSplitter
+            Left = 321
+            Height = 355
+            Top = 27
+            Width = 5
+          end
+          object Panel24: TPanel
+            Left = 0
+            Height = 355
+            Top = 27
+            Width = 321
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 355
+            ClientWidth = 321
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object lsv_SelectionIn: TDBGroupView
+              Left = 0
+              Height = 355
+              Hint = 'Liste des membres'
+              Top = 0
+              Width = 242
+              Align = alClient
+              Columns = <              
+                item
+                  AutoSize = True
+                  Caption = 'Comportements membres de la branche'
+                  Width = 253
+                end>
+              DragMode = dmAutomatic
+              MultiSelect = True
+              ParentShowHint = False
+              ReadOnly = True
+              RowSelect = True
+              ShowHint = True
+              StateImages = im_images
+              TabOrder = 0
+              ViewStyle = vsReport
+              Datasource = M_DmCompose.ds_ComsInBra
+              DataKeyUnit = 'CPTM_Clep'
+              DataTableUnit = 'COMPORTEMENT'
+              DataTableGroup = 'STRUCTURE_CPTM_SEL'
+              DataTableOwner = 'STRUCTURE'
+              DataSourceOwner = M_DmCompose.ds_Structure
+              DataKeyOwner = 'STRU_Clep'
+              DataFieldUnit = 'SCPS__CPTM'
+              DataFieldGroup = 'SCPS__STRU'
+              ButtonIn = bt_InSelection
+              ButtonOut = bt_OutSelection
+              DataListOpposite = lsv_SelectionOut
+              ButtonRecord = bt_EnrSelection
+              ButtonCancel = bt_AbanSelection
+              DataAllFiltered = False
+            end
+            object Panel25: TPanel
+              Left = 240
+              Height = 355
+              Top = 0
+              Width = 79
+              Align = alRight
+              BevelOuter = bvNone
+              ClientHeight = 355
+              ClientWidth = 79
+              TabOrder = 1
+              object bt_InSelection: TFWInSelect
+                Left = 6
+                Height = 44
+                Hint = 'Cette direction régionale devient membre de cette direction opérationnelle'
+                Top = 30
+                Width = 57
+                Enabled = False
+                TabOrder = 0
+                ShowFocusRect = True
+                ParentShowHint = False
+              end
+              object bt_OutSelection: TFWOutSelect
+                Left = 4
+                Height = 44
+                Hint = 'Cette direction régionale va être désaffectée de sa direction opérationnelle'
+                Top = 138
+                Width = 59
+                Enabled = False
+                TabOrder = 1
+              end
+            end
+          end
+          object lsv_SelectionOut: TDBGroupView
+            Left = 326
+            Height = 355
+            Hint = 'Liste d''exclusion'
+            Top = 27
+            Width = 375
+            Align = alClient
+            Columns = <            
+              item
+                AutoSize = True
+                Caption = 'Comportements non membres de la branche'
+                Width = 355
+              end>
+            Constraints.MinWidth = 4
+            DragMode = dmAutomatic
+            MultiSelect = True
+            ParentShowHint = False
+            ReadOnly = True
+            RowSelect = True
+            ShowHint = True
+            StateImages = im_images
+            TabOrder = 1
+            ViewStyle = vsReport
+            Datasource = M_DmCompose.ds_ComsOutBra
+            DataKeyUnit = 'CPTM_Clep'
+            DataTableUnit = 'COMPORTEMENT'
+            DataTableGroup = 'STRUCTURE_CPTM_SEL'
+            DataTableOwner = 'STRUCTURE'
+            DataSourceOwner = M_DmCompose.ds_Structure
+            DataKeyOwner = 'STRU_Clep'
+            DataFieldUnit = 'SCPS__CPTM'
+            DataFieldGroup = 'SCPS__STRU'
+            DataListPrimary = False
+            ButtonIn = bt_OutSelection
+            ButtonOut = bt_InSelection
+            DataListOpposite = lsv_SelectionIn
+            ButtonRecord = bt_EnrSelection
+            ButtonCancel = bt_AbanSelection
+            DataAllFiltered = False
+          end
+          object Panel26: TPanel
+            Left = 0
+            Height = 27
+            Top = 0
+            Width = 701
+            Align = alTop
+            ClientHeight = 27
+            ClientWidth = 701
+            TabOrder = 2
+            object Label7: TFWLabel
+              Left = 264
+              Height = 25
+              Top = 0
+              Width = 135
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Codes sélectionnés'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              WordWrap = True
+              ColorFocus = clMaroon
+            end
+            object Panel27: TPanel
+              Left = 104
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 0
+            end
+            object Panel28: TPanel
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 1
+            end
+            object Panel29: TPanel
+              Left = 685
+              Height = 25
+              Top = 0
+              Width = 13
+              Align = alRight
+              BevelOuter = bvNone
+              TabOrder = 2
+            end
+            object bt_AbanSelection: TJvXPButton
+              Left = 125
+              Height = 25
+              Hint = 'Abandonner les modifications'
+              Top = 1
+              Width = 100
+              Caption = 'Abandonner'
+              Enabled = False
+              TabOrder = 3
+              Align = alLeft
+            end
+            object bt_EnrSelection: TFWOK
+              Left = 12
+              Height = 25
+              Hint = 'Enregistrer les modifications'
+              Top = 0
+              Width = 92
+              Caption = 'Enregistrer'
+              Enabled = False
+              TabOrder = 4
+              Align = alLeft
+            end
+            object Panel30: TPanel
+              Left = 223
+              Height = 25
+              Top = 0
+              Width = 19
+              Align = alLeft
+              BevelOuter = bvNone
+              TabOrder = 5
+            end
+            object bt_ComporteSel: TJvXPButton
+              Left = 244
+              Height = 25
+              Hint = 'Accéder à la fiche Comportement'
+              Top = 1
+              Width = 22
+              Caption = '...'
+              TabOrder = 6
+              Align = alLeft
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = bt_ComporteSelClick
+            end
+            object ed_FiltreSelect: TEdit
+              Tag = 506
+              Left = 406
+              Height = 27
+              Top = 0
+              Width = 159
+              CharCase = ecUppercase
+              Color = 16776176
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              OnKeyUp = ed_FiltreSelectKeyUp
+              ParentFont = False
+              TabOrder = 7
+            end
+          end
+        end
+        object ts_Represente: TTabSheet
+          Caption = 'Représentation'
+          ClientHeight = 389
+          ClientWidth = 703
+          ImageIndex = 5
+          object vt_Composition: TCheckVirtualDBTreeEx
+            Left = 0
+            Height = 382
+            Hint = 'Double-cliquer pour se positionner sur une branche'
+            Top = 0
+            Width = 701
+            Align = alClient
+            BorderStyle = bsSingle
+            DBOptions = [dboAlwaysStructured, dboCheckDBStructure, dboParentStructure, dboReadOnly, dboTrackActive, dboTrackChanges, dboTrackCursor, dboViewAll, dboWriteSecondary]
+            DataSource = M_DmCompose.ds_ArbreArtC
+            Header.AutoSizeIndex = 0
+            Header.Columns = <>
+            Header.DefaultHeight = 17
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'MS Sans Serif'
+            Header.MainColumn = -1
+            Header.Options = [hoAutoResize, hoColumnResize, hoDrag, hoVisible]
+            Header.Style = hsXPStyle
+            KeyFieldName = 'ARDE_Clep'
+            OnDblClick = vt_CompositionDblClick
+            OnExpanded = vt_CompositionExpanded
+            ParentFieldName = 'ARDE_Parent'
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            TreeOptions.MiscOptions = [toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
+            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowTreeLines, toShowVertGridLines, toThemeAware, toUseBlendedImages]
+            ViewFieldName = 'ARDE_Libelle'
+            DBDataFieldNames = 'ARDE_Table'
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 1
+      Height = 591
+      Top = 26
+      Width = 280
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 591
+      ClientWidth = 280
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 280
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 280
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 280
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TabStop = True
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_famillevente: TExtDBGrid
+        Left = 0
+        Height = 559
+        Top = 32
+        Width = 280
+        TitleButtons = False
+        AutoSort = False
+        Columns = <>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+      end
+    end
+    object Panel3: TPanel
+      Left = 1
+      Height = 25
+      Top = 1
+      Width = 990
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 25
+      ClientWidth = 990
+      TabOrder = 2
+      object bt_fermer: TFWClose
+        Left = 910
+        Height = 25
+        Top = 0
+        Caption = 'Fermer'
+        TabOrder = 4
+        Layout = blGlyphRight
+        Align = alRight
+        OnClick = bt_fermerClick
+      end
+      object Panel4: TPanel
+        Left = 0
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+      object bt_Simule: TJvXPButton
+        Left = 817
+        Height = 25
+        Hint = 'Simuler le choix des composants de l''article'
+        Top = 0
+        Width = 80
+        TabStop = False
+        Caption = 'Simuler'
+        TabOrder = 3
+        Layout = blGlyphRight
+        Align = alRight
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = bt_SimuleClick
+      end
+      object Panel38: TPanel
+        Left = 897
+        Height = 25
+        Top = 0
+        Width = 13
+        Align = alRight
+        BevelOuter = bvNone
+        TabOrder = 1
+      end
+      object pa_CocheStru: TPanel
+        Left = 586
+        Height = 25
+        Top = 0
+        Width = 231
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 25
+        ClientWidth = 231
+        TabOrder = 2
+        object ch_Structure: TJvXPCheckbox
+          Left = -18
+          Height = 25
+          Top = 0
+          Width = 249
+          HelpContext = 9100
+          Caption = 'Sélectionner la structure actuelle'
+          TabOrder = 0
+          UseDockManager = False
+          Align = alRight
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentFont = False
+          OnClick = ch_StructureClick
+        end
+      end
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[1]
+    SaveEdits = [feTGrid, feTListView, feTVirtualTrees]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 97
+    top = 137
+  end
+  object im_images: TImageList[2]
+    BkColor = clWhite
+    DrawingStyle = dsTransparent
+    left = 96
+    top = 178
+    Bitmap = {
+      4C69080000001000000010000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FFFFFFFF00000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FFFFFFFF00000000FF000000FFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FF000000FF000000FF000000FFFF00
+      00FF000000FF000000FFFFFFFF00FFFFFF00FFFFFF00FF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
+      FFFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFFFFFFFF000000FFFFFFFFFF000000FFFFFFFFFF000000
+      FFFFFFFFFF00FFFFFF00FFFFFF00FFFFFF000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FFFFFFFF00000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00FFBDFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FF000000FF000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFF00FFFFFF00FFFFFF00000000FF000000FFFF0000FF0000
+      00FF000000FF000000FF000000FFFFFFFF00FFFFFF00FFFFFF00848400FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FF8484
+      00FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FF8484
+      00FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FFFFFF
+      FF00848400FFFFFFFF00848400FFFFFFFF00848400FF848400FF848400FF8484
+      00FF848400FF848400FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FF848400FF848400FF8484
+      00FF848400FF848400FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FF8484
+      00FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00848400FF8484
+      00FFFFFFFF00FFFFFF00FFFFFF00F1F3F5FFECF0F2FFEBEFF1FFEBEFF1FFEBEF
+      F1FFEBEFF1FFEBEFF1FFE2E8EBFFE2E8EBFFEBEFF1FFEBEFF1FFEBEFF1FFECF0
+      F2FFEEF1F3FFF1F3F5FFFBFCFCFFE8EFF2FFAE997DFF845725FF743C00FF743C
+      00FF743C00FF743C00FF743C00FF743C00FF743C00FF743C00FF743C00FF7E4D
+      16FFA48A69FFEBF2F4FFF7F9FAFFAE997DFFA27D55FFDDCFC0FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E8DF
+      D5FFA27D55FFAF997EFFFBFCFCFF845725FFDCCEBFFFFEFEFEFFFEFEFEFFFEFE
+      FEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFDFE
+      FEFFDBCEBFFF845725FFFFFFFF00743C00FFFAFAFAFFF9FAFAFFF9FAFAFFF9FA
+      FAFFF9FAFAFFF9FAFAFFF9FAFAFFF9FAFAFFF9FAFAFFF9FAFAFFF8FAFAFFF2F4
+      F5FFEAEEF0FF743C00FFFFFFFF00743C00FFF7F8F8FFF6F8F8FFF6F8F8FFF6F8
+      F8FFF6F8F8FFF6F8F8FFF6F8F8FFF6F8F8FFF6F8F8FFF6F8F8FFF5F7F7FFEEF1
+      F3FFE6EAEDFF743C00FFFFFFFF00743C00FFF4F6F6FFF4F6F6FF9A9A9AFF9A9A
+      9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFFEBF0
+      F1FFE2E8EBFF743C00FFFFFFFF00743C00FFF3F6F6FFF3F6F6FFF2F6F6FF9A9A
+      9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFFF1F5F5FFEAF0
+      F1FFE1E8EBFF743C00FFFFFFFF00743C00FFEEF2F2FFEEF2F2FFEDF1F1FFEDF1
+      F1FF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFF9A9A9AFFEDF1F1FFECF0F0FFE5EB
+      ECFFDDE3E6FF743C00FFFFFFFF00743C00FFEDF2F2FFEDF2F2FFECF1F1FFECF1
+      F1FFECF1F1FF9A9A9AFF9A9A9AFF9A9A9AFFECF1F1FFECF1F1FFEBF0F0FFE4EB
+      ECFFDCE3E6FF743C00FFFFFFFF00743C00FFECF1F1FFECF1F1FFEBF0F0FFEBF0
+      F0FFEBF0F0FFEBF0F0FF9A9A9AFFEBF0F0FFEBF0F0FFEBF0F0FFE9EFEFFFE3EA
+      EBFFDBE2E5FF743C00FFFFFFFF00743C00FFEBF0F0FFEAF0F0FFEAF0F0FFEAF0
+      F0FFEAF0F0FFEAF0F0FFEAF0F0FFEAF0F0FFEAF0F0FFEAF0F0FFE8EEEFFFE1E8
+      EAFFD9E2E4FF743C00FFFFFFFF007E4D16FFCAC7BFFFD6DFE2FFD4DEE0FFD5DE
+      E1FFD6DFE2FFD6DFE2FFD6DFE2FFD6DFE2FFD6DFE2FFD5DEE1FFD2DCDFFFCDD7
+      DBFFBDBDB6FF7E4D16FFFFFFFF00A48968FF93714AFFB4AEA3FFC5D0D6FFC5D0
+      D6FFC5D0D6FFC5D0D6FFC5D0D6FFC5D0D6FFC5D0D6FFC4D0D5FFC3CFD5FFB6B7
+      B1FF906E48FFA68D6CFFFFFFFF00F3F8F9FFB09C80FF845725FF743C00FF743C
+      00FF743C00FF743C00FF743C00FF743C00FF743C00FF743C00FF743C00FF7E4D
+      16FFA78E6EFFF5FAFAFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F2ED
+      E7FFCFBEAAFFA4835DFF845724FFA4835DFFCFBEAAFFF2EDE7FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFDFDFFD9CBBBFF8255
+      21FFA18664FFC1B7A7FFDADCDAFFC6BAABFFA68968FF825521FFD9CBBBFFFEFD
+      FDFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D9CBBBFF9A7A55FFBFB5
+      A6FFDBE0E0FFDEE2E2FFE2E5E5FFE5E8E8FFE9ECECFFCDC1B2FFA1815BFFD9CB
+      BBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00F2EDE7FF825521FFBFB5A6FFDBE0
+      E0FFDEE2E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFD0C4B5FF8255
+      21FFF2EDE7FFFFFFFF00FFFFFF00FFFFFF00CFBEAAFFA18664FFDBE0E0FFDEE2
+      E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFAC8F
+      6EFFCFBEAAFFFFFFFF00FFFFFF00FFFFFF00A4835DFFC1B7A7FFDEE2E2FFE2E5
+      E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFD5C8
+      B9FFA4835DFFFFFFFF00FFFFFF00FFFFFF00845724FFDADCDAFFE2E5E5FFE5E8
+      E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFF5F4
+      F2FF845724FFFFFFFF00FFFFFF00FFFFFF00A4835DFFC6BAABFFE5E8E8FFE9EC
+      ECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFD8CB
+      BCFFA4835DFFFFFFFF00FFFFFF00FFFFFF00CFBEAAFFA68968FFE9ECECFFECEF
+      EFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFAF91
+      70FFCFBEAAFFFFFFFF00FFFFFF00FFFFFF00F2EDE7FF825521FFCDC1B2FFEFF1
+      F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFD9CCBCFF8255
+      21FFF2EDE7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00D9CBBBFFA1815BFFD0C4
+      B5FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFD9CCBCFFA68560FFD9CB
+      BBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFDFDFFD9CBBBFF8255
+      21FFAC8F6EFFD5C8B9FFF5F4F2FFD8CBBCFFAF9170FF825521FFD9CBBBFFFEFD
+      FDFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F2ED
+      E7FFCFBEAAFFA4835DFF845724FFA4835DFFCFBEAAFFF2EDE7FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FBFCFCFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F2ED
+      E7FFCFBEAAFFA4835DFF845724FFA4835DFFCFBEAAFFF2EDE7FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFDFDFFD9CBBBFF8255
+      21FFA38766FFC5BAABFFDFE1DFFFC8BEAEFFA78B69FF825521FFD9CBBBFFFEFD
+      FDFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D9CBBBFF9C7C57FFC3B9
+      A9FFE1E5E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFCFC3B3FFA2815CFFD9CB
+      BBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00F2EDE7FF825521FFC3B9A9FFE1E5
+      E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFD2C5B6FF8255
+      21FFF2EDE7FFFFFFFF00FFFFFF00FFFFFF00CFBEAAFFA38766FFE1E5E5FFE3E7
+      E7FFDEE8E2FFA6DCA9FF4ABF4DFF9ED2A0FFE6EEE8FFF3F5F5FFF6F7F7FFAD90
+      6EFFCFBEAAFFFFFFFF00FFFFFF00FFFFFF00A4835DFFC5BAABFFE3E7E7FFE6EA
+      EAFFA6DCA9FF51D555FF3FC343FF26A829FF98CC9AFFF6F7F7FFF8F9F9FFD6C9
+      BAFFA4835DFFFFFFFF00FFFFFF00FFFFFF00845724FFDFE1DFFFE6EAEAFFE9EC
+      ECFF4ABF4DFF3FC342FF35B938FF21A121FF239626FFF8F9F9FFF9FAFAFFF6F5
+      F3FF845724FFFFFFFF00FFFFFF00FFFFFF00A4835DFFC8BEAEFFE9ECECFFECEF
+      EFFF9ED2A0FF27A82AFF20A222FF109213FF97C898FFF9FAFAFFFBFCFCFFD9CB
+      BCFFA4835DFFFFFFFF00FFFFFF00FFFFFF00CFBEAAFFA78B69FFECEFEFFFEFF1
+      F1FFE6EEE8FF98CC9AFF249624FF97C998FFEDF3EEFFFBFCFCFFFDFDFDFFAF91
+      70FFCFBEAAFFFFFFFF00FFFFFF00FFFFFF00F2EDE7FF825521FFCFC3B3FFF1F3
+      F3FFF3F5F5FFF6F7F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFD9CCBCFF8255
+      21FFF2EDE7FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00D9CBBBFFA2815CFFD2C5
+      B6FFF6F7F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFD9CCBCFFA68560FFD9CB
+      BBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFDFDFFD9CBBBFF8255
+      21FFAD906EFFD6C9BAFFF6F5F3FFD9CBBCFFAF9170FF825521FFD9CBBBFFFEFD
+      FDFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F2ED
+      E7FFCFBEAAFFA4835DFF845724FFA4835DFFCFBEAAFFF2EDE7FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFD7DCDCFFD7DCDCFFD7DC
+      DCFFD9DEDEFFDBE0E0FFDEE2E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1
+      F1FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFD7DCDCFFD7DCDCFFD9DE
+      DEFFDBE0E0FFDEE2E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3
+      F3FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFD7DCDCFFD9DEDEFFDBE0
+      E0FFDEE2E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5
+      F5FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFD9DEDEFFDBE0E0FFDEE2
+      E2FFE2E5E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7
+      F7FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDBE0E0FFDEE2E2FFE2E5
+      E5FFE5E8E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9
+      F9FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDEE2E2FFE2E5E5FFE5E8
+      E8FFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFB
+      FBFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE2E5E5FFE5E8E8FFE9EC
+      ECFFECEFEFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFD
+      FDFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE5E8E8FFE9ECECFFECEF
+      EFFFEFF1F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFFEFE
+      FEFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE9ECECFFECEFEFFFEFF1
+      F1FFF1F3F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFFEFEFEFFFFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFECEFEFFFEFF1F1FFF1F3
+      F3FFF4F5F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFFEFEFEFFFFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFEFF1F1FFF1F3F3FFF4F5
+      F5FFF6F7F7FFF8F9F9FFFAFBFBFFFCFDFDFFFEFEFEFFFFFFFF00FFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDDE2E2FFDDE2
+      E2FFDFE3E3FFE1E5E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FFF1F3
+      F3FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDDE2E2FFDFE3
+      E3FFE1E5E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF3F5
+      F5FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDFE3E3FF6CBB
+      6DFF6CBC6EFF6DBD6FFF6FBE70FF70BF71FF71C072FF72C173FFF3F5F5FFF6F7
+      F7FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDFE3E3FFE1E5E5FF6CBC
+      6EFF6DBD6FFF6FBE70FF70BF71FF71C072FF72C173FF73C273FFF6F7F7FFF8F9
+      F9FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE1E5E5FFE3E7E7FF6DBD
+      6FFF6FBE70FF70BF71FF71C072FF72C173FF73C273FF74C274FFF8F9F9FFF9FA
+      FAFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE3E7E7FFE6EAEAFF6FBE
+      70FF70BF71FF71C072FF72C173FF73C273FF74C274FF74C375FFF9FAFAFFFBFC
+      FCFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE6EAEAFFE9ECECFF70BF
+      71FF71C072FF72C173FF73C273FF74C274FF74C375FF75C475FFFBFCFCFFFDFD
+      FDFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE9ECECFFECEFEFFF71C0
+      72FF72C173FF73C273FF74C274FF74C375FF75C475FF76C476FFFDFDFDFFFEFE
+      FEFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFECEFEFFFEFF1F1FF72C1
+      73FF73C273FF74C274FF74C375FF75C475FF76C476FF76C576FFFEFEFEFFFFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFEFF1F1FFF1F3F3FFF3F5
+      F5FFF6F7F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFEFEFFFFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFF1F3F3FFF3F5F5FFF6F7
+      F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFEFEFFFFFFFF00FFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDDE2E2FFDDE2
+      E2FFDFE3E3FFE1E5E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FFF1F3
+      F3FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDDE2E2FFDFE3
+      E3FFE1E5E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FFF1F3F3FFF3F5
+      F5FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDDE2E2FFDFE3E3FFE1E5
+      E5FFE3E7E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FF21A121FFF3F5F5FFF6F7
+      F7FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFDFE3E3FFE1E5E5FFE3E7
+      E7FFE6EAEAFFE9ECECFFECEFEFFFEFF1F1FF21A121FF21A121FFF6F7F7FFF8F9
+      F9FF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE1E5E5FFE3E7E7FF21A1
+      21FFE9ECECFFECEFEFFFEFF1F1FF21A121FF21A121FF21A121FFF8F9F9FFF9FA
+      FAFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE3E7E7FFE6EAEAFF21A1
+      21FF21A121FFEFF1F1FF21A121FF21A121FF21A121FFF8F9F9FFF9FAFAFFFBFC
+      FCFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE6EAEAFFE9ECECFF21A1
+      21FF21A121FF21A121FF21A121FF21A121FFF8F9F9FFF9FAFAFFFBFCFCFFFDFD
+      FDFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFE9ECECFFECEFEFFFEFF1
+      F1FF21A121FF21A121FF21A121FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFE
+      FEFF80511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFECEFEFFFEFF1F1FFF1F3
+      F3FFF3F5F5FF21A121FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFEFEFFFFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFEFF1F1FFF1F3F3FFF3F5
+      F5FFF6F7F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFEFEFFFFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFFF1F3F3FFF3F5F5FFF6F7
+      F7FFF8F9F9FFF9FAFAFFFBFCFCFFFDFDFDFFFEFEFEFFFFFFFF00FFFFFF00FFFF
+      FF0080511CFFFFFFFF00FFFFFF00FFFFFF0080511CFF80511CFF80511CFF8051
+      1CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF80511CFF8051
+      1CFF80511CFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00
+    }
+  end
+end

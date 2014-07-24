@@ -1,0 +1,4 @@
+Mode Asynchrone=1
+Mode Asynchrone Enregistrements=300
+Mode Asynchrone TimeOut=130
+Connection TimeOut=100

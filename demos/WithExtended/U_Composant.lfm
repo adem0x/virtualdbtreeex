@@ -1,0 +1,1174 @@
+inherited F_Composant: TF_Composant
+  Left = 149
+  Height = 674
+  Top = 84
+  Width = 881
+  Caption = 'Composant'
+  ClientHeight = 674
+  ClientWidth = 881
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  OnClose = F_FormDicoClose
+  OnCloseQuery = F_FormDicoCloseQuery
+  OnCreate = F_FormDicoCreate
+  OnDestroy = F_FormDicoDestroy
+  OnShow = F_FormDicoShow
+  Position = poMainFormCenter
+  object pa_1: TPanel[0]
+    Left = 0
+    Height = 649
+    Top = 25
+    Width = 881
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 649
+    ClientWidth = 881
+    TabOrder = 0
+    object spl_1: TSplitter
+      Left = 257
+      Height = 647
+      Top = 1
+      Width = 5
+    end
+    object pa_3: TPanel
+      Left = 262
+      Height = 647
+      Top = 1
+      Width = 618
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 647
+      ClientWidth = 618
+      Constraints.MinWidth = 10
+      TabOrder = 0
+      object RbSplitter2: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 5
+        Top = 294
+        Width = 618
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+      object pa_5: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 618
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 618
+        TabOrder = 1
+        object nv_saisie: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 618
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel, nbESearch]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object pa_Datasource: TPanel
+        Left = 0
+        Height = 262
+        Top = 32
+        Width = 618
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 262
+        ClientWidth = 618
+        TabOrder = 0
+        object lb_comm: TFWLabel
+          Tag = 1004
+          Left = 47
+          Height = 16
+          Top = 31
+          Width = 55
+          AutoSize = False
+          Caption = 'lb_comm'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_code: TFWLabel
+          Tag = 1001
+          Left = 53
+          Height = 16
+          Top = 6
+          Width = 49
+          AutoSize = False
+          Caption = 'lb_code'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_lib: TFWLabel
+          Tag = 1005
+          Left = 70
+          Height = 16
+          Top = 63
+          Width = 32
+          AutoSize = False
+          Caption = 'lb_lib'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_datecrea: TFWLabel
+          Tag = 1011
+          Left = 255
+          Height = 16
+          Top = 6
+          Width = 72
+          AutoSize = False
+          Caption = 'lb_datecrea'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_datecreation: TDBText
+          Tag = 11
+          Left = 338
+          Height = 17
+          Top = 6
+          Width = 113
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label1: TFWLabel
+          Tag = 1002
+          Left = 59
+          Height = 16
+          Top = 190
+          Width = 40
+          AutoSize = False
+          Caption = 'lb_four'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_pxactu: TFWLabel
+          Tag = 1007
+          Left = 45
+          Height = 16
+          Top = 213
+          Width = 57
+          AutoSize = False
+          Caption = 'lb_pxactu'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_pxfutur: TFWLabel
+          Tag = 1008
+          Left = 214
+          Height = 16
+          Top = 213
+          Width = 56
+          AutoSize = False
+          Caption = 'lb_pxfutur'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_coef: TFWLabel
+          Tag = 1010
+          Left = 226
+          Height = 16
+          Top = 238
+          Width = 44
+          AutoSize = False
+          Caption = 'lb_coef'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_cubage: TFWLabel
+          Tag = 1009
+          Left = 38
+          Height = 16
+          Top = 238
+          Width = 64
+          AutoSize = False
+          Caption = 'lb_cubage'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_poids: TFWLabel
+          Tag = 1012
+          Left = 386
+          Height = 16
+          Top = 238
+          Width = 52
+          AutoSize = False
+          Caption = 'lb_poids'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object lb_special: TFWLabel
+          Tag = 1013
+          Left = 281
+          Height = 16
+          Top = 30
+          Width = 48
+          AutoSize = False
+          Caption = 'lb_spec'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object Label2: TFWLabel
+          Tag = 1014
+          Left = 47
+          Height = 16
+          Top = 163
+          Width = 55
+          AutoSize = False
+          Caption = 'lb_comm'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object Label3: TFWLabel
+          Tag = 1006
+          Left = 5
+          Height = 32
+          Top = 108
+          Width = 97
+          AutoSize = False
+          Caption = 'Désignation complémentaire'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentBidiMode = False
+          ParentColor = False
+          ParentFont = False
+          WordWrap = True
+          ColorFocus = clMaroon
+        end
+        object lb_declasse: TFWLabel
+          Tag = 1015
+          Left = 483
+          Height = 16
+          Top = 30
+          Width = 74
+          AutoSize = False
+          Caption = 'lb_declasse'
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ParentColor = False
+          ParentFont = False
+          ColorFocus = clMaroon
+        end
+        object ed_codecom: TFWDBEdit
+          Tag = 4
+          Left = 121
+          Height = 27
+          Top = 27
+          Width = 114
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object ed_code: TFWDBEdit
+          Tag = 1
+          Left = 121
+          Height = 27
+          Top = 2
+          Width = 114
+          CharCase = ecUppercase
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+        object me_lib: TDBMemo
+          Tag = 5
+          Left = 121
+          Height = 43
+          Top = 52
+          Width = 460
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 80
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 3
+        end
+        object chbx_special: TDBCheckBox
+          Tag = 13
+          Left = 337
+          Height = 17
+          Top = 30
+          Width = 15
+          TabOrder = 2
+          ValueChecked = 'Vrai'
+          ValueUnchecked = 'Faux'
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Tag = 2
+          Left = 121
+          Height = 29
+          Top = 184
+          Width = 321
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          ListFieldIndex = 0
+          LookupCache = False
+          ParentFont = False
+          TabOrder = 4
+        end
+        object ed_pxactuel: TFWDBEdit
+          Tag = 7
+          Left = 121
+          Height = 27
+          Top = 209
+          Width = 57
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 5
+        end
+        object ed_pxfutur: TFWDBEdit
+          Tag = 8
+          Left = 281
+          Height = 27
+          Top = 209
+          Width = 58
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 6
+        end
+        object ed_coefcubage: TFWDBEdit
+          Tag = 10
+          Left = 281
+          Height = 27
+          Top = 234
+          Width = 57
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 8
+        end
+        object ed_cubage: TFWDBEdit
+          Tag = 9
+          Left = 121
+          Height = 27
+          Top = 234
+          Width = 57
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 7
+        end
+        object ed_poids: TFWDBEdit
+          Tag = 12
+          Left = 457
+          Height = 27
+          Top = 234
+          Width = 57
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 9
+        end
+        object ed_Libcom: TFWDBEdit
+          Tag = 14
+          Left = 121
+          Height = 27
+          Top = 159
+          Width = 460
+          CharCase = ecNormal
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 10
+        end
+        object DBMemo1: TDBMemo
+          Tag = 6
+          Left = 121
+          Height = 65
+          Top = 94
+          Width = 460
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          MaxLength = 280
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 11
+        end
+        object cbx_declasse: TDBCheckBox
+          Tag = 15
+          Left = 565
+          Height = 17
+          Top = 30
+          Width = 15
+          TabOrder = 12
+          ValueChecked = 'Vrai'
+          ValueUnchecked = 'Faux'
+        end
+      end
+      object pc_art: TPageControl
+        Left = 0
+        Height = 348
+        Top = 299
+        Width = 618
+        ActivePage = ts_finition
+        Align = alClient
+        MultiLine = True
+        TabIndex = 0
+        TabOrder = 2
+        OnChanging = pc_artChanging
+        Options = [nboMultiLine]
+        object ts_finition: TTabSheet
+          Caption = 'Eléments à &Finir'
+          ClientHeight = 324
+          ClientWidth = 616
+          ImageIndex = 2
+          object RbSplitter1: TSplitter
+            Left = 217
+            Height = 324
+            Top = 0
+            Width = 5
+            Align = alRight
+            ResizeAnchor = akRight
+          end
+          object Panel3: TPanel
+            Left = 0
+            Height = 324
+            Top = 0
+            Width = 217
+            Align = alClient
+            Caption = 'pa_GrilleFinit'
+            ClientHeight = 324
+            ClientWidth = 217
+            Constraints.MinWidth = 4
+            TabOrder = 0
+            object Panel4: TPanel
+              Left = 1
+              Height = 32
+              Top = 1
+              Width = 215
+              Align = alTop
+              BevelOuter = bvNone
+              Caption = 'Panel1'
+              ClientHeight = 32
+              ClientWidth = 215
+              TabOrder = 0
+              object nv_navfinition: TExtDBNavigator
+                Left = 0
+                Height = 32
+                Top = 0
+                Width = 215
+                Flat = True
+                DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+                Align = alClient
+                TabOrder = 0
+                VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+                GlyphSize = gsLarge
+              end
+            end
+            object gd_CompCoul: TExtDBGrid
+              Left = 1
+              Height = 290
+              Top = 33
+              Width = 215
+              TitleButtons = False
+              AutoSort = False
+              Columns = <              
+                item
+                  Title.Alignment = taCenter
+                  Title.Caption = 'Libellé'
+                  Title.Orientation = toHorizontal
+                  FieldName = 'COCO_Lib'
+                  Filter.DropDownRows = 0
+                  Filter.EmptyValue = '(Empty)'
+                  Filter.EmptyFont.Style = [fsItalic]
+                  Filter.ItemIndex = -1
+                  EditButtons = <>
+                  FieldTag = 0
+                end>
+              KeyStrokes = <              
+                item
+                  Command = rxgcShowFindDlg
+                  ShortCut = 16454
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowColumnsDlg
+                  ShortCut = 16471
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowFilterDlg
+                  ShortCut = 16468
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowSortDlg
+                  ShortCut = 16467
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcShowQuickFilter
+                  ShortCut = 16465
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcHideQuickFilter
+                  ShortCut = 16456
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcSelectAll
+                  ShortCut = 16449
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcDeSelectAll
+                  ShortCut = 16429
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcInvertSelection
+                  ShortCut = 16426
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcOptimizeColumnsWidth
+                  ShortCut = 16427
+                  Enabled = True
+                end              
+                item
+                  Command = rxgcCopyCellValue
+                  ShortCut = 16451
+                  Enabled = True
+                end>
+              OptionsRx = []
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clWindow
+              DrawFullLine = False
+              FocusColor = clRed
+              SelectedColor = clHighlight
+              GridLineStyle = psSolid
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+              ParentColor = False
+              Scrollbars = ssHorizontal
+              TabOrder = 1
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'MS Sans Serif'
+            end
+          end
+          object pa_ElFinition: TPanel
+            Left = 222
+            Height = 324
+            Top = 0
+            Width = 394
+            Align = alRight
+            BevelOuter = bvNone
+            ClientHeight = 324
+            ClientWidth = 394
+            Constraints.MinWidth = 4
+            TabOrder = 1
+            object lb_Coul: TFWLabel
+              Tag = 1003
+              Left = 50
+              Height = 16
+              Top = 206
+              Width = 43
+              AutoSize = False
+              Caption = 'lb_coul'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+            object lb_coullib: TFWLabel
+              Tag = 1004
+              Left = 36
+              Height = 16
+              Top = 37
+              Width = 57
+              AutoSize = False
+              Caption = 'lb_coullib'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+            object Label9: TFWLabel
+              Tag = 1005
+              Left = 50
+              Height = 16
+              Top = 78
+              Width = 43
+              AutoSize = False
+              Caption = 'lb_coul'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+            object lb_TypeFinition: TFWLabel
+              Tag = 1006
+              Left = 53
+              Height = 16
+              Top = 258
+              Width = 40
+              AutoSize = False
+              Caption = 'lb_four'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+            object lb_LibCoul: TFWLabel
+              Tag = 501
+              Left = 13
+              Height = 16
+              Top = 231
+              Width = 80
+              AutoSize = False
+              Caption = 'Libellé finition'
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ParentColor = False
+              ParentFont = False
+              ColorFocus = clMaroon
+            end
+            object nv_saisifini: TExtDBNavigator
+              Left = 0
+              Height = 32
+              Top = 0
+              Width = 394
+              Flat = True
+              DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+              Align = alTop
+              TabOrder = 0
+              VisibleButtons = [nbEInsert, nbEDelete, nbEPost, nbECancel]
+              GlyphSize = gsLarge
+            end
+            object bt_couleur: TButton
+              Left = 172
+              Height = 22
+              Hint = 'Ouvrir la fenêtre de sélection des couleurs'
+              Top = 203
+              Width = 22
+              Caption = '...'
+              OnClick = bt_couleurClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 3
+            end
+            object ed_coul: TFWDBEdit
+              Tag = 3
+              Left = 112
+              Height = 27
+              Top = 202
+              Width = 57
+              CharCase = ecNormal
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              MaxLength = 0
+              ParentFont = False
+              TabOrder = 2
+            end
+            object ed_coullib: TFWDBEdit
+              Tag = 4
+              Left = 112
+              Height = 27
+              Top = 33
+              Width = 265
+              CharCase = ecNormal
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              MaxLength = 0
+              ParentFont = False
+              TabOrder = 4
+            end
+            object rg_TypeCoul: TDBRadioGroup
+              Tag = 5
+              Left = 112
+              Height = 137
+              Top = 59
+              Width = 264
+              Items.Strings = (
+                'Sans finition'
+                'Fixée'
+                'A choisir type défini'
+                'Libellé finition à saisir'
+                'A choisir'
+              )
+              OnChange = rg_TypeCoulChange
+              TabOrder = 1
+              Values.Strings = (
+                '4'
+                '2'
+                '1'
+                '3'
+                '5'
+              )
+            end
+            object cbx_TypeFinition: TDBLookupComboBox
+              Tag = 6
+              Left = 112
+              Height = 29
+              Top = 252
+              Width = 247
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              ListFieldIndex = 0
+              LookupCache = False
+              ParentFont = False
+              TabOrder = 5
+            end
+            object ed_LibCoul: TFWDBEdit
+              Tag = 501
+              Left = 112
+              Height = 27
+              Top = 227
+              Width = 275
+              DataField = 'FINI_Lib'
+              DataSource = M_DmCompose.ds_CoFini
+              ReadOnly = True
+              CharCase = ecNormal
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              MaxLength = 0
+              ParentFont = False
+              TabOrder = 6
+            end
+            object bt_TypFini: TButton
+              Left = 365
+              Height = 22
+              Hint = 'Ouvrir la fenêtre de sélection des couleurs'
+              Top = 252
+              Width = 22
+              Caption = '...'
+              OnClick = bt_TypFiniClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 7
+              Visible = False
+            end
+          end
+        end
+      end
+    end
+    object pa_2: TPanel
+      Left = 1
+      Height = 647
+      Top = 1
+      Width = 256
+      Align = alLeft
+      BevelOuter = bvNone
+      ClientHeight = 647
+      ClientWidth = 256
+      Constraints.MinWidth = 10
+      TabOrder = 1
+      object pa_4: TPanel
+        Left = 0
+        Height = 32
+        Top = 0
+        Width = 256
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 32
+        ClientWidth = 256
+        TabOrder = 0
+        object nv_navigator: TExtDBNavigator
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 256
+          Flat = True
+          DeleteQuestion = 'Confirmez-vous l''effacement de l''enregistrement ?'
+          Align = alClient
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          VisibleButtons = [nbEFirst, nbEPrior, nbENext, nbELast]
+          GlyphSize = gsLarge
+          Hints.Strings = (
+            'Premier enregistrement'
+            'Enregistrement précédent'
+            'Enregistrement suivant'
+            'Dernier enregistrement'
+            'Insérer enregistrement'
+            'Supprimer l''enregistrement'
+            'Modifier l''enregistrement'
+            'Valider modifications'
+            'Annuler les modifications'
+            'Rafraîchir les données'
+            'Rechercher un enregistrement'
+          )
+        end
+      end
+      object gd_composant: TExtDBGrid
+        Left = 0
+        Height = 615
+        Top = 32
+        Width = 256
+        TitleButtons = False
+        AutoSort = False
+        Columns = <>
+        KeyStrokes = <        
+          item
+            Command = rxgcShowFindDlg
+            ShortCut = 16454
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowColumnsDlg
+            ShortCut = 16471
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowFilterDlg
+            ShortCut = 16468
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowSortDlg
+            ShortCut = 16467
+            Enabled = True
+          end        
+          item
+            Command = rxgcShowQuickFilter
+            ShortCut = 16465
+            Enabled = True
+          end        
+          item
+            Command = rxgcHideQuickFilter
+            ShortCut = 16456
+            Enabled = True
+          end        
+          item
+            Command = rxgcSelectAll
+            ShortCut = 16449
+            Enabled = True
+          end        
+          item
+            Command = rxgcDeSelectAll
+            ShortCut = 16429
+            Enabled = True
+          end        
+          item
+            Command = rxgcInvertSelection
+            ShortCut = 16426
+            Enabled = True
+          end        
+          item
+            Command = rxgcOptimizeColumnsWidth
+            ShortCut = 16427
+            Enabled = True
+          end        
+          item
+            Command = rxgcCopyCellValue
+            ShortCut = 16451
+            Enabled = True
+          end>
+        OptionsRx = []
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        DrawFullLine = False
+        FocusColor = clRed
+        SelectedColor = clHighlight
+        GridLineStyle = psSolid
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentColor = False
+        Scrollbars = ssVertical
+        TabOrder = 1
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        OnDblClick = gd_composantDblClick
+      end
+    end
+  end
+  object Panel1: TPanel[1]
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 881
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 25
+    ClientWidth = 881
+    TabOrder = 1
+    object Panel11: TPanel
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 361
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 0
+    end
+    object bt_apercu: TFWPreview
+      Left = 361
+      Height = 25
+      Hint = 'Aperçu  (Impression / exportation)'
+      Top = 0
+      Caption = 'Aperçu'
+      TabOrder = 4
+      Align = alLeft
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      Visible = False
+    end
+    object Panel2: TPanel
+      Left = 441
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 1
+    end
+    object bt_imprimer: TFWPrint
+      Left = 454
+      Height = 25
+      Hint = 'Impression des résultats de la sélection'
+      Top = 0
+      Caption = 'Imprimer'
+      TabOrder = 5
+      Align = alLeft
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      Visible = False
+    end
+    object Panel5: TPanel
+      Left = 534
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 2
+    end
+    object Panel6: TPanel
+      Left = 547
+      Height = 25
+      Top = 0
+      Width = 13
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 3
+    end
+    object dbtn_fermer: TFWClose
+      Left = 801
+      Height = 25
+      Top = 0
+      Caption = 'Fermer'
+      TabOrder = 6
+      Layout = blGlyphRight
+      Align = alRight
+      OnClick = dbtn_fermerClick
+    end
+    object bt_copiecomp: TFWCopy
+      Left = 560
+      Height = 25
+      Hint = 'Copie du composant sélectionné'
+      Top = 0
+      Caption = 'Copie'
+      TabOrder = 7
+      Align = alLeft
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      OnClick = bt_copiecompClick
+    end
+  end
+  object SvgFormInfoIni: TOnFormInfoIni[2]
+    SaveForm = [sfSavePos, sfSaveSize]
+    left = 97
+    top = 137
+  end
+  object im_images: TImageList[3]
+    BkColor = clForeground
+    left = 96
+    top = 178
+    Bitmap = {
+      4C69020000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFF848484FF848484FF8484
+      84FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF00000000000000FF000000FFFF0000FFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFF0000FF000000FF000000FF000000FF000000FFFF00
+      00FF000000FF000000FF000000000000000000000000FF0000FFFF0000FFFF00
+      00FFFF0000FFFF0000FFFF0000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      FFFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF000000000000FFFF000000000000FFFF000000000000
+      FFFF000000000000000000000000000000000000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FF00000000000000FFFFFFFFFF848484FF8484
+      84FF848484FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FF00FFBDFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FFFFFFFFFF000000FFFF0000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFFFF0000FF000000FF000000FF00000000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00
+      00FFFF0000FF000000000000000000000000000000FF000000FFFF0000FF0000
+      00FF000000FF000000FF000000FF000000000000000000000000848400FF0000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000848400FF0000
+      0000848400FF00000000848400FF00000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848400FF848400FF848400FF8484
+      00FF848400FF848400FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000848400FF8484
+      00FF000000000000000000000000
+    }
+  end
+end
