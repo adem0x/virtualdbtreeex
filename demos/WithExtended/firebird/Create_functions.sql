@@ -1,5 +1,6 @@
 SET TERM ^ ;
 
+
 CREATE PROCEDURE fc_base_compose_uniquement
 		(BASE_COMPOSE varchar(20),NIVEAU integer,INDICE integer)
 RETURNS
@@ -73,8 +74,6 @@ RETURNS
   ARDE_Position int) -- Le comportement
 AS
 DECLARE NUMERO integer;
-DECLARE CleTable varchar (20);
-DECLARE Cle varchar (20);
 BEGIN
 ----------- Insertion des modes de règlement ------------- 
 FOR SELECT DISTINCT 'STRUCTURE_COMPOSANT',
@@ -90,7 +89,7 @@ FOR SELECT DISTINCT 'STRUCTURE_COMPOSANT',
 	COMP_Libcom,
 	STRU_Position
 FROM STRUCTURE LEFT OUTER JOIN STRUCTURE_COMPOSANT ON ( SCOM__STRU = STRU_Clep ) LEFT OUTER JOIN COMPOSANT ON ( SCOM__COMP = COMP_Clep )
-WHERE SCOM__STRU = STRU_Clep
+WHERE SCOM__STRU = :STRU_Clep
 ORDER BY STRU_Position, COMP_Lib
 INTO
   :ARDE_Table,
@@ -106,17 +105,16 @@ INTO
   :ARDE_Libcom,
   :ARDE_Position
 DO
-BEGIN
-     NUMERO=:NUMERO+1;
-SUSPEND;
-END
-END
-^
+  BEGIN
+    NUMERO=:NUMERO+1;
+    SUSPEND;
+  END
+END^
 
-CREATE PROCEDURE fc_branches_base_compose
-		(STRU_Clep varchar(20), CleParent varchar (250))
+CREATE PROCEDURE fc_branches_composants
+		(STRUCTURE_Clep varchar(20), CleParent varchar (250), NIVEAU integer,INDICE integer)
 RETURNS
-(ARDE_Table varchar ( 100 ),
+( ARDE_Table varchar ( 100 ),
   ARDE_Clep varchar ( 250 ),	
   ARDE_Parent varchar ( 250 ),
   ARDE_Table_parent  varchar (20), -- La clé parent de la table
@@ -129,69 +127,118 @@ RETURNS
   ARDE_Libcom VARCHAR ( 200 ),
   ARDE_Position int) -- Le comportement
 AS
+DECLARE NUMERO integer;
 BEGIN
 ----------- Insertion des modes de règlement -------------
-DECLARE CleTable varchar (20)
-DECLARE Cle varchar (250)
+FOR SELECT 'STRUCTURE_LIEE',
+	:NIVEAU*1000+:INDICE+:NUMERO,
+	:CleParent,
+	STRU_Clep,
+	STRU_Clep as STRUCT_Clep,
+	STRU_Type,
+	STRU_Selectionne, 
+	SUM ( COMP_Prixactuel ),
+	SUM ( COMP_Prixfutur ),
+	STRU_Libelle,
+	NULL,
+	STRU_Position
+FROM STRUCTURE LEFT OUTER JOIN STRUCTURE_COMPOSANT 
+ON (SCOM__STRU = STRU_Clep)
+LEFT OUTER JOIN COMPOSANT ON ( SCOM__COMP = COMP_Clep )
+WHERE STRU_Clep = :STRUCTURE_Clep
+GROUP BY STRU_Libelle,STRU_Clep,STRU_Position,STRU_Selectionne,STRU_Type
+ORDER BY STRU_Position,STRU_Libelle
+INTO
+  :ARDE_Table,
+  :ARDE_Clep,	
+  :ARDE_Parent,
+  :ARDE_Table_parent, -- La clé parent de la table
+  :ARDE_Table_clep, -- La clé de la table
+  :ARDE_Type,
+  :ARDE_Selection,
+  :ARDE_Prix,
+  :ARDE_Prixfutur,
+  :ARDE_Libelle,
+  :ARDE_Libcom,
+  :ARDE_Position
+  DO
+   BEGIN
+    SUSPEND;
+   END
+END^
 
-^ 
-SELECT  'STRUCTURE_LIEE',
-	CleParent+CAST ( STRU_Clep CHAR (20)),
-	CleParent,
+CREATE PROCEDURE fc_branches_intermediaires
+		(STRUCTURE_Clep varchar(20), CleParent varchar (250), NIVEAU integer,INDICE integer)
+RETURNS
+( ARDE_Table varchar ( 100 ),
+  ARDE_Clep varchar ( 250 ),	
+  ARDE_Parent varchar ( 250 ),
+  ARDE_Table_parent  varchar (20), -- La clé parent de la table
+  ARDE_Table_clep  varchar (20), -- La clé de la table
+  ARDE_Type SMALLINT,
+  ARDE_Selection SMALLINT,
+  ARDE_Prix DECIMAL(12,4),
+  ARDE_Prixfutur DECIMAL(12,4),
+  ARDE_Libelle VARCHAR ( 360 ),
+  ARDE_Libcom VARCHAR ( 200 ),
+  ARDE_Position int) -- Le comportement
+AS
+DECLARE NUMERO integer;
+BEGIN
+----------- Insertion des modes de règlement -------------
+FOR SELECT  'STRUCTURE_LIEE',
+	:NIVEAU*1000+:INDICE+:NUMERO,
+	:CleParent,
 	STRU_Clep,
 	STRU_Clep,
 	STRU_Type,
 	STRU_Selectionne, 
-	NULL,
-	NULL,
+	0,
+	0,
 	STRU_Libelle,
 	NULL,
 	STRU_Position
-FROM STRUCTURE,STRUCTURE_LIEE
-WHERE STLI__Enfant = STRU_Clep
-AND STLI__Parent= STRU_Clep
+FROM STRUCTURE LEFT OUTER JOIN STRUCTURE_LIEE ON (STLI__Enfant = STRU_Clep)
+WHERE STRU_Clep = :STRUCTURE_Clep
+AND STLI__Parent= :STRUCTURE_Clep
 ORDER BY STRU_Position,STRU_Libelle
 
-UPDATE liste
-SET ARDE_Prix  = ( SELECT SUM ( COMP_Prixactuel )FROM STRUCTURE_COMPOSANT, COMPOSANT 
-WHERE ARDE_Type=3
-AND ARDE_Parent = CleParent
-AND ARDE_Table = 'STRUCTURE_LIEE'
-AND SCOM__STRU = ARDE_Table_clep
-AND SCOM__COMP = COMP_Clep )
-,
-ARDE_Prixfutur = ( SELECT SUM ( COMP_Prixfutur ) FROM STRUCTURE_COMPOSANT, COMPOSANT 
-WHERE ARDE_Type=3
-AND ARDE_Parent = CleParent
-AND ARDE_Table = 'STRUCTURE_LIEE'
-AND SCOM__STRU = ARDE_Table_clep
-AND SCOM__COMP = COMP_Clep )
-WHERE ARDE_Type=3
-AND ARDE_Parent = CleParent
-
-DECLARE curseur CURSOR FOR SELECT ARDE_Table_clep, ARDE_Clep FROM liste WHERE ARDE_Type=2 AND ARDE_Parent = CleParent
-
-OPEN curseur
-
-FETCH NEXT FROM curseur INTO CleTable, Cle
-
-while fetch_status = 0
+INTO
+  :ARDE_Table,
+  :ARDE_Clep,	
+  :ARDE_Parent,
+  :ARDE_Table_parent, -- La clé parent de la table
+  :ARDE_Table_clep, -- La clé de la table
+  :ARDE_Type,
+  :ARDE_Selection,
+  :ARDE_Prix,
+  :ARDE_Prixfutur,
+  :ARDE_Libelle,
+  :ARDE_Libcom,
+  :ARDE_Position
+  DO
 BEGIN
-  ^ SELECT * FROM fc_branches_base_compose ( CleTable, Cle )
-  FETCH NEXT FROM curseur INTO CleTable, Cle
+  FOR SELECT * FROM fc_branches_intermediaires ( :ARDE_Table_clep, :ARDE_Clep,:NIVEAU+1,:INDICE ) DO
+  INTO
+  :ARDE_Table,
+  :ARDE_Clep,	
+  :ARDE_Parent,
+  :ARDE_Table_parent, -- La clé parent de la table
+  :ARDE_Table_clep, -- La clé de la table
+  :ARDE_Type,
+  :ARDE_Selection,
+  :ARDE_Prix,
+  :ARDE_Prixfutur,
+  :ARDE_Libelle,
+  :ARDE_Libcom,
+  :ARDE_Position    
+  DO
+   BEGIN
+    SUSPEND;
+   END
 END
-DEALLOCATE curseur
+END^
 
-DO
-BEGIN
-SUSPEND;
-END
-END
-^
-
-if exists (select * from sysobjects where id = object_id(N'fc_arbre_base_compose') and xtype in (N'FN', N'IF', N'TF'))
-drop PROCEDURE fc_arbre_base_compose
-^
 
 CREATE PROCEDURE fc_arbre_base_compose
 		(BASE_COMPOSE varchar(20), composants SMALLINT )
