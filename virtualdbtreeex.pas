@@ -483,7 +483,7 @@ Type
       const adbn_DBData: PDBNodeData; Demand : Integer ): Boolean;
     function DoRuleCheckAction(const SourceNodeExcluded, Node: PVirtualNode;
       const adbn_DBData: PDBNodeData; Demand : Integer ; const Condition : Variant ): Boolean;
-    procedure DoHeaderClick(HitInfo: TVTHeaderHitInfo); override;
+    procedure DoHeaderClick(Column: TColumnIndex; Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
 
     Function CanEdit ( Node: PVirtualNode; Column: TColumnIndex): Boolean; Override;
     Function CanOpenDataSet: Boolean; Virtual;
@@ -2085,13 +2085,12 @@ Begin
     End ;
 End ;
 
-procedure TBaseVirtualDBTreeEx.DoHeaderClick(HitInfo: TVTHeaderHitInfo);
+procedure TBaseVirtualDBTreeEx.DoHeaderClick(Column: TColumnIndex; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var Node: PVirtualNode ;
 begin
   inherited ;
   if not Assigned ( OnHeaderClick )
-  and ( HitInfo.Column = Header.MainColumn ) Then
-  with HitInfo do
+  and ( Column = Header.MainColumn ) Then
     Begin
       Node := GetFirstSelected ;
       while assigned ( Node ) do
